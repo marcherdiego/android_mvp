@@ -44,6 +44,29 @@ public class EventBusWrapper extends EventBus {
         }
     }
 
+    public void post(Class<?> clazz, Object... args) {
+        try {
+            Class<?>[] paramsClasses = new Class[args.length];
+            Object[] initArgs = new Object[args.length];
+            for (int i = 0; i < args.length; i++) {
+                Object arg = args[i];
+                paramsClasses[i] = arg.getClass();
+                initArgs[i] = arg;
+            }
+            Constructor<?> constructor = clazz.getConstructor(paramsClasses);
+            Object eventInstance = constructor.newInstance(initArgs);
+            post(eventInstance);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void postSticky(Object event) {
         super.postSticky(event);
