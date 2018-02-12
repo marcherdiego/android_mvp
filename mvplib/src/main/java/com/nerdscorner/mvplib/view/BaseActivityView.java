@@ -17,9 +17,9 @@ public abstract class BaseActivityView {
     protected final EventBusWrapper bus;
     private WeakReference<BaseActivity> activityRef;
 
-    public BaseActivityView(BaseActivity activity, EventBusWrapper bus) {
+    public BaseActivityView(BaseActivity activity) {
         activityRef = new WeakReference<>(activity);
-        this.bus = bus;
+        bus = EventBusWrapper.getDefault();
     }
 
     @Nullable

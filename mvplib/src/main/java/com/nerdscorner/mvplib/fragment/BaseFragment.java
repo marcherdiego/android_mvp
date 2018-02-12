@@ -10,12 +10,7 @@ import com.nerdscorner.mvplib.presenter.BaseFragmentPresenter;
 @Keep
 public abstract class BaseFragment extends Fragment {
 
-    protected EventBusWrapper bus;
     protected BaseFragmentPresenter presenter;
-
-    public BaseFragment(EventBusWrapper bus) {
-        this.bus = bus;
-    }
 
     @StringRes
     public abstract int getTitle();
@@ -25,7 +20,7 @@ public abstract class BaseFragment extends Fragment {
         super.onResume();
         try {
             presenter.onResume();
-            bus.register(presenter);
+            EventBusWrapper.getDefault().register(presenter);
         } catch (Exception ignored) {
         }
     }
@@ -35,7 +30,7 @@ public abstract class BaseFragment extends Fragment {
         super.onPause();
         try {
             presenter.onPause();
-            bus.unregister(presenter);
+            EventBusWrapper.getDefault().unregister(presenter);
         } catch (Exception ignored) {
         }
     }

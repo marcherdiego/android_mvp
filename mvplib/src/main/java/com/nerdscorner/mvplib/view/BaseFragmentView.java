@@ -16,9 +16,9 @@ public abstract class BaseFragmentView {
     protected final EventBusWrapper bus;
     private WeakReference<Fragment> fragmentRef;
 
-    public BaseFragmentView(Fragment fragment, EventBusWrapper bus) {
+    public BaseFragmentView(Fragment fragment) {
         fragmentRef = new WeakReference<>(fragment);
-        this.bus = bus;
+        bus = EventBusWrapper.getDefault();
     }
 
     @Nullable

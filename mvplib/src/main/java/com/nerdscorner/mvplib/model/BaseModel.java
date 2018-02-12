@@ -9,8 +9,8 @@ public class BaseModel {
 
     protected final EventBusWrapper bus;
 
-    public BaseModel(EventBusWrapper bus) {
-        this.bus = bus;
+    public BaseModel() {
+        bus = EventBusWrapper.getDefault();
     }
 
     public void onResume() {
