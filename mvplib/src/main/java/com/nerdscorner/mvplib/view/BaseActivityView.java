@@ -3,6 +3,7 @@ package com.nerdscorner.mvplib.view;
 import android.support.annotation.Keep;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
@@ -25,6 +26,12 @@ public abstract class BaseActivityView {
     @Nullable
     public BaseActivity getActivity() {
         return activityRef.get();
+    }
+
+    @Nullable
+    public FragmentManager getFragmentManager() {
+        AppCompatActivity activity = getActivity();
+        return activity != null ? activity.getSupportFragmentManager() : null;
     }
 
     public void showToast(@StringRes int textResId) {

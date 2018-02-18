@@ -15,10 +15,6 @@ public class BaseFragmentPresenter<V extends BaseFragmentView, M extends BaseMod
         this.model = model;
     }
 
-    public void unbind() {
-        view.unbind();
-    }
-
     public void onResume() {
         view.onResume();
         model.onResume();
@@ -31,6 +27,7 @@ public class BaseFragmentPresenter<V extends BaseFragmentView, M extends BaseMod
 
     public void onDestroyView() {
         view.onDestroyView();
+        view.unbind();
     }
 
     public boolean onBackPressed() {
