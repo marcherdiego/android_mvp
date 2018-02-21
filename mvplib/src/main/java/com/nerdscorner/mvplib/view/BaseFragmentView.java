@@ -6,19 +6,19 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
-import com.nerdscorner.mvplib.bus.EventBusWrapper;
+import org.greenrobot.eventbus.EventBus;
 
 import java.lang.ref.WeakReference;
 
 @Keep
 public abstract class BaseFragmentView {
 
-    protected final EventBusWrapper bus;
+    protected final EventBus bus;
     private WeakReference<Fragment> fragmentRef;
 
     public BaseFragmentView(Fragment fragment) {
         fragmentRef = new WeakReference<>(fragment);
-        bus = EventBusWrapper.getDefault();
+        bus = EventBus.getDefault();
     }
 
     @Nullable

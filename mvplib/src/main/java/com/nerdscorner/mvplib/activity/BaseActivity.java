@@ -2,8 +2,9 @@ package com.nerdscorner.mvplib.activity;
 
 import android.support.v7.app.AppCompatActivity;
 
-import com.nerdscorner.mvplib.bus.EventBusWrapper;
 import com.nerdscorner.mvplib.presenter.BaseActivityPresenter;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -13,7 +14,7 @@ public class BaseActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         try {
-            EventBusWrapper.getDefault().register(presenter);
+            EventBus.getDefault().register(presenter);
         } catch (Exception ignored) {
             //No @Subscribe annotations detected
         }
@@ -25,7 +26,7 @@ public class BaseActivity extends AppCompatActivity {
         super.onPause();
         presenter.onPause();
         try {
-            EventBusWrapper.getDefault().unregister(presenter);
+            EventBus.getDefault().unregister(presenter);
         } catch (Exception ignored) {
             //No @Subscribe annotations detected
         }

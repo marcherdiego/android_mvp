@@ -3,8 +3,9 @@ package com.nerdscorner.mvplib.fragment;
 import android.support.annotation.Keep;
 import android.support.v4.app.Fragment;
 
-import com.nerdscorner.mvplib.bus.EventBusWrapper;
 import com.nerdscorner.mvplib.presenter.BaseFragmentPresenter;
+
+import org.greenrobot.eventbus.EventBus;
 
 @Keep
 public abstract class BaseFragment extends Fragment {
@@ -16,7 +17,7 @@ public abstract class BaseFragment extends Fragment {
         super.onResume();
         try {
             presenter.onResume();
-            EventBusWrapper.getDefault().register(presenter);
+            EventBus.getDefault().register(presenter);
         } catch (Exception ignored) {
         }
     }
@@ -26,7 +27,7 @@ public abstract class BaseFragment extends Fragment {
         super.onPause();
         try {
             presenter.onPause();
-            EventBusWrapper.getDefault().unregister(presenter);
+            EventBus.getDefault().unregister(presenter);
         } catch (Exception ignored) {
         }
     }

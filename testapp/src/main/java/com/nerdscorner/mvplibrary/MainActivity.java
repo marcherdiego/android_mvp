@@ -15,8 +15,8 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         presenter = new MainPresenter(
-                new MainView(this, bus),
-                new MainModel(bus)
+                new MainView(this),
+                new MainModel()
         );
     }
 }

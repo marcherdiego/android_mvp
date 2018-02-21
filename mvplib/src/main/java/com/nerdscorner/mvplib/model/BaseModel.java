@@ -2,15 +2,15 @@ package com.nerdscorner.mvplib.model;
 
 import android.support.annotation.Keep;
 
-import com.nerdscorner.mvplib.bus.EventBusWrapper;
+import org.greenrobot.eventbus.EventBus;
 
 @Keep
 public class BaseModel {
 
-    protected final EventBusWrapper bus;
+    protected final EventBus bus;
 
     public BaseModel() {
-        bus = EventBusWrapper.getDefault();
+        bus = EventBus.getDefault();
     }
 
     public void onResume() {

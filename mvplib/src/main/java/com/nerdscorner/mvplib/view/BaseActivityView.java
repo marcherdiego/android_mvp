@@ -8,19 +8,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.nerdscorner.mvplib.activity.BaseActivity;
-import com.nerdscorner.mvplib.bus.EventBusWrapper;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.lang.ref.WeakReference;
 
 @Keep
 public abstract class BaseActivityView {
 
-    protected final EventBusWrapper bus;
+    protected final EventBus bus;
     private WeakReference<BaseActivity> activityRef;
 
     public BaseActivityView(BaseActivity activity) {
         activityRef = new WeakReference<>(activity);
-        bus = EventBusWrapper.getDefault();
+        bus = EventBus.getDefault();
     }
 
     @Nullable
