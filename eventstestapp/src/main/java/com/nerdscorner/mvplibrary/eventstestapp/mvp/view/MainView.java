@@ -12,6 +12,7 @@ import butterknife.OnClick;
 
 public class MainView extends BaseActivityView {
     @BindView(R.id.text) TextView textView;
+
     public MainView(BaseActivity activity) {
         super(activity);
         ButterKnife.bind(this, activity);

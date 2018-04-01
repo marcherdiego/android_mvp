@@ -12,7 +12,7 @@ import org.greenrobot.eventbus.EventBus;
 import java.lang.ref.WeakReference;
 
 @Keep
-public abstract class BaseFragmentView {
+public abstract class BaseFragmentView extends BaseView {
 
     protected final EventBus bus;
     private WeakReference<Fragment> fragmentRef;
@@ -36,23 +36,5 @@ public abstract class BaseFragmentView {
     @Nullable
     public Fragment getFragment() {
         return fragmentRef.get();
-    }
-
-    public void unbind() {
-    }
-
-    public void onResume() {
-    }
-
-    public void onPause() {
-    }
-
-    public void onDestroyView() {
-    }
-
-    public void onStop() {
-    }
-
-    public void onStart() {
     }
 }

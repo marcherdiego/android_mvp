@@ -15,7 +15,7 @@ import org.greenrobot.eventbus.EventBus;
 import java.lang.ref.WeakReference;
 
 @Keep
-public abstract class BaseActivityView {
+public abstract class BaseActivityView extends BaseView {
 
     protected final EventBus bus;
     private WeakReference<BaseActivity> activityRef;
@@ -50,17 +50,5 @@ public abstract class BaseActivityView {
             return;
         }
         Toast.makeText(activity, activity.getString(textResId, args), Toast.LENGTH_SHORT).show();
-    }
-
-    public void onResume() {
-    }
-
-    public void onPause() {
-    }
-
-    public void onStart() {
-    }
-
-    public void onStop() {
     }
 }
