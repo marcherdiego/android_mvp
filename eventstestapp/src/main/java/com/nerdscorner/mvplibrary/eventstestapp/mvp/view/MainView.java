@@ -19,7 +19,7 @@ public class MainView extends BaseActivityView {
 
     @OnClick(R.id.some_button)
     public void onActionClicked() {
-        bus.post(ActionClickedEvent.class);
+        bus.post(new ActionClickedEvent());
     }
 
     public void setTextValue(CharSequence value) {
