@@ -1,1 +1,1 @@
-include ':testapp', ':events'
+include ':eventstestapp', ':events', ':interfaces', ':interfacestestapp'
