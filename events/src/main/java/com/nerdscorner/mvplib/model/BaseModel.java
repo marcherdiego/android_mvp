@@ -13,9 +13,19 @@ public class BaseModel {
         bus = EventBus.getDefault();
     }
 
+    public EventBus getBus() {
+        return bus;
+    }
+
     public void onResume() {
     }
 
     public void onPause() {
+    }
+
+    public void onStart() {
+    }
+
+    public void onStop() {
     }
 }

@@ -2,6 +2,7 @@ package com.nerdscorner.mvplib.view;
 
 import android.content.Context;
 import android.support.annotation.Keep;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -16,7 +17,7 @@ public abstract class BaseFragmentView {
     protected final EventBus bus;
     private WeakReference<Fragment> fragmentRef;
 
-    public BaseFragmentView(Fragment fragment) {
+    public BaseFragmentView(@NonNull Fragment fragment) {
         fragmentRef = new WeakReference<>(fragment);
         bus = EventBus.getDefault();
     }
@@ -47,5 +48,11 @@ public abstract class BaseFragmentView {
     }
 
     public void onDestroyView() {
+    }
+
+    public void onStop() {
+    }
+
+    public void onStart() {
     }
 }

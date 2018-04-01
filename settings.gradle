@@ -1,1 +1,1 @@
-include ':testapp', ':mvplib'
+include ':testapp', ':events'

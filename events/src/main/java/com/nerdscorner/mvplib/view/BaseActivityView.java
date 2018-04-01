@@ -1,6 +1,7 @@
 package com.nerdscorner.mvplib.view;
 
 import android.support.annotation.Keep;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.app.FragmentManager;
@@ -19,7 +20,7 @@ public abstract class BaseActivityView {
     protected final EventBus bus;
     private WeakReference<BaseActivity> activityRef;
 
-    public BaseActivityView(BaseActivity activity) {
+    public BaseActivityView(@NonNull BaseActivity activity) {
         activityRef = new WeakReference<>(activity);
         bus = EventBus.getDefault();
     }
@@ -55,5 +56,11 @@ public abstract class BaseActivityView {
     }
 
     public void onPause() {
+    }
+
+    public void onStart() {
+    }
+
+    public void onStop() {
     }
 }

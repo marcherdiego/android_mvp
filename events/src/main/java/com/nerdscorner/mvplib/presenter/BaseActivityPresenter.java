@@ -1,6 +1,9 @@
 package com.nerdscorner.mvplib.presenter;
 
 import android.support.annotation.Keep;
+import android.support.annotation.NonNull;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.nerdscorner.mvplib.model.BaseModel;
 import com.nerdscorner.mvplib.view.BaseActivityView;
@@ -10,9 +13,14 @@ public class BaseActivityPresenter<V extends BaseActivityView, M extends BaseMod
     protected V view;
     protected M model;
 
-    public BaseActivityPresenter(V view, M model) {
+    public BaseActivityPresenter(@NonNull V view, @NonNull M model) {
         this.view = view;
         this.model = model;
+    }
+
+    public void onStart() {
+        view.onStart();
+        model.onStart();
     }
 
     public void onResume() {
@@ -25,7 +33,20 @@ public class BaseActivityPresenter<V extends BaseActivityView, M extends BaseMod
         model.onPause();
     }
 
+    public void onStop() {
+        view.onStop();
+        model.onStop();
+    }
+
     public boolean onBackPressed() {
+        return false;
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return false;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
         return false;
     }
 }
