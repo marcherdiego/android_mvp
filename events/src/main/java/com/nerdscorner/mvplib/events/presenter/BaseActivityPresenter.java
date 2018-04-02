@@ -1,5 +1,6 @@
 package com.nerdscorner.mvplib.events.presenter;
 
+import android.content.Intent;
 import android.support.annotation.Keep;
 import android.support.annotation.NonNull;
 import android.view.Menu;
@@ -21,5 +22,11 @@ public class BaseActivityPresenter<V extends BaseActivityView, M extends BaseMod
 
     public boolean onOptionsItemSelected(MenuItem item) {
         return false;
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    }
+
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     }
 }

@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 
+repositories {
+    mavenCentral()
+}
+
+
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -20,7 +25,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(':events')
+    implementation 'com.nerdscorner.mvp:events:1.0.0'
 
     implementation 'org.greenrobot:eventbus:3.0.0'
     implementation 'com.android.support:appcompat-v7:26.1.0'
