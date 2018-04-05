@@ -24,13 +24,6 @@ Grab via Maven:
 ```
 or Gradle:
 ```groovy
-repositories {
-    ...
-    maven {
-        url  "https://dl.bintray.com/nerdscorrner/MVPLib"
-    }
-}
-
 //Events oriented MVP Lib
 compile 'com.nerdscorner.mvp:events:1.0.0'
 
