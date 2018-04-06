@@ -1,6 +1,7 @@
 package com.nerdscorner.mvplib.events.presenter;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Keep;
 import android.support.annotation.NonNull;
 import android.view.Menu;
@@ -28,5 +29,8 @@ public class BaseActivityPresenter<V extends BaseActivityView, M extends BaseMod
     }
 
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    }
+
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
     }
 }

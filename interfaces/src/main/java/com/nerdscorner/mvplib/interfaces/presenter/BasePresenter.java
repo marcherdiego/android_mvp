@@ -1,5 +1,7 @@
 package com.nerdscorner.mvplib.interfaces.presenter;
 
+import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.nerdscorner.mvplib.interfaces.model.BaseModel;
@@ -43,5 +45,11 @@ public abstract class BasePresenter<V extends BaseView, M extends BaseModel> {
 
     public boolean onBackPressed() {
         return false;
+    }
+
+    public void onConfigurationChanged(Configuration newConfig) {
+    }
+
+    public void onSaveInstanceState(Bundle outState) {
     }
 }

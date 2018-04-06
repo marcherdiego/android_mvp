@@ -1,5 +1,6 @@
 package com.nerdscorner.mvplib.interfaces.presenter;
 
+import android.os.Bundle;
 import android.support.annotation.Keep;
 import android.support.annotation.NonNull;
 import android.view.Menu;
@@ -25,5 +26,8 @@ public class BaseActivityPresenter<V extends BaseActivityView, M extends BaseMod
 
     public boolean onOptionsItemSelected(MenuItem item) {
         return false;
+    }
+
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
     }
 }

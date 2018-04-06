@@ -1,5 +1,7 @@
 package com.nerdscorner.mvplib.events.fragment;
 
+import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.annotation.Keep;
 import android.support.v4.app.Fragment;
 
@@ -41,5 +43,17 @@ public abstract class BaseFragment extends Fragment {
         } finally {
             presenter = null;
         }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        presenter.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        presenter.onSaveInstanceState(outState);
     }
 }
