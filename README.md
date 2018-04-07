@@ -10,7 +10,7 @@ Grab via Maven:
 <dependency>
     <groupId>com.nerdscorner.mvp</groupId>
     <artifactId>events</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <type>pom</type>
 </dependency>
 
@@ -25,7 +25,7 @@ Grab via Maven:
 or Gradle:
 ```groovy
 //Events oriented MVP Lib
-compile 'com.nerdscorner.mvp:events:1.1.0'
+compile 'com.nerdscorner.mvp:events:1.2.0'
 
 //Events oriented MVP Lib
 compile 'com.nerdscorner.mvp:interfaces:1.1.0'
