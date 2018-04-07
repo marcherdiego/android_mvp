@@ -3,14 +3,14 @@
 This is a small lib that will help you through your Android features development in order to keep things simple, clear and tidy.
 
 ## Events
-[![Events](https://api.bintray.com/packages/nerdscorrner/MVPLib/Events_Oriented_MVP_lib/images/download.svg) ](https://bintray.com/nerdscorrner/MVPLib/Events_Oriented_MVP_lib/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/nerdscorrner/MVPLib/AndroidEventsOrientedMvpLibrary/images/download.svg) ](https://bintray.com/nerdscorrner/MVPLib/AndroidEventsOrientedMvpLibrary/_latestVersion)
 
 ```groovy
 //Events oriented MVP Lib
 compile 'com.nerdscorner.mvp:events:LATEST_EVENTS_VERSION'
 ```
 ## Interfaces
-[![Interfaces](https://api.bintray.com/packages/nerdscorrner/MVPLib/Interfaces_Oriented_MVP_Lib/images/download.svg) ](https://bintray.com/nerdscorrner/MVPLib/Interfaces_Oriented_MVP_Lib/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/nerdscorrner/MVPLib/AndroidInterfacesOrientedMvpLibrary/images/download.svg) ](https://bintray.com/nerdscorrner/MVPLib/AndroidInterfacesOrientedMvpLibrary/_latestVersion)
 
 ```groovy
 //Interfaces oriented MVP Lib
