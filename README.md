@@ -3,51 +3,20 @@
 This is a small lib that will help you through your Android features development in order to keep things simple, clear and tidy.
 
 ## Download
+### Events
+[![Events](https://api.bintray.com/packages/nerdscorrner/MVPLib/Events_Oriented_MVP_lib/images/download.svg) ](https://bintray.com/nerdscorrner/MVPLib/Events_Oriented_MVP_lib/_latestVersion)
 
-Grab via Maven:
-```xml
-<!-- Events oriented MVP Lib-->
-<dependency>
-    <groupId>com.nerdscorner.mvp</groupId>
-    <artifactId>events</artifactId>
-    <version>1.2.0</version>
-    <type>pom</type>
-</dependency>
-
-<!-- Interfaces oriented MVP Lib-->
-<dependency>
-    <groupId>com.nerdscorner.mvp</groupId>
-    <artifactId>interfaces</artifactId>
-    <version>1.1.0</version>
-    <type>pom</type>
-</dependency>
-```
-or Gradle:
 ```groovy
 //Events oriented MVP Lib
-compile 'com.nerdscorner.mvp:events:1.2.0'
-
-//Events oriented MVP Lib
-compile 'com.nerdscorner.mvp:interfaces:1.1.0'
+compile 'com.nerdscorner.mvp:events:LATEST_EVENTS_VERSION'
 ```
+### Interfaces
+[![Interfaces](https://api.bintray.com/packages/nerdscorrner/MVPLib/Interfaces_Oriented_MVP_Lib/images/download.svg) ](https://bintray.com/nerdscorrner/MVPLib/Interfaces_Oriented_MVP_Lib/_latestVersion)
 
-## License
-
-[Apache Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
-
-    Copyright (C) 2018 Diego Marcher
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+```groovy
+//Interfaces oriented MVP Lib
+compile 'com.nerdscorner.mvp:interfaces:LATEST_INTERFACES_VERSION'
+```
 
 ## Contributing
 
