@@ -1,9 +1,10 @@
-package com.nerdscorner.interfacestestapp.mvp.view;
+package com.nerdscorner.interfacestestapp.mvp.view.implementations;
 
 import android.widget.TextView;
 
 import com.nerdscorner.interfacestestapp.R;
-import com.nerdscorner.interfacestestapp.mvp.presenter.MainPresenter;
+import com.nerdscorner.interfacestestapp.mvp.presenter.implementations.MainPresenter;
+import com.nerdscorner.interfacestestapp.mvp.view.interfaces.MainViewInterface;
 import com.nerdscorner.mvplib.interfaces.activity.BaseActivity;
 import com.nerdscorner.mvplib.interfaces.view.BaseActivityView;
 

@@ -10,19 +10,15 @@ import android.widget.Toast;
 
 import com.nerdscorner.mvplib.events.activity.BaseActivity;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.lang.ref.WeakReference;
 
 @Keep
 public abstract class BaseActivityView extends BaseView {
 
-    protected final EventBus bus;
     private WeakReference<BaseActivity> activityRef;
 
     public BaseActivityView(@NonNull BaseActivity activity) {
         activityRef = new WeakReference<>(activity);
-        bus = EventBus.getDefault();
     }
 
     @Nullable

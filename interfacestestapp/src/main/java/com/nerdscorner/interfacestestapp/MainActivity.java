@@ -2,9 +2,9 @@ package com.nerdscorner.interfacestestapp;
 
 import android.os.Bundle;
 
-import com.nerdscorner.interfacestestapp.mvp.model.MainModel;
-import com.nerdscorner.interfacestestapp.mvp.presenter.MainPresenter;
-import com.nerdscorner.interfacestestapp.mvp.view.MainView;
+import com.nerdscorner.interfacestestapp.mvp.model.implementations.MainModel;
+import com.nerdscorner.interfacestestapp.mvp.presenter.implementations.MainPresenter;
+import com.nerdscorner.interfacestestapp.mvp.view.implementations.MainView;
 import com.nerdscorner.mvplib.interfaces.activity.BaseActivity;
 
 public class MainActivity extends BaseActivity {

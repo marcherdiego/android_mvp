@@ -1,4 +1,4 @@
-package com.nerdscorner.interfacestestapp.mvp.presenter;
+package com.nerdscorner.interfacestestapp.mvp.presenter.interfaces;
 
 public interface MainPresenterInterface {
     void onActionClicked();

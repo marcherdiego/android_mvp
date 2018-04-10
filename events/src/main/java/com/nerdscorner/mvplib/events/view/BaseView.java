@@ -1,7 +1,14 @@
 package com.nerdscorner.mvplib.events.view;
 
 
+import org.greenrobot.eventbus.EventBus;
+
 public class BaseView {
+    protected final EventBus bus;
+
+    public BaseView() {
+        bus = EventBus.getDefault();
+    }
 
     public void unbind() {
     }
