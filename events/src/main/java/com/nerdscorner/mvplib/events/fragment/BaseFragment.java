@@ -2,17 +2,15 @@ package com.nerdscorner.mvplib.events.fragment;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.Keep;
 import android.support.v4.app.Fragment;
 
 import com.nerdscorner.mvplib.events.presenter.BaseFragmentPresenter;
 
 import org.greenrobot.eventbus.EventBus;
 
-@Keep
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment<P extends BaseFragmentPresenter> extends Fragment {
 
-    protected BaseFragmentPresenter presenter;
+    protected P presenter;
 
     @Override
     public void onResume() {

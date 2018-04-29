@@ -1,7 +1,6 @@
 package com.nerdscorner.mvplib.interfaces.presenter;
 
 import android.os.Bundle;
-import android.support.annotation.Keep;
 import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,7 +8,6 @@ import android.view.MenuItem;
 import com.nerdscorner.mvplib.interfaces.model.BaseModel;
 import com.nerdscorner.mvplib.interfaces.view.BaseActivityView;
 
-@Keep
 public class BaseActivityPresenter<V extends BaseActivityView, M extends BaseModel> extends BasePresenter<V, M> {
 
     public BaseActivityPresenter(@NonNull V view, @NonNull M model) {

@@ -8,9 +8,9 @@ import android.view.MenuItem;
 
 import com.nerdscorner.mvplib.interfaces.presenter.BaseActivityPresenter;
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity<P extends BaseActivityPresenter> extends AppCompatActivity {
 
-    protected BaseActivityPresenter presenter;
+    protected P presenter;
 
     @Override
     protected void onStart() {

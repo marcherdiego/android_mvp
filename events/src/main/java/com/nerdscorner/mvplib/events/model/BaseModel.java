@@ -1,10 +1,7 @@
 package com.nerdscorner.mvplib.events.model;
 
-import android.support.annotation.Keep;
-
 import org.greenrobot.eventbus.EventBus;
 
-@Keep
 public class BaseModel {
 
     protected final EventBus bus;
@@ -27,5 +24,9 @@ public class BaseModel {
     }
 
     public void onStop() {
+    }
+
+    public void removeStickyEvent(Object event) {
+        bus.removeStickyEvent(event);
     }
 }

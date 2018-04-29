@@ -1,10 +1,7 @@
 package com.nerdscorner.mvplib.interfaces.model;
 
-import android.support.annotation.Keep;
-
 import com.nerdscorner.mvplib.interfaces.presenter.BasePresenter;
 
-@Keep
 public class BaseModel<P extends BasePresenter> {
 
     protected P presenter;

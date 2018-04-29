@@ -2,15 +2,13 @@ package com.nerdscorner.mvplib.interfaces.fragment;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.Keep;
 import android.support.v4.app.Fragment;
 
 import com.nerdscorner.mvplib.interfaces.presenter.BaseFragmentPresenter;
 
-@Keep
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment<P extends BaseFragmentPresenter> extends Fragment {
 
-    protected BaseFragmentPresenter presenter;
+    protected P presenter;
 
     @Override
     public void onResume() {

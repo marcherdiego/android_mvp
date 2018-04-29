@@ -12,9 +12,9 @@ import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter;
 
 import org.greenrobot.eventbus.EventBus;
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity<P extends BaseActivityPresenter> extends AppCompatActivity {
 
-    protected BaseActivityPresenter presenter;
+    protected P presenter;
 
     @Override
     protected void onStart() {
