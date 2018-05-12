@@ -10,6 +10,10 @@ public class BaseModel<P extends BasePresenter> {
         this.presenter = presenter;
     }
 
+    public P getPresenter() {
+        return presenter;
+    }
+
     public void onResume() {
     }
 
