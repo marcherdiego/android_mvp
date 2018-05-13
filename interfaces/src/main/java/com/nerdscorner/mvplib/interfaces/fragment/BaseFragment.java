@@ -2,11 +2,10 @@ package com.nerdscorner.mvplib.interfaces.fragment;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 
 import com.nerdscorner.mvplib.interfaces.presenter.BaseFragmentPresenter;
 
-public abstract class BaseFragment<P extends BaseFragmentPresenter> extends Fragment {
+public abstract class BaseFragment<P extends BaseFragmentPresenter> extends android.app.Fragment {
 
     protected P presenter;
 

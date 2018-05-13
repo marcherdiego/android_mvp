@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.Menu;
-import android.view.MenuItem;
 
 import com.nerdscorner.mvplib.events.model.BaseModel;
 import com.nerdscorner.mvplib.events.view.BaseActivityView;
@@ -16,10 +15,6 @@ public class BaseActivityPresenter<V extends BaseActivityView, M extends BaseMod
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        return false;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
         return false;
     }
 

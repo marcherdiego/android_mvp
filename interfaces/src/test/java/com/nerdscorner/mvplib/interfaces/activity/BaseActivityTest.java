@@ -1,18 +1,13 @@
-package com.nerdscorner.mvplib.events.activity;
+package com.nerdscorner.mvplib.interfaces.activity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.nerdscorner.mvplib.events.model.BaseModel;
-import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter;
-import com.nerdscorner.mvplib.events.view.BaseActivityView;
+import com.nerdscorner.mvplib.interfaces.presenter.BaseActivityPresenter;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,8 +16,6 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -31,7 +24,6 @@ public class BaseActivityTest {
     @Mock BaseActivityPresenter presenter;
 
     private BaseActivity baseActivity;
-    private EventBus bus = EventBus.getDefault();
 
     @Before
     public void setUp() {
@@ -54,32 +46,10 @@ public class BaseActivityTest {
     }
 
     @Test
-    public void itShouldNotRegisterPresenterOnBusDueToLackOfSubscriptions() {
-        baseActivity.presenter = presenter;
-        baseActivity.onResume();
-        assertFalse(bus.isRegistered(baseActivity.presenter));
-    }
-
-    @Test
-    public void itShouldRegisterPresenterOnBus() {
-        baseActivity.presenter = new PresenterWithSubscription(baseActivity);
-        baseActivity.onResume();
-        assertTrue(bus.isRegistered(baseActivity.presenter));
-    }
-
-    @Test
     public void itShouldCallPresenterOnPause() {
         baseActivity.presenter = presenter;
         baseActivity.onPause();
         verify(presenter).onPause();
-    }
-
-    @Test
-    public void itShouldUnregisterPresenterFromBus() {
-        baseActivity.presenter = new PresenterWithSubscription(baseActivity);
-        baseActivity.onResume();
-        baseActivity.onPause();
-        assertFalse(bus.isRegistered(baseActivity.presenter));
     }
 
     @Test
@@ -154,23 +124,5 @@ public class BaseActivityTest {
         Bundle mockedBundle = mock(Bundle.class);
         baseActivity.onRestoreInstanceState(mockedBundle);
         verify(presenter).onRestoreInstanceState(mockedBundle);
-    }
-
-    class PresenterWithSubscription extends BaseActivityPresenter<BaseActivityView, BaseModel> {
-
-        PresenterWithSubscription(@NonNull BaseActivity activity) {
-            super(new MockBaseActivityView(activity), new BaseModel());
-        }
-
-        @Subscribe
-        public void onEvent(Object event) {
-        }
-    }
-
-    class MockBaseActivityView extends BaseActivityView {
-
-        MockBaseActivityView(@NonNull BaseActivity activity) {
-            super(activity);
-        }
     }
 }

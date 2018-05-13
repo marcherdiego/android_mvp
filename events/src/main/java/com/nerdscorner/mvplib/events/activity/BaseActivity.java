@@ -59,12 +59,12 @@ public class BaseActivity<P extends BaseActivityPresenter> extends AppCompatActi
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        return presenter.onCreateOptionsMenu(menu);
+        return !presenter.onCreateOptionsMenu(menu) && super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return presenter.onOptionsItemSelected(item);
+        return !presenter.onOptionsItemSelected(item) && super.onOptionsItemSelected(item);
     }
 
     @Override
