@@ -1,18 +1,13 @@
-package com.nerdscorner.mvplib.events.fragment;
+package com.nerdscorner.mvplib.interfaces.fragment;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.nerdscorner.mvplib.events.model.BaseModel;
-import com.nerdscorner.mvplib.events.presenter.BaseFragmentPresenter;
-import com.nerdscorner.mvplib.events.view.BaseFragmentView;
+import com.nerdscorner.mvplib.interfaces.presenter.BaseFragmentPresenter;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,8 +16,6 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -31,7 +24,6 @@ public class BaseFragmentTest {
     @Mock BaseFragmentPresenter presenter;
 
     private MockBaseFragment baseFragment;
-    private EventBus bus = EventBus.getDefault();
 
     @Before
     public void setUp() {
@@ -54,32 +46,10 @@ public class BaseFragmentTest {
     }
 
     @Test
-    public void itShouldNotRegisterPresenterOnBusDueToLackOfSubscriptions() {
-        baseFragment.presenter = presenter;
-        baseFragment.onResume();
-        assertFalse(bus.isRegistered(baseFragment.presenter));
-    }
-
-    @Test
-    public void itShouldRegisterPresenterOnBus() {
-        baseFragment.presenter = new PresenterWithSubscription(baseFragment);
-        baseFragment.onResume();
-        assertTrue(bus.isRegistered(baseFragment.presenter));
-    }
-
-    @Test
     public void itShouldCallPresenterOnPause() {
         baseFragment.presenter = presenter;
         baseFragment.onPause();
         verify(presenter).onPause();
-    }
-
-    @Test
-    public void itShouldUnregisterPresenterFromBus() {
-        baseFragment.presenter = new PresenterWithSubscription(baseFragment);
-        baseFragment.onResume();
-        baseFragment.onPause();
-        assertFalse(bus.isRegistered(baseFragment.presenter));
     }
 
     @Test
@@ -128,22 +98,6 @@ public class BaseFragmentTest {
         Bundle mockedBundle = mock(Bundle.class);
         baseFragment.onViewStateRestored(mockedBundle);
         verify(presenter).onViewStateRestored(mockedBundle);
-    }
-
-    class PresenterWithSubscription extends BaseFragmentPresenter<BaseFragmentView, BaseModel> {
-        PresenterWithSubscription(@NonNull BaseFragment fragment) {
-            super(new MockBaseFragmentView(fragment), new BaseModel());
-        }
-
-        @Subscribe
-        public void onEvent(Object event) {
-        }
-    }
-
-    class MockBaseFragmentView extends BaseFragmentView {
-        MockBaseFragmentView(@NonNull BaseFragment fragment) {
-            super(fragment);
-        }
     }
 
     public static class MockBaseFragment extends BaseFragment {

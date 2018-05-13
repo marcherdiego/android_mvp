@@ -3,6 +3,7 @@ package com.nerdscorner.mvplib.interfaces.presenter;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.MenuItem;
 
 import com.nerdscorner.mvplib.interfaces.model.BaseModel;
 import com.nerdscorner.mvplib.interfaces.view.BaseView;
@@ -51,5 +52,9 @@ public abstract class BasePresenter<V extends BaseView, M extends BaseModel> {
     }
 
     public void onSaveInstanceState(Bundle outState) {
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return false;
     }
 }
