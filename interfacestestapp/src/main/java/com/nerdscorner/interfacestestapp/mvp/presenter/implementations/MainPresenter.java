@@ -18,6 +18,6 @@ public class MainPresenter extends BaseActivityPresenter<MainView, MainModel> im
 
     @Override
     public void onBackgroundTaskCompleted() {
-        view.setTextValue("Culooooooooooo");
+        view.setTextValue("Background task completed");
     }
 }

@@ -21,6 +21,6 @@ public class MainPresenter extends BaseActivityPresenter<MainView, MainModel> {
 
     @Subscribe
     public void onBackgroundTaskCompleted(BackgroundTaskCompletedEvent event) {
-        view.setTextValue("Culooooooooooo");
+        view.setTextValue("Background task completed");
     }
 }

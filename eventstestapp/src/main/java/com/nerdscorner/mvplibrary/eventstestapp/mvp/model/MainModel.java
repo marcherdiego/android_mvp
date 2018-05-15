@@ -6,18 +6,26 @@ import com.nerdscorner.mvplib.events.model.BaseModel;
 
 public class MainModel extends BaseModel {
     public void doSomethingInBackground() {
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                return null;
-            }
+        new SomeBackgroundTask(this).execute();
+    }
 
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                bus.post(new BackgroundTaskCompletedEvent());
-            }
-        }.execute();
+    private static class SomeBackgroundTask extends AsyncTask<Void, Void, Void> {
+        private MainModel model;
+
+        SomeBackgroundTask(MainModel model) {
+            this.model = model;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            model.getBus().post(new BackgroundTaskCompletedEvent());
+        }
     }
 
     public static class BackgroundTaskCompletedEvent {
