@@ -29,4 +29,7 @@ public abstract class BaseActivityView<P extends BaseActivityPresenter> extends 
         AppCompatActivity activity = getActivity();
         return activity != null ? activity.getSupportFragmentManager() : null;
     }
+
+    public void onDestroy() {
+    }
 }

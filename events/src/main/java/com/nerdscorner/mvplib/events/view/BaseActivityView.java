@@ -28,4 +28,7 @@ public abstract class BaseActivityView extends BaseView {
         AppCompatActivity activity = getActivity();
         return activity != null ? activity.getSupportFragmentManager() : null;
     }
+
+    public void onDestroy() {
+    }
 }

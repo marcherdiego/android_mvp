@@ -26,6 +26,12 @@ public class BaseModel {
     public void onStop() {
     }
 
+    public void onDestroy() {
+    }
+
+    public void onDestroyView() {
+    }
+
     public void removeStickyEvent(Object event) {
         bus.removeStickyEvent(event);
     }

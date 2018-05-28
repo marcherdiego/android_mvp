@@ -25,4 +25,10 @@ public class BaseModel<P extends BasePresenter> {
 
     public void onStop() {
     }
+
+    public void onDestroy() {
+    }
+
+    public void onDestroyView() {
+    }
 }

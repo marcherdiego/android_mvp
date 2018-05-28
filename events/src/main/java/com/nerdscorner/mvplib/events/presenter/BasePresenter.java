@@ -40,6 +40,7 @@ public abstract class BasePresenter<V extends BaseView, M extends BaseModel> {
     public void onDestroyView() {
         view.onDestroyView();
         view.unbind();
+        model.onDestroyView();
     }
 
     public boolean onBackPressed() {

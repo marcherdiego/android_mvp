@@ -35,4 +35,9 @@ public class BaseActivityPresenter<V extends BaseActivityView, M extends BaseMod
 
     public void onRestoreInstanceState(Bundle savedInstanceState) {
     }
+
+    public void onDestroy() {
+        view.onDestroy();
+        model.onDestroy();
+    }
 }
