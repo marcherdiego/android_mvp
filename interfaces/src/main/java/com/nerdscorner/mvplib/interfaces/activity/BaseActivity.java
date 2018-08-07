@@ -4,15 +4,25 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.nerdscorner.mvplib.interfaces.presenter.BaseActivityPresenter;
 
-public class BaseActivity<P extends BaseActivityPresenter> extends AppCompatActivity {
+public abstract class BaseActivity<P extends BaseActivityPresenter> extends AppCompatActivity {
 
     protected P presenter;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        presenter = getPresenter();
+    }
+
+    @NonNull
+    protected abstract P getPresenter();
 
     @Override
     protected void onStart() {
