@@ -1,7 +1,6 @@
 package com.nerdscorner.mvplibrary.eventstestapp;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 
 import com.nerdscorner.mvplib.events.activity.BaseActivity;
 import com.nerdscorner.mvplibrary.R;
@@ -15,14 +14,10 @@ public class MainActivity extends BaseActivity<MainPresenter> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    @NonNull
-    @Override
-    protected MainPresenter getPresenter() {
-        return new MainPresenter(
-                new MainView(this),
-                new MainModel()
+        presenter = new MainPresenter(
+            new MainView(this),
+            new MainModel()
         );
     }
 }
