@@ -1,6 +1,5 @@
 package com.nerdscorner.mvplib.events.presenter;
 
-import com.nerdscorner.mvplib.events.model.BaseModel;
 import com.nerdscorner.mvplib.events.view.BaseActivityView;
 
 import org.junit.Before;

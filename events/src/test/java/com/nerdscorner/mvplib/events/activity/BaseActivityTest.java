@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.nerdscorner.mvplib.events.model.BaseModel;
 import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter;
 import com.nerdscorner.mvplib.events.view.BaseActivityView;
 

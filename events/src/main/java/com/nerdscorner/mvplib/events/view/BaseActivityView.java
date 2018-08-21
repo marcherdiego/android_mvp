@@ -5,21 +5,25 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.nerdscorner.mvplib.events.activity.BaseActivity;
+import com.nerdscorner.mvplib.commons.mvp.view.BaseView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.lang.ref.WeakReference;
 
 public abstract class BaseActivityView extends BaseView {
 
-    private WeakReference<BaseActivity> activityRef;
+    private WeakReference<AppCompatActivity> activityRef;
+    protected final EventBus bus;
 
-    public BaseActivityView(@NonNull BaseActivity activity) {
+    public BaseActivityView(@NonNull AppCompatActivity activity) {
         activityRef = new WeakReference<>(activity);
+        bus = EventBus.getDefault();
     }
 
     @Nullable
     @Override
-    public BaseActivity getActivity() {
+    public AppCompatActivity getActivity() {
         return activityRef.get();
     }
 

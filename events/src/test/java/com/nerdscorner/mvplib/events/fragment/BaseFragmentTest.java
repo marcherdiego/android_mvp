@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.nerdscorner.mvplib.events.model.BaseModel;
 import com.nerdscorner.mvplib.events.presenter.BaseFragmentPresenter;
 import com.nerdscorner.mvplib.events.view.BaseFragmentView;
 
