@@ -1,6 +1,6 @@
 package com.nerdscorner.mvplib.interfaces.presenter;
 
-import com.nerdscorner.mvplib.interfaces.model.BaseModel;
+import com.nerdscorner.mvplib.interfaces.model.BaseInterfacesModel;
 import com.nerdscorner.mvplib.interfaces.view.BaseActivityView;
 
 import org.junit.Before;
@@ -15,7 +15,7 @@ public class BaseActivityPresenterTest {
     private BaseActivityPresenter baseActivityPresenter;
 
     @Mock BaseActivityView view;
-    @Mock BaseModel model;
+    @Mock BaseInterfacesModel model;
 
     @Before
     public void setUp() {

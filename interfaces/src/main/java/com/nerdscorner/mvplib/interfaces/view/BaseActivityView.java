@@ -5,22 +5,21 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.nerdscorner.mvplib.interfaces.activity.BaseActivity;
-import com.nerdscorner.mvplib.interfaces.presenter.BaseActivityPresenter;
+import com.nerdscorner.mvplib.commons.mvp.presenter.BasePresenter;
 
 import java.lang.ref.WeakReference;
 
-public abstract class BaseActivityView<P extends BaseActivityPresenter> extends BaseView<P> {
+public abstract class BaseActivityView<P extends BasePresenter> extends BaseInterfacesView<P> {
 
-    private WeakReference<BaseActivity> activityRef;
+    private WeakReference<AppCompatActivity> activityRef;
 
-    public BaseActivityView(@NonNull BaseActivity activity) {
+    public BaseActivityView(@NonNull AppCompatActivity activity) {
         activityRef = new WeakReference<>(activity);
     }
 
     @Nullable
     @Override
-    public BaseActivity getActivity() {
+    public AppCompatActivity getActivity() {
         return activityRef.get();
     }
 

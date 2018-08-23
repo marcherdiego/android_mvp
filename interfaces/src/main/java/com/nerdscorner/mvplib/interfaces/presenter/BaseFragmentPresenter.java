@@ -5,10 +5,10 @@ import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuInflater;
 
-import com.nerdscorner.mvplib.interfaces.model.BaseModel;
-import com.nerdscorner.mvplib.interfaces.view.BaseFragmentView;
+import com.nerdscorner.mvplib.interfaces.model.BaseInterfacesModel;
+import com.nerdscorner.mvplib.interfaces.view.BaseInterfacesView;
 
-public class BaseFragmentPresenter<V extends BaseFragmentView, M extends BaseModel> extends BasePresenter<V, M> {
+public class BaseFragmentPresenter<V extends BaseInterfacesView, M extends BaseInterfacesModel> extends BaseInterfacesPresenter<V, M> {
 
     public BaseFragmentPresenter(@NonNull V view, @NonNull M model) {
         super(view, model);

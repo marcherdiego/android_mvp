@@ -1,6 +1,6 @@
 package com.nerdscorner.mvplib.interfaces.presenter;
 
-import com.nerdscorner.mvplib.interfaces.model.BaseModel;
+import com.nerdscorner.mvplib.interfaces.model.BaseInterfacesModel;
 import com.nerdscorner.mvplib.interfaces.view.BaseFragmentView;
 
 import org.junit.Before;
@@ -15,7 +15,7 @@ public class BaseFragmentPresenterTest {
     private BaseFragmentPresenter baseFragmentPresenter;
 
     @Mock BaseFragmentView view;
-    @Mock BaseModel model;
+    @Mock BaseInterfacesModel model;
 
     @Before
     public void setUp() {

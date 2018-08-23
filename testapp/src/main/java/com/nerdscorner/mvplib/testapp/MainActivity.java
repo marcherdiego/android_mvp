@@ -1,32 +1,33 @@
 package com.nerdscorner.mvplib.testapp;
 
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-import com.nerdscorner.mvplib.commons.behaviour.BehaviourCollection;
-import com.nerdscorner.mvplib.commons.mvp.activity.BaseActivity;
-import com.nerdscorner.mvplib.events.behaviour.MvpEventsBehaviour;
-import com.nerdscorner.mvplib.testapp.events.model.MainModel;
-import com.nerdscorner.mvplib.testapp.events.presenter.MainPresenter;
-import com.nerdscorner.mvplib.testapp.events.view.MainView;
+import com.nerdscorner.mvplib.testapp.events.EventsMainActivity;
+import com.nerdscorner.mvplib.testapp.interfaces.InterfacesMainActivity;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AppCompatActivity {
 
-    @SuppressLint("CheckResult")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        BehaviourCollection behaviourCollection = getBehaviourCollection();
-        if (behaviourCollection != null) {
-            behaviourCollection.add(
-                    new MvpEventsBehaviour(
-                            new MainPresenter(
-                                    new MainView(this),
-                                    new MainModel()
-                            )
-                    )
-            );
-        }
+        setContentView(R.layout.activity_main2);
+
+        findViewById(R.id.interfaces).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), InterfacesMainActivity.class));
+            }
+        });
+
+        findViewById(R.id.events).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), EventsMainActivity.class));
+            }
+        });
     }
 }

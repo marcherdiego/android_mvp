@@ -10,18 +10,13 @@ import com.nerdscorner.mvplib.interfaces.presenter.BaseFragmentPresenter;
 
 import java.lang.ref.WeakReference;
 
-public abstract class BaseFragmentView<P extends BaseFragmentPresenter> extends BaseView {
+public abstract class BaseFragmentView<P extends BaseFragmentPresenter> extends BaseInterfacesView<P> {
 
     private WeakReference<Fragment> fragmentRef;
 
     public BaseFragmentView(@NonNull Fragment fragment) {
         fragmentRef = new WeakReference<>(fragment);
     }
-
-    public void setPresenter(P presenter) {
-        this.presenter = presenter;
-    }
-
     @Nullable
     @Override
     public Activity getActivity() {
