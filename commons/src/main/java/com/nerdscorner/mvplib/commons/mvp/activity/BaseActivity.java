@@ -72,19 +72,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * Get the behaviour collection. Please note that since we are in the Android framework, you
-     * might be calling this method from an invalid state or before the collection is even created.
-     * <p>
-     * This is why the collection <b>might</b> be null
+     * Get the behaviour collection.
      *
-     * @return the attached behaviour collection corresponding to this activity, or null if it
-     * doesnt exist yet or its in an invalid state
+     * @return the attached behaviour collection corresponding to this activity
      */
-    @Nullable
     @CheckResult
+    @NonNull
     protected final BehaviourCollection getBehaviourCollection() {
         if (behaviourManager == null) {
-            return null;
+            throw new IllegalStateException("Behaviour manager not yet created");
         }
         return new BehaviourCollectionProxy(behaviourManager, this);
     }
