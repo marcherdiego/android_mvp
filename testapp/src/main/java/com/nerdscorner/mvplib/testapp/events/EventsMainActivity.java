@@ -3,7 +3,7 @@ package com.nerdscorner.mvplib.testapp.events;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-import com.nerdscorner.mvplib.commons.mvp.activity.BaseActivity;
+import com.nerdscorner.mvplib.commons.activity.BaseActivity;
 import com.nerdscorner.mvplib.events.behaviour.MvpEventsBehaviour;
 import com.nerdscorner.mvplib.testapp.R;
 import com.nerdscorner.mvplib.testapp.events.model.MainModel;
@@ -17,7 +17,7 @@ public class EventsMainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getBehaviourCollection().add(
+        addBehaviour(
                 new MvpEventsBehaviour(
                         new MainPresenter(
                                 new MainView(this),

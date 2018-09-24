@@ -3,7 +3,7 @@ package com.nerdscorner.mvplib.testapp.interfaces;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-import com.nerdscorner.mvplib.commons.mvp.activity.BaseActivity;
+import com.nerdscorner.mvplib.commons.activity.BaseActivity;
 import com.nerdscorner.mvplib.interfaces.behaviour.MvpInterfacesBehaviour;
 import com.nerdscorner.mvplib.testapp.R;
 import com.nerdscorner.mvplib.testapp.interfaces.model.MainModel;
@@ -17,7 +17,7 @@ public class InterfacesMainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getBehaviourCollection().add(
+        addBehaviour(
                 new MvpInterfacesBehaviour(
                         new MainPresenter(
                                 new MainView(this),

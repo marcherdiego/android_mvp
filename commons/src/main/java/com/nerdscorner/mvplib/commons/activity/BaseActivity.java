@@ -1,4 +1,4 @@
-package com.nerdscorner.mvplib.commons.mvp.activity;
+package com.nerdscorner.mvplib.commons.activity;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -83,6 +83,17 @@ public abstract class BaseActivity extends AppCompatActivity {
             throw new IllegalStateException("Behaviour manager not yet created");
         }
         return new BehaviourCollectionProxy(behaviourManager, this);
+    }
+
+    /**
+     * Adds the {@link Behaviour} to the behaviours collection.
+     *
+     * @param behaviour to be added
+     *
+     * @return true if it was added, false otherwise
+     */
+    protected final boolean addBehaviour(@NonNull Behaviour behaviour) {
+        return getBehaviourCollection().add(behaviour);
     }
 
     /**
