@@ -1,6 +1,5 @@
 package com.nerdscorner.mvplib.testapp.events;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.nerdscorner.mvplib.commons.activity.BaseActivity;
@@ -12,7 +11,6 @@ import com.nerdscorner.mvplib.testapp.events.view.MainView;
 
 public class EventsMainActivity extends BaseActivity {
 
-    @SuppressLint("CheckResult")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,6 +1,5 @@
 package com.nerdscorner.mvplib.testapp.interfaces;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.nerdscorner.mvplib.commons.activity.BaseActivity;
@@ -12,7 +11,6 @@ import com.nerdscorner.mvplib.testapp.interfaces.view.MainView;
 
 public class InterfacesMainActivity extends BaseActivity {
 
-    @SuppressLint("CheckResult")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
