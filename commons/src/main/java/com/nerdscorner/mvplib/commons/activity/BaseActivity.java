@@ -57,8 +57,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     public void setContentView(final int layoutResID) {
-        super.setContentView(behaviourManager.setContentView(LayoutInflater.from(this).inflate(layoutResID,
-                null, false), null));
+        super.setContentView(behaviourManager.setContentView(
+                LayoutInflater
+                        .from(this)
+                        .inflate(layoutResID, null, false),
+                null)
+        );
     }
 
     @Override
@@ -89,7 +93,6 @@ public abstract class BaseActivity extends AppCompatActivity {
      * Adds the {@link Behaviour} to the behaviours collection.
      *
      * @param behaviour to be added
-     *
      * @return true if it was added, false otherwise
      */
     protected final boolean addBehaviour(@NonNull Behaviour behaviour) {
@@ -112,7 +115,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * a service name for this class, it will return null
      *
      * @param componentClass class of the component you are expecting to receive an instance
-     * @param <Component> instance you are expecting to receive
+     * @param <Component>    instance you are expecting to receive
      * @return Component instance of the provided component class
      */
     @CheckResult

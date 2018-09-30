@@ -1,15 +1,15 @@
-package com.nerdscorner.mvplib.testapp.interfaces;
+package com.nerdscorner.mvplib.testapp.interfaces.behaviour;
 
 import android.os.Bundle;
 
 import com.nerdscorner.mvplib.commons.activity.BaseActivity;
 import com.nerdscorner.mvplib.interfaces.behaviour.MvpInterfacesBehaviour;
 import com.nerdscorner.mvplib.testapp.R;
-import com.nerdscorner.mvplib.testapp.interfaces.model.MainModel;
-import com.nerdscorner.mvplib.testapp.interfaces.presenter.MainPresenter;
-import com.nerdscorner.mvplib.testapp.interfaces.view.MainView;
+import com.nerdscorner.mvplib.testapp.interfaces.behaviour.model.MainModel;
+import com.nerdscorner.mvplib.testapp.interfaces.behaviour.presenter.MainPresenter;
+import com.nerdscorner.mvplib.testapp.interfaces.behaviour.view.MainView;
 
-public class InterfacesMainActivity extends BaseActivity {
+public class BehaviourInterfacesMainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

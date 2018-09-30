@@ -1,10 +1,13 @@
-package com.nerdscorner.mvplib.testapp.events.model;
+package com.nerdscorner.mvplib.testapp.interfaces.behaviour.model;
 
 import android.os.AsyncTask;
 
-import com.nerdscorner.mvplib.events.model.BaseEventsModel;
+import com.nerdscorner.mvplib.interfaces.model.BaseInterfacesModel;
+import com.nerdscorner.mvplib.testapp.interfaces.behaviour.presenter.MainPresenter;
 
-public class MainModel extends BaseEventsModel {
+public class MainModel extends BaseInterfacesModel<MainPresenter> implements MainModelInterface {
+
+    @Override
     public void doSomethingInBackground() {
         new SomeBackgroundTask(this).execute();
     }
@@ -29,10 +32,7 @@ public class MainModel extends BaseEventsModel {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            model.getBus().post(new BackgroundTaskCompletedEvent());
+            model.getPresenter().onBackgroundTaskCompleted();
         }
-    }
-
-    public static class BackgroundTaskCompletedEvent {
     }
 }

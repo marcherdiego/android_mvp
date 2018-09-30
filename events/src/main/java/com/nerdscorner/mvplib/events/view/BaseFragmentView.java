@@ -7,19 +7,23 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.nerdscorner.mvplib.commons.mvp.view.BaseView;
-
-import org.greenrobot.eventbus.EventBus;
+import com.nerdscorner.mvplib.events.bus.Bus;
 
 import java.lang.ref.WeakReference;
 
 public abstract class BaseFragmentView extends BaseView {
 
     private WeakReference<Fragment> fragmentRef;
-    protected final EventBus bus;
+    protected Bus bus;
 
     public BaseFragmentView(@NonNull Fragment fragment) {
         fragmentRef = new WeakReference<>(fragment);
-        bus = EventBus.getDefault();
+        bus = Bus.getDefaultEventBus();
+    }
+
+    public BaseFragmentView(@NonNull Fragment fragment, @NonNull Bus bus) {
+        fragmentRef = new WeakReference<>(fragment);
+        this.bus = bus;
     }
 
     @Nullable
@@ -37,5 +41,9 @@ public abstract class BaseFragmentView extends BaseView {
     @Nullable
     public Fragment getFragment() {
         return fragmentRef.get();
+    }
+
+    public void setBus(Bus bus) {
+        this.bus = bus;
     }
 }

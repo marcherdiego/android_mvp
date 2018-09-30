@@ -1,8 +1,8 @@
-package com.nerdscorner.mvplib.testapp.interfaces.presenter;
+package com.nerdscorner.mvplib.testapp.interfaces.behaviour.presenter;
 
 import com.nerdscorner.mvplib.interfaces.presenter.BaseActivityPresenter;
-import com.nerdscorner.mvplib.testapp.interfaces.model.MainModel;
-import com.nerdscorner.mvplib.testapp.interfaces.view.MainView;
+import com.nerdscorner.mvplib.testapp.interfaces.behaviour.model.MainModel;
+import com.nerdscorner.mvplib.testapp.interfaces.behaviour.view.MainView;
 
 public class MainPresenter extends BaseActivityPresenter<MainView, MainModel> implements MainPresenterInterface {
 

@@ -6,19 +6,23 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.nerdscorner.mvplib.commons.mvp.view.BaseView;
-
-import org.greenrobot.eventbus.EventBus;
+import com.nerdscorner.mvplib.events.bus.Bus;
 
 import java.lang.ref.WeakReference;
 
 public abstract class BaseActivityView extends BaseView {
 
     private WeakReference<AppCompatActivity> activityRef;
-    protected final EventBus bus;
+    protected Bus bus;
 
     public BaseActivityView(@NonNull AppCompatActivity activity) {
         activityRef = new WeakReference<>(activity);
-        bus = EventBus.getDefault();
+        bus = Bus.getDefaultEventBus();
+    }
+
+    public BaseActivityView(@NonNull AppCompatActivity activity, @NonNull Bus bus) {
+        activityRef = new WeakReference<>(activity);
+        this.bus = bus;
     }
 
     @Nullable
@@ -31,6 +35,10 @@ public abstract class BaseActivityView extends BaseView {
     public FragmentManager getFragmentManager() {
         AppCompatActivity activity = getActivity();
         return activity != null ? activity.getSupportFragmentManager() : null;
+    }
+
+    public void setBus(Bus bus) {
+        this.bus = bus;
     }
 
     public void onDestroy() {
