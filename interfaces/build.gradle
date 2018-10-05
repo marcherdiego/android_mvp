@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    api project(":commons")
+    api "com.nerdscorner.mvp:commons:$commonsLibVersion"
     implementation 'com.android.support:appcompat-v7:27.1.1'
     testImplementation 'junit:junit:4.12'
     testImplementation "org.mockito:mockito-core:2.18.3"
