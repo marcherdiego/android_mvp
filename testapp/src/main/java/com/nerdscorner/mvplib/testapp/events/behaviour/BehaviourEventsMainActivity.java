@@ -2,7 +2,7 @@ package com.nerdscorner.mvplib.testapp.events.behaviour;
 
 import android.os.Bundle;
 
-import com.nerdscorner.mvplib.commons.activity.BaseActivity;
+import com.nerdscorner.mvplib.commons.behaviour.BaseActivity;
 import com.nerdscorner.mvplib.events.behaviour.MvpEventsBehaviour;
 import com.nerdscorner.mvplib.testapp.R;
 import com.nerdscorner.mvplib.testapp.events.behaviour.model.BehaviourMainModel;

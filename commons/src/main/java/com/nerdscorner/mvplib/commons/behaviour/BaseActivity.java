@@ -1,4 +1,4 @@
-package com.nerdscorner.mvplib.commons.activity;
+package com.nerdscorner.mvplib.commons.behaviour;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -17,10 +17,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.nerdscorner.mvplib.commons.behaviour.Behaviour;
-import com.nerdscorner.mvplib.commons.behaviour.BehaviourCollection;
-import com.nerdscorner.mvplib.commons.behaviour.BehaviourManager;
 
 import java.lang.ref.WeakReference;
 import java.util.Iterator;

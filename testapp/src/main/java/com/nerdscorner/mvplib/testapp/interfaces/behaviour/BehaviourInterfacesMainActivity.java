@@ -2,7 +2,7 @@ package com.nerdscorner.mvplib.testapp.interfaces.behaviour;
 
 import android.os.Bundle;
 
-import com.nerdscorner.mvplib.commons.activity.BaseActivity;
+import com.nerdscorner.mvplib.commons.behaviour.BaseActivity;
 import com.nerdscorner.mvplib.interfaces.behaviour.MvpInterfacesBehaviour;
 import com.nerdscorner.mvplib.testapp.R;
 import com.nerdscorner.mvplib.testapp.interfaces.behaviour.model.MainModel;
