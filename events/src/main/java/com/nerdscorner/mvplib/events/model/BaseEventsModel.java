@@ -5,7 +5,7 @@ import com.nerdscorner.mvplib.events.bus.Bus;
 
 public class BaseEventsModel extends BaseModel {
 
-    private Bus bus;
+    protected Bus bus;
 
     public BaseEventsModel() {
         bus = Bus.getDefaultEventBus();

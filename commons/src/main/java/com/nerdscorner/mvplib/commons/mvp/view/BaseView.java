@@ -42,12 +42,28 @@ public abstract class BaseView {
         Toast.makeText(activity, activity.getString(textResId, args), Toast.LENGTH_SHORT).show();
     }
 
+    public void showToast(String text) {
+        Activity activity = getActivity();
+        if (activity == null) {
+            return;
+        }
+        Toast.makeText(activity, text, Toast.LENGTH_SHORT).show();
+    }
+
     public void showToast(int duration, @StringRes int textResId) {
         Activity activity = getActivity();
         if (activity == null) {
             return;
         }
         Toast.makeText(activity, activity.getString(textResId), duration).show();
+    }
+
+    public void showToast(int duration, String text) {
+        Activity activity = getActivity();
+        if (activity == null) {
+            return;
+        }
+        Toast.makeText(activity, text, duration).show();
     }
 
     public void showToast(int duration, @StringRes int textResId, Object... args) {
