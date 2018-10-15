@@ -2,13 +2,14 @@ package com.nerdscorner.mvplib.interfaces.fragment;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.nerdscorner.mvplib.interfaces.presenter.BaseFragmentPresenter;
 
-public abstract class BaseFragment<P extends BaseFragmentPresenter> extends android.app.Fragment {
+public abstract class BaseFragment<P extends BaseFragmentPresenter> extends Fragment {
 
     protected P presenter;
 

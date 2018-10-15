@@ -122,14 +122,6 @@ public class BaseFragmentTest {
         verify(presenter).onSaveInstanceState(mockedBundle);
     }
 
-    @Test
-    public void itShouldCallPresenterOnRestoreInstanceState() {
-        baseFragment.presenter = presenter;
-        Bundle mockedBundle = mock(Bundle.class);
-        baseFragment.onViewStateRestored(mockedBundle);
-        verify(presenter).onViewStateRestored(mockedBundle);
-    }
-
     class PresenterWithSubscription extends BaseFragmentPresenter<BaseFragmentView, BaseModel> {
         PresenterWithSubscription(@NonNull BaseFragment fragment) {
             super(new MockBaseFragmentView(fragment), new BaseModel());

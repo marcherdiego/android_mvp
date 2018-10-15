@@ -39,7 +39,7 @@ dependencies {
     api 'org.greenrobot:eventbus:3.1.1'
     testImplementation 'junit:junit:4.12'
     testImplementation "org.mockito:mockito-core:2.18.3"
-    testImplementation "org.robolectric:robolectric:3.8"
+    testImplementation "org.robolectric:robolectric:4.0-alpha-3-SNAPSHOT"
 }
 
 apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
