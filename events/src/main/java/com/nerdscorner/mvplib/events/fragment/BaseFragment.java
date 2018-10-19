@@ -2,14 +2,13 @@ package com.nerdscorner.mvplib.events.fragment;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.nerdscorner.mvplib.events.presenter.BaseFragmentPresenter;
-
-import org.greenrobot.eventbus.EventBus;
 
 public abstract class BaseFragment<P extends BaseFragmentPresenter> extends Fragment {
 
@@ -25,19 +24,25 @@ public abstract class BaseFragment<P extends BaseFragmentPresenter> extends Frag
     public void onResume() {
         super.onResume();
         try {
-            presenter.onResume();
-            EventBus.getDefault().register(presenter);
+            if (!presenter.getBus().isRegistered(presenter)) {
+                presenter.getBus().register(presenter);
+            }
         } catch (Exception ignored) {
+            //No @Subscribe annotations detected
         }
+        presenter.onResume();
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        presenter.onPause();
         try {
-            presenter.onPause();
-            EventBus.getDefault().unregister(presenter);
+            if (presenter.getBus().isRegistered(presenter)) {
+                presenter.getBus().unregister(presenter);
+            }
         } catch (Exception ignored) {
+            //No @Subscribe annotations detected
         }
     }
 
@@ -76,7 +81,7 @@ public abstract class BaseFragment<P extends BaseFragmentPresenter> extends Frag
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         presenter.onSaveInstanceState(outState);
     }

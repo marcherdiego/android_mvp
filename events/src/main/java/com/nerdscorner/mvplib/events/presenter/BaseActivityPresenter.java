@@ -7,12 +7,19 @@ import android.view.Menu;
 
 import com.nerdscorner.mvplib.commons.mvp.model.BaseModel;
 import com.nerdscorner.mvplib.commons.mvp.presenter.BasePresenter;
+import com.nerdscorner.mvplib.events.bus.Bus;
 import com.nerdscorner.mvplib.events.view.BaseActivityView;
 
 public class BaseActivityPresenter<V extends BaseActivityView, M extends BaseModel> extends BasePresenter<V, M> {
+    private Bus bus = Bus.getDefaultEventBus();
 
     public BaseActivityPresenter(@NonNull V view, @NonNull M model) {
         super(view, model);
+    }
+
+    public BaseActivityPresenter(@NonNull V view, @NonNull M model, @NonNull Bus bus) {
+        super(view, model);
+        this.bus = bus;
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -26,5 +33,13 @@ public class BaseActivityPresenter<V extends BaseActivityView, M extends BaseMod
     }
 
     public void onRestoreInstanceState(Bundle savedInstanceState) {
+    }
+
+    public void setBus(Bus bus) {
+        this.bus = bus;
+    }
+
+    public Bus getBus() {
+        return bus;
     }
 }

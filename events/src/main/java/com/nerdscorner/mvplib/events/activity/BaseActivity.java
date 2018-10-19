@@ -10,8 +10,6 @@ import android.view.MenuItem;
 
 import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter;
 
-import org.greenrobot.eventbus.EventBus;
-
 public class BaseActivity<P extends BaseActivityPresenter> extends AppCompatActivity {
 
     protected P presenter;
@@ -26,7 +24,9 @@ public class BaseActivity<P extends BaseActivityPresenter> extends AppCompatActi
     public void onResume() {
         super.onResume();
         try {
-            EventBus.getDefault().register(presenter);
+            if (!presenter.getBus().isRegistered(presenter)) {
+                presenter.getBus().register(presenter);
+            }
         } catch (Exception ignored) {
             //No @Subscribe annotations detected
         }
@@ -38,7 +38,9 @@ public class BaseActivity<P extends BaseActivityPresenter> extends AppCompatActi
         super.onPause();
         presenter.onPause();
         try {
-            EventBus.getDefault().unregister(presenter);
+            if (presenter.getBus().isRegistered(presenter)) {
+                presenter.getBus().unregister(presenter);
+            }
         } catch (Exception ignored) {
             //No @Subscribe annotations detected
         }

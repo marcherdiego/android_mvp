@@ -16,8 +16,7 @@ public abstract class BaseActivityView extends BaseView {
     protected Bus bus;
 
     public BaseActivityView(@NonNull AppCompatActivity activity) {
-        activityRef = new WeakReference<>(activity);
-        bus = Bus.getDefaultEventBus();
+        this(activity, Bus.getDefaultEventBus());
     }
 
     public BaseActivityView(@NonNull AppCompatActivity activity, @NonNull Bus bus) {
