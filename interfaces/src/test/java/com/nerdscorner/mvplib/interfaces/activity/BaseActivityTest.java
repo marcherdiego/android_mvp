@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.nerdscorner.mvplib.interfaces.TestApplication;
 import com.nerdscorner.mvplib.interfaces.presenter.BaseActivityPresenter;
 
 import org.junit.Before;
@@ -15,11 +16,13 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(application = TestApplication.class)
 public class BaseActivityTest {
     @Mock BaseActivityPresenter presenter;
 

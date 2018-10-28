@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.nerdscorner.mvplib.commons.mvp.model.BaseModel;
+import com.nerdscorner.mvplib.events.TestApplication;
 import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter;
 import com.nerdscorner.mvplib.events.view.BaseActivityView;
 
@@ -20,6 +21,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -27,6 +29,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(application = TestApplication.class)
 public class BaseActivityTest {
     @Mock BaseActivityPresenter presenter;
 

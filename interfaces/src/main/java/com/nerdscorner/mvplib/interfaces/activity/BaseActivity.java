@@ -10,7 +10,7 @@ import android.view.MenuItem;
 
 import com.nerdscorner.mvplib.interfaces.presenter.BaseActivityPresenter;
 
-public abstract class BaseActivity<P extends BaseActivityPresenter> extends AppCompatActivity {
+public class BaseActivity<P extends BaseActivityPresenter> extends AppCompatActivity {
 
     protected P presenter;
 
