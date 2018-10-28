@@ -4,7 +4,7 @@ import com.nerdscorner.mvplib.interfaces.presenter.BaseActivityPresenter;
 import com.nerdscorner.mvplib.testapp.interfaces.attribute.model.AttributeMainModel;
 import com.nerdscorner.mvplib.testapp.interfaces.attribute.view.AttributeMainView;
 
-public class AttributeMainPresenter extends BaseActivityPresenter<AttributeMainView, AttributeMainModel> implements MainPresenterInterface {
+public class AttributeMainPresenter extends BaseActivityPresenter<AttributeMainView, AttributeMainModel> implements AttributeMainPresenterInterface {
 
     public AttributeMainPresenter(AttributeMainView view, AttributeMainModel model) {
         super(view, model);

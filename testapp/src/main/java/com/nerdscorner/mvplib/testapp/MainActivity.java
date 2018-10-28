@@ -8,8 +8,10 @@ import android.view.View.OnClickListener;
 
 import com.nerdscorner.mvplib.testapp.events.attribute.AttributeEventsMainActivity;
 import com.nerdscorner.mvplib.testapp.events.behaviour.BehaviourEventsMainActivity;
+import com.nerdscorner.mvplib.testapp.events.inheritance.InheritanceEventsMainActivity;
 import com.nerdscorner.mvplib.testapp.interfaces.attribute.AttributeInterfacesMainActivity;
 import com.nerdscorner.mvplib.testapp.interfaces.behaviour.BehaviourInterfacesMainActivity;
+import com.nerdscorner.mvplib.testapp.interfaces.inheritance.InheritanceInterfacesMainActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.interfaces_inheritance).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), InheritanceInterfacesMainActivity.class));
+            }
+        });
+
         findViewById(R.id.events_behaviour).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,6 +52,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), AttributeEventsMainActivity.class));
+            }
+        });
+
+        findViewById(R.id.events_inheritance).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), InheritanceEventsMainActivity.class));
             }
         });
     }

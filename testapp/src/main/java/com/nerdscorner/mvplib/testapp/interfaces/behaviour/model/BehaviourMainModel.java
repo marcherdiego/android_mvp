@@ -1,11 +1,11 @@
-package com.nerdscorner.mvplib.testapp.interfaces.attribute.model;
+package com.nerdscorner.mvplib.testapp.interfaces.behaviour.model;
 
 import android.os.AsyncTask;
 
 import com.nerdscorner.mvplib.interfaces.model.BaseInterfacesModel;
-import com.nerdscorner.mvplib.testapp.interfaces.attribute.presenter.AttributeMainPresenter;
+import com.nerdscorner.mvplib.testapp.interfaces.behaviour.presenter.BehaviourMainPresenter;
 
-public class AttributeMainModel extends BaseInterfacesModel<AttributeMainPresenter> implements AttributeMainModelInterface {
+public class BehaviourMainModel extends BaseInterfacesModel<BehaviourMainPresenter> implements BehaviourMainModelInterface {
 
     @Override
     public void doSomethingInBackground() {
@@ -13,9 +13,9 @@ public class AttributeMainModel extends BaseInterfacesModel<AttributeMainPresent
     }
 
     private static class SomeBackgroundTask extends AsyncTask<Void, Void, Void> {
-        private AttributeMainModel model;
+        private BehaviourMainModel model;
 
-        SomeBackgroundTask(AttributeMainModel model) {
+        SomeBackgroundTask(BehaviourMainModel model) {
             this.model = model;
         }
 

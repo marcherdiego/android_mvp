@@ -37,4 +37,12 @@ public class AttributeEventsMainActivity extends AppCompatActivity {
         bus.unregister(presenter);
         super.onPause();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        //Do something here
+        presenter.onBackPressed();
+    }
 }

@@ -1,20 +1,20 @@
-package com.nerdscorner.mvplib.testapp.interfaces.attribute.view;
+package com.nerdscorner.mvplib.testapp.interfaces.inheritance.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.nerdscorner.mvplib.interfaces.view.BaseActivityView;
 import com.nerdscorner.mvplib.testapp.R;
-import com.nerdscorner.mvplib.testapp.interfaces.attribute.presenter.AttributeMainPresenter;
+import com.nerdscorner.mvplib.testapp.interfaces.inheritance.presenter.InheritanceMainPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AttributeMainView extends BaseActivityView<AttributeMainPresenter> implements AttributeMainViewInterface {
+public class InheritanceMainView extends BaseActivityView<InheritanceMainPresenter> implements InheritanceMainViewInterface {
     @BindView(R.id.text) TextView textView;
 
-    public AttributeMainView(AppCompatActivity activity) {
+    public InheritanceMainView(AppCompatActivity activity) {
         super(activity);
         ButterKnife.bind(this, activity);
     }

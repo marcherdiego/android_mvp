@@ -1,5 +1,5 @@
 package com.nerdscorner.mvplib.testapp.interfaces.attribute.model;
 
-public interface MainModelInterface {
+public interface AttributeMainModelInterface {
     void doSomethingInBackground();
 }

@@ -1,5 +1,5 @@
 package com.nerdscorner.mvplib.testapp.interfaces.behaviour.model;
 
-public interface MainModelInterface {
+public interface BehaviourMainModelInterface {
     void doSomethingInBackground();
 }

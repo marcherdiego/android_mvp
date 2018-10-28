@@ -17,6 +17,30 @@ compile 'com.nerdscorner.mvp:events:LATEST_EVENTS_VERSION'
 compile 'com.nerdscorner.mvp:interfaces:LATEST_INTERFACES_VERSION'
 ```
 
+## Usage
+There are three different options to integrate this MVP library to your application, either having a reference to the presenter within your Activity/Fragment, using behaviours or extending a BaseActivity/BaseFragment that handles all the wiring and setup automagically.
+### Direct reference
+#### Events
+##### Attributes
+```java
+public class AttributeEventsMainActivity extends AppCompatActivity {
+    private AttributeMainPresenter presenter;
+
+    @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            ...
+            presenter = new AttributeMainPresenter(
+                    new AttributeMainView(this, bus),
+                    new AttributeMainModel(bus)
+            );
+        }
+}
+```
+
+//TODO
+
+
 ## Contributing
 
 Please fork this repository and contribute back using [pull requests](https://github.com/marcherdiego/android_mvp/pulls).
