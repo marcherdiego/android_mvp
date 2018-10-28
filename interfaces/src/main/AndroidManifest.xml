@@ -1,2 +1,5 @@
-<manifest package="com.nerdscorner.mvplib.interfaces">
+<manifest package="com.nerdscorner.mvplib.interfaces"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application android:theme="@style/Base.Theme.AppCompat"/>
 </manifest>

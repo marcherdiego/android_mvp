@@ -13,8 +13,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.shadows.support.v4.SupportFragmentController;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -28,7 +28,8 @@ public class BaseFragmentTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        baseFragment = Robolectric.buildFragment(MockBaseFragment.class).create().get();
+        MockBaseFragment mockBaseFragment = new MockBaseFragment();
+        baseFragment = SupportFragmentController.of(mockBaseFragment).create().get();
     }
 
     @Test

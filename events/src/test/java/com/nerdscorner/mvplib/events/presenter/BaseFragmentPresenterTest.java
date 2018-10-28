@@ -1,5 +1,6 @@
 package com.nerdscorner.mvplib.events.presenter;
 
+import com.nerdscorner.mvplib.commons.mvp.model.BaseModel;
 import com.nerdscorner.mvplib.events.view.BaseFragmentView;
 
 import org.junit.Before;
