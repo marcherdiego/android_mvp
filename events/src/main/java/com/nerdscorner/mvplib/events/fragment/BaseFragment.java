@@ -83,7 +83,9 @@ public abstract class BaseFragment<P extends BaseFragmentPresenter> extends Frag
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        presenter.onSaveInstanceState(outState);
+        if (presenter != null) {
+            presenter.onSaveInstanceState(outState);
+        }
     }
 
     @Override
