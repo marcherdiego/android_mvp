@@ -3,9 +3,9 @@ package com.nerdscorner.mvplib.testapp.interfaces.attribute.model;
 import android.os.AsyncTask;
 
 import com.nerdscorner.mvplib.interfaces.model.BaseInterfacesModel;
-import com.nerdscorner.mvplib.testapp.interfaces.attribute.presenter.AttributeMainPresenter;
+import com.nerdscorner.mvplib.testapp.interfaces.attribute.presenter.AttributeMainPresenterInterface;
 
-public class AttributeMainModel extends BaseInterfacesModel<AttributeMainPresenter> implements AttributeMainModelInterface {
+public class AttributeMainModel extends BaseInterfacesModel<AttributeMainPresenterInterface> implements AttributeMainModelInterface {
 
     @Override
     public void doSomethingInBackground() {

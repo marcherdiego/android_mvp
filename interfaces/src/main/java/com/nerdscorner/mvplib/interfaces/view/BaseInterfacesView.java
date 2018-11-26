@@ -1,9 +1,9 @@
 package com.nerdscorner.mvplib.interfaces.view;
 
-import com.nerdscorner.mvplib.commons.mvp.presenter.BasePresenter;
+import com.nerdscorner.mvplib.commons.mvp.presenter.Presenter;
 import com.nerdscorner.mvplib.commons.mvp.view.BaseView;
 
-public abstract class BaseInterfacesView<P extends BasePresenter> extends BaseView {
+public abstract class BaseInterfacesView<P extends Presenter> extends BaseView {
     protected P presenter;
 
     public void setPresenter(P presenter) {

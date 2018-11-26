@@ -1,9 +1,9 @@
 package com.nerdscorner.mvplib.interfaces.model;
 
 import com.nerdscorner.mvplib.commons.mvp.model.BaseModel;
-import com.nerdscorner.mvplib.commons.mvp.presenter.BasePresenter;
+import com.nerdscorner.mvplib.commons.mvp.presenter.Presenter;
 
-public class BaseInterfacesModel<P extends BasePresenter> extends BaseModel {
+public class BaseInterfacesModel<P extends Presenter> extends BaseModel {
 
     protected P presenter;
 

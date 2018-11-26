@@ -15,6 +15,7 @@ public class BaseActivityPresenter<V extends BaseActivityView, M extends BaseInt
         super(view, model);
     }
 
+    @Override
     public boolean onBackPressed() {
         return false;
     }
@@ -23,16 +24,20 @@ public class BaseActivityPresenter<V extends BaseActivityView, M extends BaseInt
         return false;
     }
 
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return false;
     }
 
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
     }
 
+    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     }
 
+    @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
     }
 

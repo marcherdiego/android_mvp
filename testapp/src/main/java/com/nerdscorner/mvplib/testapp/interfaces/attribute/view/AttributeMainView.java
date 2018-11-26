@@ -5,13 +5,13 @@ import android.widget.TextView;
 
 import com.nerdscorner.mvplib.interfaces.view.BaseActivityView;
 import com.nerdscorner.mvplib.testapp.R;
-import com.nerdscorner.mvplib.testapp.interfaces.attribute.presenter.AttributeMainPresenter;
+import com.nerdscorner.mvplib.testapp.interfaces.attribute.presenter.AttributeMainPresenterInterface;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AttributeMainView extends BaseActivityView<AttributeMainPresenter> implements AttributeMainViewInterface {
+public class AttributeMainView extends BaseActivityView<AttributeMainPresenterInterface> implements AttributeMainViewInterface {
     @BindView(R.id.text) TextView textView;
 
     public AttributeMainView(AppCompatActivity activity) {

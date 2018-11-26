@@ -1,6 +1,8 @@
 package com.nerdscorner.mvplib.testapp.interfaces.behaviour.presenter;
 
-public interface BehaviourMainPresenterInterface {
+import com.nerdscorner.mvplib.commons.mvp.presenter.Presenter;
+
+public interface BehaviourMainPresenterInterface extends Presenter {
     void onActionClicked();
 
     void onBackgroundTaskCompleted();
