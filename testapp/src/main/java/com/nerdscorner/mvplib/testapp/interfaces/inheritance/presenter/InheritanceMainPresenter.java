@@ -12,6 +12,7 @@ public class InheritanceMainPresenter extends BaseActivityPresenter<InheritanceM
 
     @Override
     public void onActionClicked() {
+        view.setTextValue("Executing background task...");
         model.doSomethingInBackground();
     }
 

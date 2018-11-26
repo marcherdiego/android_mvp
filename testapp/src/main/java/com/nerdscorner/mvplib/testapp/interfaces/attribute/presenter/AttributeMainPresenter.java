@@ -11,6 +11,7 @@ public class AttributeMainPresenter extends BaseActivityPresenter<AttributeMainV
     }
 
     public void onActionClicked() {
+        view.setTextValue("Executing background task...");
         model.doSomethingInBackground();
     }
 

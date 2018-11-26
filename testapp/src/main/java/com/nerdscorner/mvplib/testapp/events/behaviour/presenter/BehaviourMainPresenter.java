@@ -16,6 +16,7 @@ public class BehaviourMainPresenter extends BaseActivityPresenter<BehaviourMainV
 
     @Subscribe
     public void onActionClicked(ActionClickedEvent event) {
+        view.setTextValue("Executing background task...");
         model.doSomethingInBackground();
     }
 
