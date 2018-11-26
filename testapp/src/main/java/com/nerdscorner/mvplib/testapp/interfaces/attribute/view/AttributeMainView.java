@@ -28,4 +28,5 @@ public class AttributeMainView extends BaseActivityView<AttributeMainPresenterIn
     public void setTextValue(CharSequence value) {
         textView.setText(value);
     }
+
 }

@@ -5,13 +5,13 @@ import android.widget.TextView;
 
 import com.nerdscorner.mvplib.interfaces.view.BaseActivityView;
 import com.nerdscorner.mvplib.testapp.R;
-import com.nerdscorner.mvplib.testapp.interfaces.inheritance.presenter.InheritanceMainPresenter;
+import com.nerdscorner.mvplib.testapp.interfaces.inheritance.presenter.InheritanceMainPresenterInterface;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class InheritanceMainView extends BaseActivityView<InheritanceMainPresenter> implements InheritanceMainViewInterface {
+public class InheritanceMainView extends BaseActivityView<InheritanceMainPresenterInterface> implements InheritanceMainViewInterface {
     @BindView(R.id.text) TextView textView;
 
     public InheritanceMainView(AppCompatActivity activity) {

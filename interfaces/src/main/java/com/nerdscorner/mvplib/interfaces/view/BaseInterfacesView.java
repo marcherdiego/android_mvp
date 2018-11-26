@@ -3,7 +3,7 @@ package com.nerdscorner.mvplib.interfaces.view;
 import com.nerdscorner.mvplib.commons.mvp.presenter.Presenter;
 import com.nerdscorner.mvplib.commons.mvp.view.BaseView;
 
-public abstract class BaseInterfacesView<P extends Presenter> extends BaseView {
+public abstract class BaseInterfacesView<P extends Presenter> extends BaseView implements View {
     protected P presenter;
 
     public void setPresenter(P presenter) {

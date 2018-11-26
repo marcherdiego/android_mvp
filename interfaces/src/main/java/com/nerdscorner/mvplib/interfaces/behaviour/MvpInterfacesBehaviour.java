@@ -8,13 +8,13 @@ import android.support.annotation.NonNull;
 import android.view.MenuItem;
 
 import com.nerdscorner.mvplib.commons.behaviour.Behaviour;
-import com.nerdscorner.mvplib.commons.mvp.presenter.BasePresenter;
+import com.nerdscorner.mvplib.commons.mvp.presenter.Presenter;
 
 public class MvpInterfacesBehaviour extends Behaviour {
 
     private final static int CONTENTS_DEFAULT = 0;
 
-    protected BasePresenter presenter;
+    protected Presenter presenter;
 
     public final static Creator<MvpInterfacesBehaviour> CREATOR = new Creator<MvpInterfacesBehaviour>() {
         @Override
@@ -28,7 +28,7 @@ public class MvpInterfacesBehaviour extends Behaviour {
         }
     };
 
-    public MvpInterfacesBehaviour(BasePresenter presenter) {
+    public MvpInterfacesBehaviour(Presenter presenter) {
         this.presenter = presenter;
     }
 

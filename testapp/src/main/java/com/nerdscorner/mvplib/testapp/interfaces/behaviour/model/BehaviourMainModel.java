@@ -3,9 +3,9 @@ package com.nerdscorner.mvplib.testapp.interfaces.behaviour.model;
 import android.os.AsyncTask;
 
 import com.nerdscorner.mvplib.interfaces.model.BaseInterfacesModel;
-import com.nerdscorner.mvplib.testapp.interfaces.behaviour.presenter.BehaviourMainPresenter;
+import com.nerdscorner.mvplib.testapp.interfaces.behaviour.presenter.BehaviourMainPresenterInterface;
 
-public class BehaviourMainModel extends BaseInterfacesModel<BehaviourMainPresenter> implements BehaviourMainModelInterface {
+public class BehaviourMainModel extends BaseInterfacesModel<BehaviourMainPresenterInterface> implements BehaviourMainModelInterface {
 
     @Override
     public void doSomethingInBackground() {

@@ -5,13 +5,13 @@ import android.widget.TextView;
 
 import com.nerdscorner.mvplib.interfaces.view.BaseActivityView;
 import com.nerdscorner.mvplib.testapp.R;
-import com.nerdscorner.mvplib.testapp.interfaces.behaviour.presenter.BehaviourMainPresenter;
+import com.nerdscorner.mvplib.testapp.interfaces.behaviour.presenter.BehaviourMainPresenterInterface;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class BehaviourMainView extends BaseActivityView<BehaviourMainPresenter> implements BehaviourMainViewInterface {
+public class BehaviourMainView extends BaseActivityView<BehaviourMainPresenterInterface> implements BehaviourMainViewInterface {
     @BindView(R.id.text) TextView textView;
 
     public BehaviourMainView(AppCompatActivity activity) {
