@@ -13,7 +13,7 @@ public class InheritanceInterfacesMainActivity extends BaseActivity<InheritanceM
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_mvp);
         presenter = new InheritanceMainPresenter(
                 new InheritanceMainView(this),
                 new InheritanceMainModel()
