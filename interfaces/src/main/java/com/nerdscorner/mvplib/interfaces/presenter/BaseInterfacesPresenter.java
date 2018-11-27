@@ -8,18 +8,25 @@ import android.view.MenuItem;
 
 import com.nerdscorner.mvplib.commons.mvp.presenter.Presenter;
 import com.nerdscorner.mvplib.interfaces.model.BaseInterfacesModel;
+import com.nerdscorner.mvplib.interfaces.model.InterfacesModelInterface;
 import com.nerdscorner.mvplib.interfaces.view.BaseInterfacesView;
-import com.nerdscorner.mvplib.interfaces.view.View;
+import com.nerdscorner.mvplib.interfaces.view.InterfacesViewInterface;
 
-public abstract class BaseInterfacesPresenter<V extends View, M extends BaseInterfacesModel> implements Presenter {
+public abstract class BaseInterfacesPresenter<V extends InterfacesViewInterface, M extends InterfacesModelInterface> implements Presenter {
     protected V view;
     protected M model;
 
     BaseInterfacesPresenter(@NonNull V view, @NonNull M model) {
         this.view = view;
         this.model = model;
+        if (!(view instanceof BaseInterfacesView)) {
+            throw new IllegalArgumentException("Malformed MVP, your view must extend from BaseInterfacesView");
+        }
+        if (!(model instanceof BaseInterfacesModel)) {
+            throw new IllegalArgumentException("Malformed MVP, your model must extend from BaseInterfacesModel");
+        }
         ((BaseInterfacesView) view).setPresenter(this);
-        model.setPresenter(this);
+        ((BaseInterfacesModel) model).setPresenter(this);
     }
 
     @Override

@@ -6,10 +6,10 @@ import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.nerdscorner.mvplib.interfaces.view.View;
-import com.nerdscorner.mvplib.interfaces.model.BaseInterfacesModel;
+import com.nerdscorner.mvplib.interfaces.model.InterfacesModelInterface;
+import com.nerdscorner.mvplib.interfaces.view.InterfacesViewInterface;
 
-public class BaseActivityPresenter<V extends View, M extends BaseInterfacesModel> extends BaseInterfacesPresenter<V, M> {
+public class BaseActivityPresenter<V extends InterfacesViewInterface, M extends InterfacesModelInterface> extends BaseInterfacesPresenter<V, M> {
 
     public BaseActivityPresenter(@NonNull V view, @NonNull M model) {
         super(view, model);

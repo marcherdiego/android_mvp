@@ -3,7 +3,7 @@ package com.nerdscorner.mvplib.interfaces.view;
 import android.app.Activity;
 import android.support.annotation.StringRes;
 
-public interface View {
+public interface InterfacesViewInterface {
 
     void unbind();
 
