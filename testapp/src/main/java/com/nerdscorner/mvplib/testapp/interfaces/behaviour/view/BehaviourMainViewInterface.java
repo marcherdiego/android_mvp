@@ -1,5 +1,7 @@
 package com.nerdscorner.mvplib.testapp.interfaces.behaviour.view;
 
-public interface BehaviourMainViewInterface {
+import com.nerdscorner.mvplib.interfaces.view.InterfacesViewInterface;
+
+public interface BehaviourMainViewInterface extends InterfacesViewInterface {
     void setTextValue(CharSequence value);
 }

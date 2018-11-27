@@ -1,5 +1,7 @@
 package com.nerdscorner.mvplib.testapp.interfaces.inheritance.model;
 
-public interface InheritanceMainModelInterface {
+import com.nerdscorner.mvplib.interfaces.model.InterfacesModelInterface;
+
+public interface InheritanceMainModelInterface extends InterfacesModelInterface {
     void doSomethingInBackground();
 }

@@ -1,14 +1,12 @@
 package com.nerdscorner.mvplib.testapp.interfaces.attribute.presenter;
 
 import com.nerdscorner.mvplib.interfaces.presenter.BaseActivityPresenter;
-import com.nerdscorner.mvplib.testapp.interfaces.attribute.model.AttributeMainModel;
 import com.nerdscorner.mvplib.testapp.interfaces.attribute.model.AttributeMainModelInterface;
-import com.nerdscorner.mvplib.testapp.interfaces.attribute.view.AttributeMainView;
 import com.nerdscorner.mvplib.testapp.interfaces.attribute.view.AttributeMainViewInterface;
 
 public class AttributeMainPresenter extends BaseActivityPresenter<AttributeMainViewInterface, AttributeMainModelInterface> implements AttributeMainPresenterInterface {
 
-    public AttributeMainPresenter(AttributeMainView view, AttributeMainModel model) {
+    public AttributeMainPresenter(AttributeMainViewInterface view, AttributeMainModelInterface model) {
         super(view, model);
     }
 

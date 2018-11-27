@@ -1,12 +1,12 @@
 package com.nerdscorner.mvplib.testapp.interfaces.inheritance.presenter;
 
 import com.nerdscorner.mvplib.interfaces.presenter.BaseActivityPresenter;
-import com.nerdscorner.mvplib.testapp.interfaces.inheritance.model.InheritanceMainModel;
-import com.nerdscorner.mvplib.testapp.interfaces.inheritance.view.InheritanceMainView;
+import com.nerdscorner.mvplib.testapp.interfaces.inheritance.model.InheritanceMainModelInterface;
+import com.nerdscorner.mvplib.testapp.interfaces.inheritance.view.InheritanceMainViewInterface;
 
-public class InheritanceMainPresenter extends BaseActivityPresenter<InheritanceMainView, InheritanceMainModel> implements InheritanceMainPresenterInterface {
+public class InheritanceMainPresenter extends BaseActivityPresenter<InheritanceMainViewInterface, InheritanceMainModelInterface> implements InheritanceMainPresenterInterface {
 
-    public InheritanceMainPresenter(InheritanceMainView view, InheritanceMainModel model) {
+    public InheritanceMainPresenter(InheritanceMainViewInterface view, InheritanceMainModelInterface model) {
         super(view, model);
     }
 

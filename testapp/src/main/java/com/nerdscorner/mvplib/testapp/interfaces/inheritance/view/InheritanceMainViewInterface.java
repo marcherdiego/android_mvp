@@ -1,5 +1,7 @@
 package com.nerdscorner.mvplib.testapp.interfaces.inheritance.view;
 
-public interface InheritanceMainViewInterface {
+import com.nerdscorner.mvplib.interfaces.view.InterfacesViewInterface;
+
+public interface InheritanceMainViewInterface extends InterfacesViewInterface {
     void setTextValue(CharSequence value);
 }
