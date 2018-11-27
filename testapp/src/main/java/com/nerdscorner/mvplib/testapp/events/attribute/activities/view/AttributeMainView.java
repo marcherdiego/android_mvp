@@ -1,4 +1,4 @@
-package com.nerdscorner.mvplib.testapp.events.attribute.view;
+package com.nerdscorner.mvplib.testapp.events.attribute.activities.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;

@@ -1,4 +1,4 @@
-package com.nerdscorner.mvplib.testapp.events.attribute.model;
+package com.nerdscorner.mvplib.testapp.events.attribute.activities.model;
 
 import android.os.AsyncTask;
 

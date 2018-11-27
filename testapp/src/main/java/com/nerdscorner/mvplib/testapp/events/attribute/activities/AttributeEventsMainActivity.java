@@ -1,13 +1,13 @@
-package com.nerdscorner.mvplib.testapp.events.attribute;
+package com.nerdscorner.mvplib.testapp.events.attribute.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.nerdscorner.mvplib.events.bus.Bus;
 import com.nerdscorner.mvplib.testapp.R;
-import com.nerdscorner.mvplib.testapp.events.attribute.model.AttributeMainModel;
-import com.nerdscorner.mvplib.testapp.events.attribute.presenter.AttributeMainPresenter;
-import com.nerdscorner.mvplib.testapp.events.attribute.view.AttributeMainView;
+import com.nerdscorner.mvplib.testapp.events.attribute.activities.model.AttributeMainModel;
+import com.nerdscorner.mvplib.testapp.events.attribute.activities.presenter.AttributeMainPresenter;
+import com.nerdscorner.mvplib.testapp.events.attribute.activities.view.AttributeMainView;
 
 public class AttributeEventsMainActivity extends AppCompatActivity {
 

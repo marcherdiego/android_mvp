@@ -1,62 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/activities_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Activities"
+        android:textSize="20sp"/>
 
     <Button
         android:id="@+id/interfaces_behaviour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/activities_title"
         android:text="interfaces behaviour"/>
 
     <Button
         android:id="@+id/interfaces_attributes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/interfaces_behaviour"
         android:layout_marginTop="8dp"
-        android:text="interfaces attribute"
-        app:layout_constraintTop_toBottomOf="@+id/interfaces_behaviour"/>
+        android:text="interfaces attribute"/>
 
     <Button
         android:id="@+id/interfaces_inheritance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/interfaces_attributes"
         android:layout_marginTop="8dp"
-        android:text="interfaces inheritance"
-        app:layout_constraintTop_toBottomOf="@+id/interfaces_attributes"/>
+        android:text="interfaces inheritance"/>
 
     <Button
         android:id="@+id/events_behaviour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/activities_title"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="events behaviour"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:text="events behaviour"/>
 
     <Button
         android:id="@+id/events_attributes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/events_behaviour"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="events attribute"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/events_behaviour"/>
+        android:text="events attribute"/>
 
     <Button
         android:id="@+id/events_inheritance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/events_attributes"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="events inheritance"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/events_attributes"/>
-</android.support.constraint.ConstraintLayout>
+        android:text="events inheritance"/>
+
+    <TextView
+        android:id="@+id/fragments_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/interfaces_inheritance"
+        android:layout_marginTop="8dp"
+        android:text="Fragments"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/fragments_events_attribute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragments_title"
+        android:text="Events Attribute"/>
+
+</RelativeLayout>

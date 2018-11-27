@@ -7,7 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.nerdscorner.mvplib.testapp.events.attribute.AttributeEventsMainActivity;
+import com.nerdscorner.mvplib.testapp.events.attribute.activities.AttributeEventsMainActivity;
+import com.nerdscorner.mvplib.testapp.events.attribute.fragments.AttributeEventsForFragmentsMainActivity;
 import com.nerdscorner.mvplib.testapp.events.behaviour.BehaviourEventsMainActivity;
 import com.nerdscorner.mvplib.testapp.events.inheritance.InheritanceEventsMainActivity;
 import com.nerdscorner.mvplib.testapp.interfaces.attribute.AttributeInterfacesMainActivity;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         addListenerToView(R.id.events_behaviour, BehaviourEventsMainActivity.class);
         addListenerToView(R.id.events_attributes, AttributeEventsMainActivity.class);
         addListenerToView(R.id.events_inheritance, InheritanceEventsMainActivity.class);
+
+        addListenerToView(R.id.fragments_events_attribute, AttributeEventsForFragmentsMainActivity.class);
     }
 
     private void addListenerToView(@IdRes int viewId, final Class destination) {
