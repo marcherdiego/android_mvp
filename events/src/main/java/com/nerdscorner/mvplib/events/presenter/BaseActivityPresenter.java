@@ -23,7 +23,7 @@ public class BaseActivityPresenter<V extends BaseActivityView, M extends BaseMod
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        return false;
+        return true;
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
