@@ -1,6 +1,7 @@
 package com.nerdscorner.mvplib.events.bus;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -59,9 +60,16 @@ public class Bus {
      *
      * @param subscriber the object to subscribe
      */
-    public void register(@NonNull final Object subscriber) {
-        if (!isRegistered(subscriber)) {
-            eventBus.register(subscriber);
+    public void register(@Nullable final Object subscriber) {
+        if (subscriber == null) {
+            throw new IllegalArgumentException("Subscriber cannot be null.");
+        }
+        try {
+            if (!isRegistered(subscriber)) {
+                eventBus.register(subscriber);
+            }
+        } catch (Exception ignored) {
+            //No @Subscribe annotations detected
         }
     }
 
@@ -70,8 +78,17 @@ public class Bus {
      *
      * @param subscriber the object to unsubscribe
      */
-    public void unregister(@NonNull final Object subscriber) {
-        eventBus.unregister(subscriber);
+    public void unregister(@Nullable final Object subscriber) {
+        if (subscriber == null) {
+            throw new IllegalArgumentException("Subscriber cannot be null.");
+        }
+        try {
+            if (isRegistered(subscriber)) {
+                eventBus.unregister(subscriber);
+            }
+        } catch (Exception ignored) {
+            //No @Subscribe annotations detected
+        }
     }
 
     /**

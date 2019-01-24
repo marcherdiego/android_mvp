@@ -3,32 +3,48 @@ package com.nerdscorner.mvplib.events.fragment;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
+import com.nerdscorner.mvplib.events.config.MvpConfig;
+import com.nerdscorner.mvplib.events.config.MvpConfig.RegisterAt;
+import com.nerdscorner.mvplib.events.config.MvpConfig.UnregisterAt;
 import com.nerdscorner.mvplib.events.presenter.BaseFragmentPresenter;
 
 public abstract class BaseFragment<P extends BaseFragmentPresenter> extends Fragment {
 
     protected P presenter;
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        if (MvpConfig.getRegisterAt() == RegisterAt.ON_CREATE) {
+            presenter.getBus().register(presenter);
+        }
+        return view;
+    }
+
     @Override
     public void onStart() {
         super.onStart();
+        if (MvpConfig.getRegisterAt() == RegisterAt.ON_START) {
+            presenter.getBus().register(presenter);
+        }
         presenter.onStart();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        try {
-            if (!presenter.getBus().isRegistered(presenter)) {
-                presenter.getBus().register(presenter);
-            }
-        } catch (Exception ignored) {
-            //No @Subscribe annotations detected
+        if (MvpConfig.getRegisterAt() == RegisterAt.ON_RESUME) {
+            presenter.getBus().register(presenter);
         }
         presenter.onResume();
     }
@@ -37,12 +53,8 @@ public abstract class BaseFragment<P extends BaseFragmentPresenter> extends Frag
     public void onPause() {
         super.onPause();
         presenter.onPause();
-        try {
-            if (presenter.getBus().isRegistered(presenter)) {
-                presenter.getBus().unregister(presenter);
-            }
-        } catch (Exception ignored) {
-            //No @Subscribe annotations detected
+        if (MvpConfig.getUnregisterAt() == UnregisterAt.ON_PAUSE) {
+            presenter.getBus().unregister(presenter);
         }
     }
 
@@ -50,6 +62,9 @@ public abstract class BaseFragment<P extends BaseFragmentPresenter> extends Frag
     public void onStop() {
         super.onStop();
         presenter.onStop();
+        if (MvpConfig.getUnregisterAt() == UnregisterAt.ON_STOP) {
+            presenter.getBus().unregister(presenter);
+        }
     }
 
     @Override
@@ -57,6 +72,9 @@ public abstract class BaseFragment<P extends BaseFragmentPresenter> extends Frag
         super.onDestroyView();
         try {
             presenter.onDestroyView();
+            if (MvpConfig.getUnregisterAt() == UnregisterAt.ON_DESTROY) {
+                presenter.getBus().unregister(presenter);
+            }
         } catch (Exception ignored) {
         } finally {
             presenter = null;
