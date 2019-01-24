@@ -21,7 +21,7 @@ public class BaseActivityPresenter<V extends InterfacesViewInterface, M extends 
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        return false;
+        return true;
     }
 
     @Override
