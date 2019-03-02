@@ -13,7 +13,7 @@ public class BaseFragmentPresenter<V extends BaseFragmentView, M extends BaseEve
     private Bus bus;
 
     public BaseFragmentPresenter(@NonNull V view, @NonNull M model) {
-        this(view, model, Bus.getDefaultEventBus());
+        this(view, model, Bus.Companion.getDefaultEventBus());
     }
 
     public BaseFragmentPresenter(@NonNull V view, @NonNull M model, @NonNull Bus bus) {

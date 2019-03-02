@@ -16,7 +16,7 @@ public abstract class BaseActivityView extends BaseView {
     protected Bus bus;
 
     public BaseActivityView(@NonNull AppCompatActivity activity) {
-        this(activity, Bus.getDefaultEventBus());
+        this(activity, Bus.Companion.getDefaultEventBus());
     }
 
     public BaseActivityView(@NonNull AppCompatActivity activity, @NonNull Bus bus) {

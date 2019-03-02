@@ -19,7 +19,7 @@ public class AttributeEventsForFragmentsMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mvp_for_fragments);
 
-        bus = Bus.getNewEventBus();
+        bus = Bus.Companion.getNewEventBus();
         presenter = new AttributeForFragmentMainPresenter(
                 new AttributeFragmentMainView(this, bus),
                 new AttributeFragmentMainModel(bus)

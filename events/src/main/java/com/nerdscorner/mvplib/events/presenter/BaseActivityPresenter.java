@@ -13,7 +13,7 @@ public class BaseActivityPresenter<V extends BaseActivityView, M extends BaseEve
     private Bus bus;
 
     public BaseActivityPresenter(@NonNull V view, @NonNull M model) {
-        this(view, model, Bus.getDefaultEventBus());
+        this(view, model, Bus.Companion.getDefaultEventBus());
     }
 
     public BaseActivityPresenter(@NonNull V view, @NonNull M model, @NonNull Bus bus) {

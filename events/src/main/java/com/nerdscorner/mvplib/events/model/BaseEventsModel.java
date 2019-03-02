@@ -8,7 +8,7 @@ public class BaseEventsModel extends BaseModel {
     protected Bus bus;
 
     public BaseEventsModel() {
-        bus = Bus.getDefaultEventBus();
+        bus = Bus.Companion.getDefaultEventBus();
     }
 
     public BaseEventsModel(Bus bus) {

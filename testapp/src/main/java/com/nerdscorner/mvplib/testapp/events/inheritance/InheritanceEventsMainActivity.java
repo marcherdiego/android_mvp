@@ -15,9 +15,9 @@ public class InheritanceEventsMainActivity extends BaseActivity<InheritanceMainP
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mvp);
 
-        presenter = new InheritanceMainPresenter(
+        setPresenter(new InheritanceMainPresenter(
                 new InheritanceMainView(this),
                 new InheritanceMainModel()
-        );
+        ));
     }
 }

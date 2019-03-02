@@ -19,7 +19,7 @@ public abstract class BaseFragmentView extends BaseView {
 
     public BaseFragmentView(@NonNull Fragment fragment) {
         fragmentRef = new WeakReference<>(fragment);
-        bus = Bus.getDefaultEventBus();
+        bus = Bus.Companion.getDefaultEventBus();
     }
 
     public BaseFragmentView(@NonNull Fragment fragment, @NonNull Bus bus) {

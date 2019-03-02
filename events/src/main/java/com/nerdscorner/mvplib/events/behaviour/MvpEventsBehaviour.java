@@ -1,5 +1,7 @@
 package com.nerdscorner.mvplib.events.behaviour;
 
+import org.greenrobot.eventbus.EventBus;
+
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -7,11 +9,8 @@ import android.os.Parcel;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.MenuItem;
-
 import com.nerdscorner.mvplib.commons.behaviour.Behaviour;
 import com.nerdscorner.mvplib.commons.mvp.presenter.BasePresenter;
-
-import org.greenrobot.eventbus.EventBus;
 
 public class MvpEventsBehaviour extends Behaviour {
 

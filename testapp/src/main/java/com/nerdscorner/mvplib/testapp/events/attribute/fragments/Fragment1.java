@@ -33,7 +33,7 @@ public class Fragment1 extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        bus = Bus.getNewEventBus();
+        bus = Bus.Companion.getNewEventBus();
         presenter = new Fragment1Presenter(
                 new Fragment1View(this, bus),
                 new Fragment1Model(bus)

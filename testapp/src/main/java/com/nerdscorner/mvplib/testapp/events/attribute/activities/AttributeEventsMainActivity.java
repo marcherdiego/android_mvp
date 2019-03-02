@@ -19,10 +19,11 @@ public class AttributeEventsMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mvp);
 
-        bus = Bus.getNewEventBus();
+        bus = Bus.Companion.getNewEventBus();
         presenter = new AttributeMainPresenter(
                 new AttributeMainView(this, bus),
-                new AttributeMainModel(bus)
+                new AttributeMainModel(bus),
+                bus
         );
     }
 

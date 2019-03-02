@@ -44,64 +44,64 @@ public class BaseActivityTest {
 
     @Test
     public void itShouldCallPresenterOnStart() {
-        baseActivity.presenter = presenter;
+        baseActivity.setPresenter(presenter);
         baseActivity.onStart();
         verify(presenter).onStart();
     }
 
     @Test
     public void itShouldCallPresenterOnResume() {
-        baseActivity.presenter = presenter;
+        baseActivity.setPresenter(presenter);
         baseActivity.onResume();
         verify(presenter).onResume();
     }
 
     @Test
     public void itShouldNotRegisterPresenterOnBusDueToLackOfSubscriptions() {
-        baseActivity.presenter = presenter;
+        baseActivity.setPresenter(presenter);
         baseActivity.onResume();
-        assertFalse(bus.isRegistered(baseActivity.presenter));
+        assertFalse(bus.isRegistered(baseActivity.getPresenter()));
     }
 
     @Test
     public void itShouldRegisterPresenterOnBus() {
-        baseActivity.presenter = new PresenterWithSubscription(baseActivity);
+        baseActivity.setPresenter(new PresenterWithSubscription(baseActivity));
         baseActivity.onResume();
-        assertTrue(bus.isRegistered(baseActivity.presenter));
+        assertTrue(bus.isRegistered(baseActivity.getPresenter()));
     }
 
     @Test
     public void itShouldCallPresenterOnPause() {
-        baseActivity.presenter = presenter;
+        baseActivity.setPresenter(presenter);
         baseActivity.onPause();
         verify(presenter).onPause();
     }
 
     @Test
     public void itShouldUnregisterPresenterFromBus() {
-        baseActivity.presenter = new PresenterWithSubscription(baseActivity);
+        baseActivity.setPresenter(new PresenterWithSubscription(baseActivity));
         baseActivity.onResume();
         baseActivity.onPause();
-        assertFalse(bus.isRegistered(baseActivity.presenter));
+        assertFalse(bus.isRegistered(baseActivity.getPresenter()));
     }
 
     @Test
     public void itShouldCallPresenterOnStop() {
-        baseActivity.presenter = presenter;
+        baseActivity.setPresenter(presenter);
         baseActivity.onStop();
         verify(presenter).onStop();
     }
 
     @Test
     public void itShouldCallPresenterOnBackPressed() {
-        baseActivity.presenter = presenter;
+        baseActivity.setPresenter(presenter);
         baseActivity.onBackPressed();
         verify(presenter).onBackPressed();
     }
 
     @Test
     public void itShouldCallPresenterOnCreateOptionsMenu() {
-        baseActivity.presenter = presenter;
+        baseActivity.setPresenter(presenter);
         Menu mockMenu = mock(Menu.class);
         baseActivity.onCreateOptionsMenu(mockMenu);
         verify(presenter).onCreateOptionsMenu(mockMenu);
@@ -109,7 +109,7 @@ public class BaseActivityTest {
 
     @Test
     public void itShouldCallPresenterOnOptionsItemSelected() {
-        baseActivity.presenter = presenter;
+        baseActivity.setPresenter(presenter);
         MenuItem mockMenuItem = mock(MenuItem.class);
         baseActivity.onOptionsItemSelected(mockMenuItem);
         verify(presenter).onOptionsItemSelected(mockMenuItem);
@@ -117,7 +117,7 @@ public class BaseActivityTest {
 
     @Test
     public void itShouldCallPresenterOnActivityResult() {
-        baseActivity.presenter = presenter;
+        baseActivity.setPresenter(presenter);
         int requestCode = 14;
         int resultCode = 114;
         Intent mockedData = mock(Intent.class);
@@ -127,7 +127,7 @@ public class BaseActivityTest {
 
     @Test
     public void itShouldCallPresenterOnRequestPermissionsResult() {
-        baseActivity.presenter = presenter;
+        baseActivity.setPresenter(presenter);
         int requestCode = 14;
         String[] permissions = new String[3];
         int[] grantResults = new int[2];
@@ -137,7 +137,7 @@ public class BaseActivityTest {
 
     @Test
     public void itShouldCallPresenterOnConfigurationChanged() {
-        baseActivity.presenter = presenter;
+        baseActivity.setPresenter(presenter);
         Configuration mockedConfiguration = mock(Configuration.class);
         baseActivity.onConfigurationChanged(mockedConfiguration);
         verify(presenter).onConfigurationChanged(mockedConfiguration);
@@ -145,7 +145,7 @@ public class BaseActivityTest {
 
     @Test
     public void itShouldCallPresenterOnSaveInstanceState() {
-        baseActivity.presenter = presenter;
+        baseActivity.setPresenter(presenter);
         Bundle mockedBundle = mock(Bundle.class);
         baseActivity.onSaveInstanceState(mockedBundle);
         verify(presenter).onSaveInstanceState(mockedBundle);
@@ -153,7 +153,7 @@ public class BaseActivityTest {
 
     @Test
     public void itShouldCallPresenterOnRestoreInstanceState() {
-        baseActivity.presenter = presenter;
+        baseActivity.setPresenter(presenter);
         Bundle mockedBundle = mock(Bundle.class);
         baseActivity.onRestoreInstanceState(mockedBundle);
         verify(presenter).onRestoreInstanceState(mockedBundle);

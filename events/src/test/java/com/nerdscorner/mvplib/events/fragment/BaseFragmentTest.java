@@ -42,57 +42,57 @@ public class BaseFragmentTest {
 
     @Test
     public void itShouldCallPresenterOnStart() {
-        baseFragment.presenter = presenter;
+        baseFragment.setPresenter(presenter);
         baseFragment.onStart();
         verify(presenter).onStart();
     }
 
     @Test
     public void itShouldCallPresenterOnResume() {
-        baseFragment.presenter = presenter;
+        baseFragment.setPresenter(presenter);
         baseFragment.onResume();
         verify(presenter).onResume();
     }
 
     @Test
     public void itShouldNotRegisterPresenterOnBusDueToLackOfSubscriptions() {
-        baseFragment.presenter = presenter;
+        baseFragment.setPresenter(presenter);
         baseFragment.onResume();
-        assertFalse(bus.isRegistered(baseFragment.presenter));
+        assertFalse(bus.isRegistered(baseFragment.getPresenter()));
     }
 
     @Test
     public void itShouldRegisterPresenterOnBus() {
-        baseFragment.presenter = new PresenterWithSubscription(baseFragment);
+        baseFragment.setPresenter(new PresenterWithSubscription(baseFragment));
         baseFragment.onResume();
-        assertTrue(bus.isRegistered(baseFragment.presenter));
+        assertTrue(bus.isRegistered(baseFragment.getPresenter()));
     }
 
     @Test
     public void itShouldCallPresenterOnPause() {
-        baseFragment.presenter = presenter;
+        baseFragment.setPresenter(presenter);
         baseFragment.onPause();
         verify(presenter).onPause();
     }
 
     @Test
     public void itShouldUnregisterPresenterFromBus() {
-        baseFragment.presenter = new PresenterWithSubscription(baseFragment);
+        baseFragment.setPresenter(new PresenterWithSubscription(baseFragment));
         baseFragment.onResume();
         baseFragment.onPause();
-        assertFalse(bus.isRegistered(baseFragment.presenter));
+        assertFalse(bus.isRegistered(baseFragment.getPresenter()));
     }
 
     @Test
     public void itShouldCallPresenterOnStop() {
-        baseFragment.presenter = presenter;
+        baseFragment.setPresenter(presenter);
         baseFragment.onStop();
         verify(presenter).onStop();
     }
 
     @Test
     public void itShouldCallPresenterOnCreateOptionsMenu() {
-        baseFragment.presenter = presenter;
+        baseFragment.setPresenter(presenter);
         Menu mockMenu = mock(Menu.class);
         MenuInflater mockMenuInflater = mock(MenuInflater.class);
         baseFragment.onCreateOptionsMenu(mockMenu, mockMenuInflater);
@@ -101,7 +101,7 @@ public class BaseFragmentTest {
 
     @Test
     public void itShouldCallPresenterOnOptionsItemSelected() {
-        baseFragment.presenter = presenter;
+        baseFragment.setPresenter(presenter);
         MenuItem mockMenuItem = mock(MenuItem.class);
         baseFragment.onOptionsItemSelected(mockMenuItem);
         verify(presenter).onOptionsItemSelected(mockMenuItem);
@@ -109,7 +109,7 @@ public class BaseFragmentTest {
 
     @Test
     public void itShouldCallPresenterOnConfigurationChanged() {
-        baseFragment.presenter = presenter;
+        baseFragment.setPresenter(presenter);
         Configuration mockedConfiguration = mock(Configuration.class);
         baseFragment.onConfigurationChanged(mockedConfiguration);
         verify(presenter).onConfigurationChanged(mockedConfiguration);
@@ -117,7 +117,7 @@ public class BaseFragmentTest {
 
     @Test
     public void itShouldCallPresenterOnSaveInstanceState() {
-        baseFragment.presenter = presenter;
+        baseFragment.setPresenter(presenter);
         Bundle mockedBundle = mock(Bundle.class);
         baseFragment.onSaveInstanceState(mockedBundle);
         verify(presenter).onSaveInstanceState(mockedBundle);
