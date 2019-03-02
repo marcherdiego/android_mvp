@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 
@@ -15,11 +16,17 @@ import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter
 open class BaseActivity<P : BaseActivityPresenter<*, *>> : AppCompatActivity() {
 
     var presenter: P? = null
+        get() {
+            if (field == null) {
+                Log.w(TAG, "Presenter is null, did you missed to initialise it?")
+            }
+            return field
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (MvpConfig.registerAt == RegisterAt.ON_CREATE) {
-            presenter!!.bus.register(presenter)
+            presenter?.bus?.register(presenter)
         }
     }
 
@@ -99,5 +106,9 @@ open class BaseActivity<P : BaseActivityPresenter<*, *>> : AppCompatActivity() {
     public override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         presenter?.onRestoreInstanceState(savedInstanceState)
+    }
+
+    companion object {
+        const val TAG = "BaseActivity"
     }
 }

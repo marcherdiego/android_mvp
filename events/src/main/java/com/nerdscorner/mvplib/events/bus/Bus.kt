@@ -2,6 +2,7 @@ package com.nerdscorner.mvplib.events.bus
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -15,14 +16,16 @@ class Bus private constructor(private val eventBus: EventBus) {
      */
     fun register(subscriber: Any?) {
         if (subscriber == null) {
-            throw IllegalArgumentException("Subscriber cannot be null.")
+            Log.e(TAG, "Subscriber cannot be null.")
+            return
         }
         try {
             if (!isRegistered(subscriber)) {
                 eventBus.register(subscriber)
             }
-        } catch (ignored: Exception) {
+        } catch (exception: Exception) {
             //No @Subscribe annotations detected
+            Log.e(TAG, exception.message)
         }
     }
 
@@ -33,14 +36,16 @@ class Bus private constructor(private val eventBus: EventBus) {
      */
     fun unregister(subscriber: Any?) {
         if (subscriber == null) {
-            throw IllegalArgumentException("Subscriber cannot be null.")
+            Log.e(TAG, "Subscriber cannot be null.")
+            return
         }
         try {
             if (isRegistered(subscriber)) {
                 eventBus.unregister(subscriber)
             }
-        } catch (ignored: Exception) {
+        } catch (exception: Exception) {
             //No @Subscribe annotations detected
+            Log.e(TAG, exception.message)
         }
     }
 
@@ -118,6 +123,8 @@ class Bus private constructor(private val eventBus: EventBus) {
 
     companion object {
 
+        const val TAG = "Bus"
+
         val defaultEventBus: Bus
             get() = Bus(EventBus.getDefault())
 
@@ -155,6 +162,3 @@ class Bus private constructor(private val eventBus: EventBus) {
         }
     }
 }
-/**
- * Posts the given event to the event bus.
- */

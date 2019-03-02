@@ -20,7 +20,7 @@ public class InheritanceMainView extends BaseActivityView {
 
     @OnClick(R.id.some_button)
     public void onActionClicked() {
-        bus.post(new ActionClickedEvent());
+        getBus().post(new ActionClickedEvent());
     }
 
     public void setTextValue(CharSequence value) {

@@ -21,7 +21,7 @@ public class AttributeFragmentMainView extends BaseActivityView {
 
     @OnClick(R.id.next_fragment_btn)
     public void onNextFragmentClicked() {
-        bus.post(new NextFragmentClickedEvent());
+        getBus().post(new NextFragmentClickedEvent());
     }
 
     public void setCurrentFragment(Fragment nextFragment) {

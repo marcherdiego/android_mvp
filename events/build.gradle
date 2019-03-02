@@ -38,6 +38,10 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
+androidExtensions {
+    experimental = true
+}
+
 apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
 repositories {
     mavenCentral()
