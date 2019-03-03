@@ -16,12 +16,12 @@ public class InheritanceMainPresenter extends BaseActivityPresenter<InheritanceM
 
     @Subscribe
     public void onActionClicked(ActionClickedEvent event) {
-        view.setTextValue("Executing background task...");
-        model.doSomethingInBackground();
+        getView().setTextValue("Executing background task...");
+        getModel().doSomethingInBackground();
     }
 
     @Subscribe
     public void onBackgroundTaskCompleted(BackgroundTaskCompletedEvent event) {
-        view.setTextValue("Background task completed");
+        getView().setTextValue("Background task completed");
     }
 }

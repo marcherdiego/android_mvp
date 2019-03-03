@@ -23,7 +23,7 @@ public class AttributeForFragmentMainPresenter extends BaseActivityPresenter<Att
 
     @Subscribe
     public void onNextFragmentClicked(NextFragmentClickedEvent event) {
-        int nextFragment = model.getNextFragment();
+        int nextFragment = getModel().getNextFragment();
         Fragment fragment;
         switch (nextFragment) {
             case AttributeFragmentMainModel.FRAGMENT_1:
@@ -35,7 +35,7 @@ public class AttributeForFragmentMainPresenter extends BaseActivityPresenter<Att
             default:
                 throw new IllegalArgumentException("Invalid fragment code: " + nextFragment);
         }
-        view.setCurrentFragment(fragment);
+        getView().setCurrentFragment(fragment);
     }
 
     @Subscribe
