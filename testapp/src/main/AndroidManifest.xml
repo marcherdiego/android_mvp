@@ -24,12 +24,7 @@
         </activity>
         <activity android:name=".events.attribute.activities.AttributeEventsMainActivity">
         </activity>
-        <activity android:name=".interfaces.behaviour.BehaviourInterfacesMainActivity">
-        </activity>
-        <activity android:name=".interfaces.attribute.AttributeInterfacesMainActivity">
-        </activity>
         <activity android:name=".events.inheritance.InheritanceEventsMainActivity"/>
-        <activity android:name=".interfaces.inheritance.InheritanceInterfacesMainActivity"/>
         <activity android:name=".events.attribute.fragments.AttributeEventsForFragmentsMainActivity"/>
     </application>
 
