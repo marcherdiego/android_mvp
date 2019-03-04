@@ -17,12 +17,14 @@ abstract class BaseFragmentView : BaseView {
 
     val fragmentManager: FragmentManager?
         get() {
-            val activity = activity
-            return activity?.supportFragmentManager
+            return fragmentRef?.get()?.activity?.supportFragmentManager
         }
 
+    override fun getActivity(): FragmentActivity? {
+        return fragmentRef?.get()?.activity
+    }
     val context: Context?
-        get() = activity
+        get() = fragmentRef?.get()?.context
 
     val fragment: Fragment?
         get() = fragmentRef?.get()
@@ -35,9 +37,5 @@ abstract class BaseFragmentView : BaseView {
     constructor(fragment: Fragment, bus: Bus) {
         fragmentRef = WeakReference(fragment)
         this.bus = bus
-    }
-
-    override fun getActivity(): FragmentActivity? {
-        return fragmentRef?.get()?.activity
     }
 }

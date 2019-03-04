@@ -13,46 +13,17 @@
         android:textSize="20sp"/>
 
     <Button
-        android:id="@+id/interfaces_behaviour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/activities_title"
-        android:text="interfaces behaviour"/>
-
-    <Button
-        android:id="@+id/interfaces_attributes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/interfaces_behaviour"
-        android:layout_marginTop="8dp"
-        android:text="interfaces attribute"/>
-
-    <Button
-        android:id="@+id/interfaces_inheritance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/interfaces_attributes"
-        android:layout_marginTop="8dp"
-        android:text="interfaces inheritance"/>
-
-    <Button
         android:id="@+id/events_behaviour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_below="@+id/activities_title"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="events behaviour"/>
 
     <Button
         android:id="@+id/events_attributes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_below="@+id/events_behaviour"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:text="events attribute"/>
 
@@ -60,10 +31,7 @@
         android:id="@+id/events_inheritance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_below="@+id/events_attributes"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:text="events inheritance"/>
 
@@ -71,7 +39,7 @@
         android:id="@+id/fragments_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/interfaces_inheritance"
+        android:layout_below="@id/events_inheritance"
         android:layout_marginTop="8dp"
         android:text="Fragments"
         android:textSize="20sp"/>

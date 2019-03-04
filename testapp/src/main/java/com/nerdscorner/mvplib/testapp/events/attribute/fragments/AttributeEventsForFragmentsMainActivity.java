@@ -22,7 +22,8 @@ public class AttributeEventsForFragmentsMainActivity extends AppCompatActivity {
         bus = Bus.Companion.getNewEventBus();
         presenter = new AttributeForFragmentMainPresenter(
                 new AttributeFragmentMainView(this, bus),
-                new AttributeFragmentMainModel(bus)
+                new AttributeFragmentMainModel(bus),
+                bus
         );
     }
 

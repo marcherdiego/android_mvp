@@ -11,9 +11,6 @@ import com.nerdscorner.mvplib.testapp.events.attribute.activities.AttributeEvent
 import com.nerdscorner.mvplib.testapp.events.attribute.fragments.AttributeEventsForFragmentsMainActivity;
 import com.nerdscorner.mvplib.testapp.events.behaviour.BehaviourEventsMainActivity;
 import com.nerdscorner.mvplib.testapp.events.inheritance.InheritanceEventsMainActivity;
-import com.nerdscorner.mvplib.testapp.interfaces.attribute.AttributeInterfacesMainActivity;
-import com.nerdscorner.mvplib.testapp.interfaces.behaviour.BehaviourInterfacesMainActivity;
-import com.nerdscorner.mvplib.testapp.interfaces.inheritance.InheritanceInterfacesMainActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,9 +19,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        addListenerToView(R.id.interfaces_behaviour, BehaviourInterfacesMainActivity.class);
-        addListenerToView(R.id.interfaces_attributes, AttributeInterfacesMainActivity.class);
-        addListenerToView(R.id.interfaces_inheritance, InheritanceInterfacesMainActivity.class);
         addListenerToView(R.id.events_behaviour, BehaviourEventsMainActivity.class);
         addListenerToView(R.id.events_attributes, AttributeEventsMainActivity.class);
         addListenerToView(R.id.events_inheritance, InheritanceEventsMainActivity.class);

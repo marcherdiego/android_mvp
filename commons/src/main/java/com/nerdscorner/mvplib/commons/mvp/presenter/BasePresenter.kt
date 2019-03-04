@@ -43,17 +43,17 @@ abstract class BasePresenter<V : BaseView, M : BaseModel>(
         return false
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {}
+    override fun onConfigurationChanged(newConfig: Configuration?) {}
 
     override fun onSaveInstanceState(outState: Bundle) {}
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return false
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {}
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {}
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {}
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {}
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {}
 }

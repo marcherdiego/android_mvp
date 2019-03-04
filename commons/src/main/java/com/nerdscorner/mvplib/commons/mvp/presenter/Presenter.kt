@@ -19,15 +19,15 @@ interface Presenter {
 
     fun onBackPressed(): Boolean
 
-    fun onConfigurationChanged(newConfig: Configuration)
+    fun onConfigurationChanged(newConfig: Configuration?)
 
     fun onSaveInstanceState(outState: Bundle)
 
-    fun onOptionsItemSelected(item: MenuItem): Boolean
+    fun onOptionsItemSelected(item: MenuItem?): Boolean
 
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
 
     fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray)
 
-    fun onRestoreInstanceState(savedInstanceState: Bundle)
+    fun onRestoreInstanceState(savedInstanceState: Bundle?)
 }

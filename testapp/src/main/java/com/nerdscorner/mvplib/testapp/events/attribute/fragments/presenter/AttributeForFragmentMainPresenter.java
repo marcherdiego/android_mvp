@@ -2,8 +2,8 @@ package com.nerdscorner.mvplib.testapp.events.attribute.fragments.presenter;
 
 import android.support.v4.app.Fragment;
 
+import com.nerdscorner.mvplib.events.bus.Bus;
 import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter;
-import com.nerdscorner.mvplib.testapp.events.attribute.activities.model.AttributeMainModel.BackgroundTaskCompletedEvent;
 import com.nerdscorner.mvplib.testapp.events.attribute.fragments.Fragment1;
 import com.nerdscorner.mvplib.testapp.events.attribute.fragments.Fragment2;
 import com.nerdscorner.mvplib.testapp.events.attribute.fragments.model.AttributeFragmentMainModel;
@@ -14,8 +14,8 @@ import org.greenrobot.eventbus.Subscribe;
 
 public class AttributeForFragmentMainPresenter extends BaseActivityPresenter<AttributeFragmentMainView, AttributeFragmentMainModel> {
 
-    public AttributeForFragmentMainPresenter(AttributeFragmentMainView view, AttributeFragmentMainModel model) {
-        super(view, model);
+    public AttributeForFragmentMainPresenter(AttributeFragmentMainView view, AttributeFragmentMainModel model, Bus bus) {
+        super(view, model, bus);
 
         //Just so we can show the fragment 1 when the view is created
         onNextFragmentClicked(null);
@@ -38,7 +38,4 @@ public class AttributeForFragmentMainPresenter extends BaseActivityPresenter<Att
         getView().setCurrentFragment(fragment);
     }
 
-    @Subscribe
-    public void onBackgroundTaskCompleted(BackgroundTaskCompletedEvent event) {
-    }
 }
