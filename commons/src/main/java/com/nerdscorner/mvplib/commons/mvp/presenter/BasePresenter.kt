@@ -53,7 +53,7 @@ abstract class BasePresenter<V : BaseView, M : BaseModel>(
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {}
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {}
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {}
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {}
 }

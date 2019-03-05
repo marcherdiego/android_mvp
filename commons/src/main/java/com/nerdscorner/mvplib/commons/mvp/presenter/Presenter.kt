@@ -27,7 +27,7 @@ interface Presenter {
 
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
 
-    fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray)
+    fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray)
 
     fun onRestoreInstanceState(savedInstanceState: Bundle?)
 }

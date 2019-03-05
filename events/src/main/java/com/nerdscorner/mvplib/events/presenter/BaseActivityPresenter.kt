@@ -23,7 +23,7 @@ open class BaseActivityPresenter<V : BaseActivityView, M : BaseEventsModel>
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {}
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>,
                                             grantResults: IntArray) {
     }
 

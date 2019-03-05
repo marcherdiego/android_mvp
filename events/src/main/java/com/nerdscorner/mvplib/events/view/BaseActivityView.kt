@@ -1,5 +1,6 @@
 package com.nerdscorner.mvplib.events.view
 
+import android.app.Activity
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import com.nerdscorner.mvplib.commons.mvp.view.BaseView
@@ -11,6 +12,9 @@ abstract class BaseActivityView @JvmOverloads constructor(
         var bus: Bus = Bus.defaultEventBus
 ) : BaseView() {
 
+    override val activity: Activity?
+        get() = getActivity()
+
     private val activityRef: WeakReference<AppCompatActivity> = WeakReference(activity)
 
     val fragmentManager: FragmentManager?
@@ -18,7 +22,7 @@ abstract class BaseActivityView @JvmOverloads constructor(
             return activityRef.get()?.supportFragmentManager
         }
 
-    override fun getActivity(): AppCompatActivity? {
+    fun getActivity(): AppCompatActivity? {
         return activityRef.get()
     }
 

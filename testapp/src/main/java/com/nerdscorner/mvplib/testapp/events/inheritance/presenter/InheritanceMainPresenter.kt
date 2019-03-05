@@ -14,6 +14,10 @@ class InheritanceMainPresenter(view: InheritanceMainView, model: InheritanceMain
     @Subscribe
     fun onActionClicked(event: ActionClickedEvent) {
         view.setTextValue("Executing background task...")
+        view.activity?.let {
+
+        }
+        view.getActivity()
         model.doSomethingInBackground()
     }
 
