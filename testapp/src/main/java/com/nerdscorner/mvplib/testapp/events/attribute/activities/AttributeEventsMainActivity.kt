@@ -18,7 +18,7 @@ class AttributeEventsMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mvp)
 
-        bus = Bus.newEventBus
+        bus = Bus.newInstance
         presenter = AttributeMainPresenter(
                 AttributeMainView(this, bus),
                 AttributeMainModel(bus),

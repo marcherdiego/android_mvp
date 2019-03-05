@@ -128,8 +128,13 @@ class Bus private constructor(private val eventBus: EventBus) {
         val defaultEventBus: Bus
             get() = Bus(EventBus.getDefault())
 
-        val newEventBus: Bus
-            get() = Bus(EventBus())
+        val newInstance: Bus
+            get() = getNewEventBus()
+
+        /**
+         * Returns a new instance of the event bus
+         */
+        fun getNewEventBus() = Bus(EventBus())
 
         /**
          * Register a subscriber to the default event bus

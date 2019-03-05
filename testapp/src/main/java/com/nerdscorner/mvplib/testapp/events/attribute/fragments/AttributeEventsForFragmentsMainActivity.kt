@@ -18,7 +18,7 @@ class AttributeEventsForFragmentsMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mvp_for_fragments)
 
-        bus = Bus.newEventBus
+        bus = Bus.newInstance
         presenter = AttributeForFragmentMainPresenter(
                 AttributeFragmentMainView(this, bus),
                 AttributeFragmentMainModel(bus),

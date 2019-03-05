@@ -28,8 +28,8 @@ android {
 }
 
 dependencies {
-//    api project(":commons")
-    api "com.nerdscorner.mvp:commons:$commonsLibVersion"
+    api project(":commons")
+//    api "com.nerdscorner.mvp:commons:$commonsLibVersion"
     implementation 'com.android.support:appcompat-v7:28.0.0'
     api 'org.greenrobot:eventbus:3.1.1'
     testImplementation 'junit:junit:4.12'

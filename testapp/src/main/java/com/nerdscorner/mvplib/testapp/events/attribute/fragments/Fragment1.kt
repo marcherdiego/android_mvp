@@ -26,7 +26,7 @@ class Fragment1 : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        bus = Bus.newEventBus
+        bus = Bus.newInstance
         presenter = Fragment1Presenter(
                 Fragment1View(this, bus),
                 Fragment1Model(bus)
