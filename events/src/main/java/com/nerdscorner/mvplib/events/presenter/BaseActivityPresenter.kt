@@ -17,7 +17,7 @@ open class BaseActivityPresenter<V : BaseActivityView, M : BaseEventsModel>
         model.bus = bus
     }
 
-    fun onCreateOptionsMenu(menu: Menu): Boolean {
+    open fun onCreateOptionsMenu(menu: Menu): Boolean {
         return true
     }
 

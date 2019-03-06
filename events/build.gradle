@@ -11,6 +11,7 @@ ext {
 android {
     compileSdkVersion 28
     testOptions.unitTests.includeAndroidResources = true
+    testOptions.unitTests.returnDefaultValues = true
 
     defaultConfig {
         minSdkVersion 15

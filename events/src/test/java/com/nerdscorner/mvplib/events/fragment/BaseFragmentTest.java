@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.nerdscorner.mvplib.commons.mvp.model.BaseModel;
+import com.nerdscorner.mvplib.events.model.BaseEventsModel;
 import com.nerdscorner.mvplib.events.presenter.BaseFragmentPresenter;
 import com.nerdscorner.mvplib.events.view.BaseFragmentView;
 
@@ -16,8 +16,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.Mockito;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.shadows.support.v4.SupportFragmentController;
 
@@ -28,16 +27,21 @@ import static org.mockito.Mockito.verify;
 
 @RunWith(RobolectricTestRunner.class)
 public class BaseFragmentTest {
-    @Mock BaseFragmentPresenter presenter;
+    private BaseFragmentPresenter presenter;
 
     private MockBaseFragment baseFragment;
     private EventBus bus = EventBus.getDefault();
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
         MockBaseFragment mockBaseFragment = new MockBaseFragment();
         baseFragment = SupportFragmentController.of(mockBaseFragment).create().get();
+        presenter = Mockito.spy(
+                new BaseFragmentPresenter<>(
+                        new MockBaseFragmentView(mockBaseFragment),
+                        new BaseEventsModel()
+                )
+        );
     }
 
     @Test
@@ -123,9 +127,9 @@ public class BaseFragmentTest {
         verify(presenter).onSaveInstanceState(mockedBundle);
     }
 
-    class PresenterWithSubscription extends BaseFragmentPresenter<BaseFragmentView, BaseModel> {
+    class PresenterWithSubscription extends BaseFragmentPresenter<BaseFragmentView, BaseEventsModel> {
         PresenterWithSubscription(@NonNull BaseFragment fragment) {
-            super(new MockBaseFragmentView(fragment), new BaseModel());
+            super(new MockBaseFragmentView(fragment), new BaseEventsModel());
         }
 
         @Subscribe

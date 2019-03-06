@@ -7,18 +7,17 @@ import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.nerdscorner.mvplib.commons.mvp.model.BaseModel;
 import com.nerdscorner.mvplib.events.TestApplication;
+import com.nerdscorner.mvplib.events.bus.Bus;
+import com.nerdscorner.mvplib.events.model.BaseEventsModel;
 import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter;
 import com.nerdscorner.mvplib.events.view.BaseActivityView;
 
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.Mockito;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
@@ -31,15 +30,21 @@ import static org.mockito.Mockito.verify;
 @RunWith(RobolectricTestRunner.class)
 @Config(application = TestApplication.class)
 public class BaseActivityTest {
-    @Mock BaseActivityPresenter presenter;
+    private BaseActivityPresenter presenter;
 
     private BaseActivity baseActivity;
-    private EventBus bus = EventBus.getDefault();
+    private Bus bus = Bus.Companion.getDefaultBus();
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
         baseActivity = Robolectric.buildActivity(BaseActivity.class).create().get();
+        presenter = Mockito.spy(
+                new BaseActivityPresenter<>(
+                        new MockBaseActivityView(baseActivity),
+                        new BaseEventsModel(),
+                        bus
+                )
+        );
     }
 
     @Test
@@ -159,10 +164,10 @@ public class BaseActivityTest {
         verify(presenter).onRestoreInstanceState(mockedBundle);
     }
 
-    class PresenterWithSubscription extends BaseActivityPresenter<BaseActivityView, BaseModel> {
+    class PresenterWithSubscription extends BaseActivityPresenter<BaseActivityView, BaseEventsModel> {
 
         PresenterWithSubscription(@NonNull BaseActivity activity) {
-            super(new MockBaseActivityView(activity), new BaseModel());
+            super(new MockBaseActivityView(activity), new BaseEventsModel(), bus);
         }
 
         @Subscribe

@@ -9,36 +9,28 @@ import com.nerdscorner.mvplib.commons.mvp.view.BaseView
 import com.nerdscorner.mvplib.events.bus.Bus
 import java.lang.ref.WeakReference
 
-abstract class BaseFragmentView : BaseView {
+abstract class BaseFragmentView @JvmOverloads constructor(
+        fragment: Fragment,
+        var bus: Bus = Bus.defaultBus
+) : BaseView() {
 
-    private var fragmentRef: WeakReference<Fragment>? = null
-    var bus: Bus
+    private var fragmentRef: WeakReference<Fragment> = WeakReference(fragment)
 
     override val activity: Activity?
         get() = getActivity()
 
     val fragmentManager: FragmentManager?
         get() {
-            return fragmentRef?.get()?.activity?.supportFragmentManager
+            return fragmentRef.get()?.activity?.supportFragmentManager
         }
 
     val context: Context?
-        get() = fragmentRef?.get()?.context
+        get() = fragmentRef.get()?.context
 
     val fragment: Fragment?
-        get() = fragmentRef?.get()
+        get() = fragmentRef.get()
 
     fun getActivity(): FragmentActivity? {
-        return fragmentRef?.get()?.activity
-    }
-
-    constructor(fragment: Fragment) {
-        fragmentRef = WeakReference(fragment)
-        bus = Bus.defaultBus
-    }
-
-    constructor(fragment: Fragment, bus: Bus) {
-        fragmentRef = WeakReference(fragment)
-        this.bus = bus
+        return fragmentRef.get()?.activity
     }
 }

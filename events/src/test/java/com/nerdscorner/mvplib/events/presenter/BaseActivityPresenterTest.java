@@ -1,6 +1,6 @@
 package com.nerdscorner.mvplib.events.presenter;
 
-import com.nerdscorner.mvplib.commons.mvp.model.BaseModel;
+import com.nerdscorner.mvplib.events.model.BaseEventsModel;
 import com.nerdscorner.mvplib.events.view.BaseActivityView;
 
 import org.junit.Before;
@@ -15,7 +15,7 @@ public class BaseActivityPresenterTest {
     private BaseActivityPresenter baseActivityPresenter;
 
     @Mock BaseActivityView view;
-    @Mock BaseModel model;
+    @Mock BaseEventsModel model;
 
     @Before
     public void setUp() {

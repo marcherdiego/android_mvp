@@ -4,20 +4,20 @@ import android.app.Activity
 import android.support.annotation.StringRes
 import android.widget.Toast
 
-abstract class BaseView {
+abstract class BaseView() {
     abstract val activity: Activity?
 
-    fun unbind() {}
+    open fun unbind() {}
 
-    fun onResume() {}
+    open fun onResume() {}
 
-    fun onPause() {}
+    open fun onPause() {}
 
-    fun onDestroyView() {}
+    open fun onDestroyView() {}
 
-    fun onStop() {}
+    open fun onStop() {}
 
-    fun onStart() {}
+    open fun onStart() {}
 
     fun showToast(@StringRes textResId: Int) {
         val activity = activity ?: return
