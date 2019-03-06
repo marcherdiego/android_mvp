@@ -8,7 +8,7 @@ open class BaseEventsModel : BaseModel {
     var bus: Bus
 
     constructor() {
-        bus = Bus.defaultEventBus
+        bus = Bus.defaultBus
     }
 
     constructor(bus: Bus) {

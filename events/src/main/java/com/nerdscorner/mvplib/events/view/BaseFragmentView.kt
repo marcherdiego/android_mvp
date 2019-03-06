@@ -34,7 +34,7 @@ abstract class BaseFragmentView : BaseView {
 
     constructor(fragment: Fragment) {
         fragmentRef = WeakReference(fragment)
-        bus = Bus.defaultEventBus
+        bus = Bus.defaultBus
     }
 
     constructor(fragment: Fragment, bus: Bus) {

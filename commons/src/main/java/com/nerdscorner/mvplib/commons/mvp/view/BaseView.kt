@@ -29,7 +29,7 @@ abstract class BaseView {
         Toast.makeText(activity, activity.getString(textResId, *args), Toast.LENGTH_SHORT).show()
     }
 
-    fun showToast(text: String) {
+    fun showToast(text: String?) {
         val activity = activity ?: return
         Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
     }
@@ -39,7 +39,7 @@ abstract class BaseView {
         Toast.makeText(activity, activity.getString(textResId), duration).show()
     }
 
-    fun showToast(duration: Int, text: String) {
+    fun showToast(duration: Int, text: String?) {
         val activity = activity ?: return
         Toast.makeText(activity, text, duration).show()
     }

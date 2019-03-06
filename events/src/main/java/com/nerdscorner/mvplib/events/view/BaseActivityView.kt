@@ -9,7 +9,7 @@ import java.lang.ref.WeakReference
 
 abstract class BaseActivityView @JvmOverloads constructor(
         activity: AppCompatActivity,
-        var bus: Bus = Bus.defaultEventBus
+        var bus: Bus = Bus.defaultBus
 ) : BaseView() {
 
     override val activity: Activity?

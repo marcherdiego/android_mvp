@@ -125,11 +125,16 @@ class Bus private constructor(private val eventBus: EventBus) {
 
         const val TAG = "Bus"
 
-        val defaultEventBus: Bus
-            get() = Bus(EventBus.getDefault())
+        val defaultBus: Bus
+            get() = getDefaultEventBus()
 
         val newInstance: Bus
             get() = getNewEventBus()
+
+        /**
+         * Returns the default event bus
+         */
+        fun getDefaultEventBus() = Bus(EventBus.getDefault())
 
         /**
          * Returns a new instance of the event bus
@@ -143,7 +148,7 @@ class Bus private constructor(private val eventBus: EventBus) {
          */
         fun registerDefault(subscriber: Any) {
             if (!isRegisteredDefault(subscriber)) {
-                defaultEventBus.register(subscriber)
+                defaultBus.register(subscriber)
             }
         }
 
@@ -153,7 +158,7 @@ class Bus private constructor(private val eventBus: EventBus) {
          * @param subscriber the object to unsubscribe
          */
         fun unregisterDefault(subscriber: Any) {
-            defaultEventBus.unregister(subscriber)
+            defaultBus.unregister(subscriber)
         }
 
         /**
@@ -163,7 +168,7 @@ class Bus private constructor(private val eventBus: EventBus) {
          * @return boolean if the object is already registered
          */
         fun isRegisteredDefault(subscriber: Any): Boolean {
-            return defaultEventBus.isRegistered(subscriber)
+            return defaultBus.isRegistered(subscriber)
         }
     }
 }

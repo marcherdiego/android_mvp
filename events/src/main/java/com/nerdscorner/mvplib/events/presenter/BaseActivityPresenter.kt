@@ -9,7 +9,7 @@ import com.nerdscorner.mvplib.events.model.BaseEventsModel
 import com.nerdscorner.mvplib.events.view.BaseActivityView
 
 open class BaseActivityPresenter<V : BaseActivityView, M : BaseEventsModel>
-@JvmOverloads constructor(view: V, model: M, var bus: Bus = Bus.defaultEventBus) :
+@JvmOverloads constructor(view: V, model: M, var bus: Bus = Bus.defaultBus) :
         BasePresenter<V, M>(view, model) {
 
     init {
