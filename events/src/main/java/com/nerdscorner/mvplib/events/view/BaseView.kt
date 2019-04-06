@@ -1,10 +1,10 @@
-package com.nerdscorner.mvplib.commons.mvp.view
+package com.nerdscorner.mvplib.events.view
 
 import android.app.Activity
 import android.support.annotation.StringRes
 import android.widget.Toast
 
-abstract class BaseView() {
+abstract class BaseView {
     abstract val activity: Activity?
 
     open fun unbind() {}
@@ -47,5 +47,11 @@ abstract class BaseView() {
     fun showToast(duration: Int, @StringRes textResId: Int, vararg args: Any) {
         val activity = activity ?: return
         Toast.makeText(activity, activity.getString(textResId, *args), duration).show()
+    }
+
+    fun withActivity(block: (Activity) -> Unit) {
+        activity?.let {
+            block(it)
+        }
     }
 }

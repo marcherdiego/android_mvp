@@ -1,4 +1,4 @@
-package com.nerdscorner.mvplib.commons.behaviour
+package com.nerdscorner.mvplib.events.behaviour
 
 import android.support.annotation.CheckResult
 import android.support.v4.util.ArraySet
@@ -33,7 +33,7 @@ private constructor() {
          * @param behaviours to set
          */
         fun set(behaviours: Collection<Class<out Behaviour>>) {
-            RequiredBehaviours.behaviours = behaviours
+            Companion.behaviours = behaviours
         }
 
         /**
@@ -53,7 +53,7 @@ private constructor() {
          */
         @CheckResult
         internal/* default */ fun create(): Collection<Behaviour> {
-            val classes = RequiredBehaviours.behaviours
+            val classes = behaviours
             val behaviours = ArraySet<Behaviour>()
             if (classes != null) {
                 for (each in classes) {

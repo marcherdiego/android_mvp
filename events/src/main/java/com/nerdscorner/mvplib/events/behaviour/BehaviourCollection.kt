@@ -1,4 +1,4 @@
-package com.nerdscorner.mvplib.commons.behaviour
+package com.nerdscorner.mvplib.events.behaviour
 
 import android.support.annotation.CheckResult
 

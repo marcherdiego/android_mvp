@@ -5,19 +5,18 @@ import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
-import com.nerdscorner.mvplib.commons.mvp.view.BaseView
 import com.nerdscorner.mvplib.events.bus.Bus
 import java.lang.ref.WeakReference
 
 abstract class BaseFragmentView @JvmOverloads constructor(
         fragment: Fragment,
-        var bus: Bus = Bus.defaultBus
+        @JvmField protected var bus: Bus = Bus.defaultBus
 ) : BaseView() {
 
     private var fragmentRef: WeakReference<Fragment> = WeakReference(fragment)
 
     override val activity: Activity?
-        get() = getActivity()
+        get() = fragmentRef.get()?.activity
 
     val fragmentManager: FragmentManager?
         get() {
@@ -32,5 +31,10 @@ abstract class BaseFragmentView @JvmOverloads constructor(
 
     fun getActivity(): FragmentActivity? {
         return fragmentRef.get()?.activity
+    }
+
+    @JvmName("busSetter")
+    fun setBus(bus: Bus) {
+        this.bus = bus
     }
 }
