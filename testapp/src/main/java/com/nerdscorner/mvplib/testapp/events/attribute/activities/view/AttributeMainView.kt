@@ -24,7 +24,7 @@ class AttributeMainView(activity: AppCompatActivity, bus: Bus) : BaseActivityVie
     }
 
     fun setTextValue(value: CharSequence) {
-        textView!!.text = value
+        textView?.text = value
     }
 
     class ActionClickedEvent

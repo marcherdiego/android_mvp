@@ -1,11 +1,11 @@
 package com.nerdscorner.mvplib.events.model
 
-import com.nerdscorner.mvplib.commons.mvp.model.BaseModel
 import com.nerdscorner.mvplib.events.bus.Bus
 
-open class BaseEventsModel : BaseModel {
+open class BaseEventsModel {
 
-    var bus: Bus
+    @JvmField
+    protected var bus: Bus
 
     constructor() {
         bus = Bus.defaultBus
@@ -14,4 +14,21 @@ open class BaseEventsModel : BaseModel {
     constructor(bus: Bus) {
         this.bus = bus
     }
+
+    @JvmName("setBusValue")
+    fun setBus(bus: Bus) {
+        this.bus = bus
+    }
+
+    open fun onResume() {}
+
+    open fun onPause() {}
+
+    open fun onStart() {}
+
+    open fun onStop() {}
+
+    open fun onDestroy() {}
+
+    open fun onDestroyView() {}
 }

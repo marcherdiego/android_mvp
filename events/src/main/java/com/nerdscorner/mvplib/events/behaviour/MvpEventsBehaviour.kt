@@ -4,8 +4,7 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.MenuItem
-import com.nerdscorner.mvplib.commons.behaviour.Behaviour
-import com.nerdscorner.mvplib.commons.mvp.presenter.BasePresenter
+import com.nerdscorner.mvplib.events.presenter.BasePresenter
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.RawValue
 import org.greenrobot.eventbus.EventBus
