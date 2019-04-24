@@ -1,8 +1,8 @@
 package com.nerdscorner.mvplib.events.view
 
 import android.app.Activity
-import android.support.annotation.StringRes
 import android.widget.Toast
+import androidx.annotation.StringRes
 
 abstract class BaseView {
     abstract val activity: Activity?

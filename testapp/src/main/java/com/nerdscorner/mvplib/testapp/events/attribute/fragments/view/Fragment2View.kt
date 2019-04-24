@@ -1,7 +1,7 @@
 package com.nerdscorner.mvplib.testapp.events.attribute.fragments.view
 
-import android.support.v4.app.Fragment
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.nerdscorner.mvplib.events.bus.Bus

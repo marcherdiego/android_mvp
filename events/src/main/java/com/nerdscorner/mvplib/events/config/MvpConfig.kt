@@ -1,6 +1,6 @@
 package com.nerdscorner.mvplib.events.config
 
-import android.support.annotation.IntDef
+import androidx.annotation.IntDef
 import com.nerdscorner.mvplib.events.config.MvpConfig.RegisterAt.Companion.ON_CREATE
 import com.nerdscorner.mvplib.events.config.MvpConfig.RegisterAt.Companion.ON_RESUME
 import com.nerdscorner.mvplib.events.config.MvpConfig.RegisterAt.Companion.ON_START

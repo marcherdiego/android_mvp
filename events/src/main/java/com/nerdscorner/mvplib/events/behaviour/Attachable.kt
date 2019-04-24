@@ -1,7 +1,7 @@
 package com.nerdscorner.mvplib.events.behaviour
 
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 
 /**
  * Public interface for attaching specific contexts

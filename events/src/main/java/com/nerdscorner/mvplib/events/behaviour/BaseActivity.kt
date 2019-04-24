@@ -6,13 +6,17 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.CallSuper
-import android.support.annotation.CheckResult
-import android.support.annotation.RequiresApi
-import android.support.v7.app.AppCompatActivity
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
+import androidx.annotation.CallSuper
+import androidx.annotation.CheckResult
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import java.lang.ref.WeakReference
-import java.util.*
+import java.util.Spliterator
 import java.util.function.Consumer
 
 abstract class BaseActivity : AppCompatActivity() {

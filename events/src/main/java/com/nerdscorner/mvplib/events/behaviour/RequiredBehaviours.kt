@@ -1,8 +1,8 @@
 package com.nerdscorner.mvplib.events.behaviour
 
-import android.support.annotation.CheckResult
-import android.support.v4.util.ArraySet
 import android.util.Log
+import androidx.annotation.CheckResult
+import androidx.collection.ArraySet
 
 /**
  * Class for setting required behaviours to be used during the app lifecycle

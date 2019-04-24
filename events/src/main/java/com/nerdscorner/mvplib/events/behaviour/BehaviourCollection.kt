@@ -1,6 +1,6 @@
 package com.nerdscorner.mvplib.events.behaviour
 
-import android.support.annotation.CheckResult
+import androidx.annotation.CheckResult
 
 /**
  * Public interface denoting a collection of behaviours. This extends [<]

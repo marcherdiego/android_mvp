@@ -6,16 +6,17 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.CheckResult
-import android.support.annotation.RequiresApi
-import android.support.annotation.RestrictTo
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import java.util.*
+import androidx.annotation.CheckResult
+import androidx.annotation.RequiresApi
+import androidx.annotation.RestrictTo
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import java.util.HashMap
+import java.util.Spliterator
 import java.util.function.Consumer
 
 /**

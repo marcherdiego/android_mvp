@@ -2,8 +2,13 @@ package com.nerdscorner.mvplib.events.fragment
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.nerdscorner.mvplib.events.config.MvpConfig
 import com.nerdscorner.mvplib.events.config.MvpConfig.RegisterAt
 import com.nerdscorner.mvplib.events.config.MvpConfig.UnregisterAt

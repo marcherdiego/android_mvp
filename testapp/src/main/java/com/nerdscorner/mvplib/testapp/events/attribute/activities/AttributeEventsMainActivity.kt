@@ -1,7 +1,7 @@
 package com.nerdscorner.mvplib.testapp.events.attribute.activities
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 
 import com.nerdscorner.mvplib.events.bus.Bus
 import com.nerdscorner.mvplib.testapp.R

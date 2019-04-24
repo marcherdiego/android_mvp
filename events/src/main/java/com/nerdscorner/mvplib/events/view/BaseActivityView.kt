@@ -1,7 +1,7 @@
 package com.nerdscorner.mvplib.events.view
 
-import android.support.v4.app.FragmentManager
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import com.nerdscorner.mvplib.events.bus.Bus
 import java.lang.ref.WeakReference
 

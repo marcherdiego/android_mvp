@@ -1,7 +1,7 @@
 package com.nerdscorner.mvplib.testapp.events.attribute.fragments.view
 
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import butterknife.ButterKnife
 import butterknife.OnClick
 import com.nerdscorner.mvplib.events.bus.Bus

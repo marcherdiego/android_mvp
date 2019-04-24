@@ -1,7 +1,7 @@
 package com.nerdscorner.mvplib.testapp.events.attribute.fragments.presenter
 
-import android.support.v4.app.Fragment
 
+import androidx.fragment.app.Fragment
 import com.nerdscorner.mvplib.events.bus.Bus
 import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter
 import com.nerdscorner.mvplib.testapp.events.attribute.fragments.Fragment1

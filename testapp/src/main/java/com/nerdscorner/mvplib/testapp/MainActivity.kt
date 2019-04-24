@@ -2,9 +2,9 @@ package com.nerdscorner.mvplib.testapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.annotation.IdRes
-import android.support.v7.app.AppCompatActivity
 import android.view.View
+import androidx.annotation.IdRes
+import androidx.appcompat.app.AppCompatActivity
 import com.nerdscorner.mvplib.testapp.events.attribute.activities.AttributeEventsMainActivity
 import com.nerdscorner.mvplib.testapp.events.attribute.fragments.AttributeEventsForFragmentsMainActivity
 import com.nerdscorner.mvplib.testapp.events.behaviour.BehaviourEventsMainActivity
