@@ -9,18 +9,32 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.nerdscorner.mvplib.events.config.MvpConfig
-import com.nerdscorner.mvplib.events.config.MvpConfig.RegisterAt
-import com.nerdscorner.mvplib.events.config.MvpConfig.UnregisterAt
+import com.nerdscorner.mvplib.events.config.annotations.RegisterAt
+import com.nerdscorner.mvplib.events.config.annotations.RegistrationMode
+import com.nerdscorner.mvplib.events.config.annotations.UnregisterAt
 import com.nerdscorner.mvplib.events.presenter.BaseFragmentPresenter
 
 abstract class BaseFragment<P : BaseFragmentPresenter<*, *>> : Fragment() {
 
     lateinit var presenter: P
 
+    @RegisterAt
+    private var registerAt: Int = RegisterAt.ON_RESUME
+
+    @UnregisterAt
+    private var unregisterAt: Int = UnregisterAt.ON_PAUSE
+
+    init {
+        val registrationMode = javaClass.annotations.find { it is RegistrationMode }
+        (registrationMode as? RegistrationMode)?.let {
+            registerAt = it.registerAt
+            unregisterAt = it.unregisterAt
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        if (MvpConfig.registerAt == RegisterAt.ON_CREATE) {
+        if (registerAt == RegisterAt.ON_CREATE) {
             presenter.bus.register(presenter)
         }
         return view
@@ -28,7 +42,7 @@ abstract class BaseFragment<P : BaseFragmentPresenter<*, *>> : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        if (MvpConfig.registerAt == RegisterAt.ON_START) {
+        if (registerAt == RegisterAt.ON_START) {
             presenter.bus.register(presenter)
         }
         presenter.onStart()
@@ -36,7 +50,7 @@ abstract class BaseFragment<P : BaseFragmentPresenter<*, *>> : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        if (MvpConfig.registerAt == RegisterAt.ON_RESUME) {
+        if (registerAt == RegisterAt.ON_RESUME) {
             presenter.bus.register(presenter)
         }
         presenter.onResume()
@@ -45,7 +59,7 @@ abstract class BaseFragment<P : BaseFragmentPresenter<*, *>> : Fragment() {
     override fun onPause() {
         super.onPause()
         presenter.onPause()
-        if (MvpConfig.unregisterAt == UnregisterAt.ON_PAUSE) {
+        if (unregisterAt == UnregisterAt.ON_PAUSE) {
             presenter.bus.unregister(presenter)
         }
     }
@@ -53,7 +67,7 @@ abstract class BaseFragment<P : BaseFragmentPresenter<*, *>> : Fragment() {
     override fun onStop() {
         super.onStop()
         presenter.onStop()
-        if (MvpConfig.unregisterAt == UnregisterAt.ON_STOP) {
+        if (unregisterAt == UnregisterAt.ON_STOP) {
             presenter.bus.unregister(presenter)
         }
     }
@@ -62,7 +76,7 @@ abstract class BaseFragment<P : BaseFragmentPresenter<*, *>> : Fragment() {
         super.onDestroyView()
         try {
             presenter.onDestroyView()
-            if (MvpConfig.unregisterAt == UnregisterAt.ON_DESTROY) {
+            if (unregisterAt == UnregisterAt.ON_DESTROY) {
                 presenter.bus.unregister(presenter)
             }
         } catch (_: Exception) {
@@ -74,9 +88,7 @@ abstract class BaseFragment<P : BaseFragmentPresenter<*, *>> : Fragment() {
         presenter.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return !presenter.onOptionsItemSelected(item) && super.onOptionsItemSelected(item)
-    }
+    override fun onOptionsItemSelected(item: MenuItem?) = !presenter.onOptionsItemSelected(item) && super.onOptionsItemSelected(item)
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
@@ -91,5 +103,10 @@ abstract class BaseFragment<P : BaseFragmentPresenter<*, *>> : Fragment() {
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
         presenter.onViewStateRestored(savedInstanceState)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        presenter.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 }

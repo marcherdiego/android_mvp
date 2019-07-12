@@ -9,6 +9,8 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.CheckResult
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 
 /**
  * Public interface containing all possible callbacks the components have.
@@ -61,6 +63,14 @@ interface ComponentsCallback {
      * @return Check original documentation.
      */
     fun onOptionsItemSelected(item: MenuItem): Boolean
+
+    /**
+     * Mirror method for [AppCompatActivity.onCreateOptionsMenu].
+     *
+     * @param menu Check original documentation.
+     * @return Check original documentation.
+     */
+    fun onCreateOptionsMenu(menu: Menu)
 
     /**
      * Mirror method for both [AppCompatActivity.onPrepareOptionsMenu] as well as [Fragment.onPrepareOptionsMenu].

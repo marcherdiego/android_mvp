@@ -6,25 +6,39 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.nerdscorner.mvplib.events.config.MvpConfig
-import com.nerdscorner.mvplib.events.config.MvpConfig.RegisterAt
-import com.nerdscorner.mvplib.events.config.MvpConfig.UnregisterAt
+import com.nerdscorner.mvplib.events.config.annotations.RegisterAt
+import com.nerdscorner.mvplib.events.config.annotations.RegistrationMode
+import com.nerdscorner.mvplib.events.config.annotations.UnregisterAt
 import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter
 
 open class BaseActivity<P : BaseActivityPresenter<*, *>> : AppCompatActivity() {
 
     lateinit var presenter: P
 
+    @RegisterAt
+    private var registerAt: Int = RegisterAt.ON_RESUME
+
+    @UnregisterAt
+    private var unregisterAt: Int = UnregisterAt.ON_PAUSE
+
+    init {
+        val registrationMode = javaClass.annotations.find { it is RegistrationMode }
+        (registrationMode as? RegistrationMode)?.let {
+            registerAt = it.registerAt
+            unregisterAt = it.unregisterAt
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (MvpConfig.registerAt == RegisterAt.ON_CREATE) {
+        if (registerAt == RegisterAt.ON_CREATE) {
             presenter.bus.register(presenter)
         }
     }
 
     public override fun onStart() {
         super.onStart()
-        if (MvpConfig.registerAt == RegisterAt.ON_START) {
+        if (registerAt == RegisterAt.ON_START) {
             presenter.bus.register(presenter)
         }
         presenter.onStart()
@@ -32,7 +46,7 @@ open class BaseActivity<P : BaseActivityPresenter<*, *>> : AppCompatActivity() {
 
     public override fun onResume() {
         super.onResume()
-        if (MvpConfig.registerAt == RegisterAt.ON_RESUME) {
+        if (registerAt == RegisterAt.ON_RESUME) {
             presenter.bus.register(presenter)
         }
         presenter.onResume()
@@ -41,7 +55,7 @@ open class BaseActivity<P : BaseActivityPresenter<*, *>> : AppCompatActivity() {
     public override fun onPause() {
         super.onPause()
         presenter.onPause()
-        if (MvpConfig.unregisterAt == UnregisterAt.ON_PAUSE) {
+        if (unregisterAt == UnregisterAt.ON_PAUSE) {
             presenter.bus.unregister(presenter)
         }
     }
@@ -49,14 +63,14 @@ open class BaseActivity<P : BaseActivityPresenter<*, *>> : AppCompatActivity() {
     public override fun onStop() {
         super.onStop()
         presenter.onStop()
-        if (MvpConfig.unregisterAt == UnregisterAt.ON_STOP) {
+        if (unregisterAt == UnregisterAt.ON_STOP) {
             presenter.bus.unregister(presenter)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        if (MvpConfig.unregisterAt == UnregisterAt.ON_DESTROY) {
+        if (unregisterAt == UnregisterAt.ON_DESTROY) {
             presenter.bus.unregister(presenter)
         }
     }
@@ -67,13 +81,9 @@ open class BaseActivity<P : BaseActivityPresenter<*, *>> : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        return presenter.onCreateOptionsMenu(menu)
-    }
+    override fun onCreateOptionsMenu(menu: Menu) = presenter.onCreateOptionsMenu(menu)
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return !presenter.onOptionsItemSelected(item) && super.onOptionsItemSelected(item)
-    }
+    override fun onOptionsItemSelected(item: MenuItem) = !presenter.onOptionsItemSelected(item) && super.onOptionsItemSelected(item)
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

@@ -159,6 +159,13 @@ open class Behaviour : ComponentsCallback, Attachable, Parcelable {
     /**
      * @inheritDoc
      */
+    override fun onCreateOptionsMenu(menu: Menu) {
+        // Do nothing
+    }
+
+    /**
+     * @inheritDoc
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return false
     }

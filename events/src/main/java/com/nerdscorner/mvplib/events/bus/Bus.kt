@@ -55,9 +55,7 @@ class Bus private constructor(private val eventBus: EventBus) {
      * @param subscriber object to check
      * @return boolean if the object is already registered
      */
-    fun isRegistered(subscriber: Any): Boolean {
-        return eventBus.isRegistered(subscriber)
-    }
+    fun isRegistered(subscriber: Any) = eventBus.isRegistered(subscriber)
 
     /**
      * Posts the given event to the event bus on the given thread.
@@ -88,27 +86,21 @@ class Bus private constructor(private val eventBus: EventBus) {
      *
      * @see .postSticky
      */
-    fun <T> getStickyEvent(eventType: Class<T>): T {
-        return eventBus.getStickyEvent(eventType)
-    }
+    fun <T> getStickyEvent(eventType: Class<T>) = eventBus.getStickyEvent(eventType)
 
     /**
      * Remove and gets the recent sticky event for the given event type.
      *
      * @see .postSticky
      */
-    fun <T> removeStickyEvent(eventType: Class<T>): T {
-        return eventBus.removeStickyEvent(eventType)
-    }
+    fun <T> removeStickyEvent(eventType: Class<T>) = eventBus.removeStickyEvent(eventType)
 
     /**
      * Removes the sticky event if it equals to the given event.
      *
      * @return true if the events matched and the sticky event was removed.
      */
-    fun removeStickyEvent(event: Any): Boolean {
-        return eventBus.removeStickyEvent(event)
-    }
+    fun removeStickyEvent(event: Any) = eventBus.removeStickyEvent(event)
 
     /**
      * Removes all sticky events.
@@ -117,9 +109,7 @@ class Bus private constructor(private val eventBus: EventBus) {
         eventBus.removeAllStickyEvents()
     }
 
-    fun hasSubscriberForEvent(eventClass: Class<*>): Boolean {
-        return eventBus.hasSubscriberForEvent(eventClass)
-    }
+    fun hasSubscriberForEvent(eventClass: Class<*>) = eventBus.hasSubscriberForEvent(eventClass)
 
     companion object {
 
@@ -167,8 +157,6 @@ class Bus private constructor(private val eventBus: EventBus) {
          * @param subscriber object to check
          * @return boolean if the object is already registered
          */
-        fun isRegisteredDefault(subscriber: Any): Boolean {
-            return defaultBus.isRegistered(subscriber)
-        }
+        fun isRegisteredDefault(subscriber: Any) = defaultBus.isRegistered(subscriber)
     }
 }

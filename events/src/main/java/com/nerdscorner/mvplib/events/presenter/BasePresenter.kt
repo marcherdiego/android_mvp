@@ -38,17 +38,13 @@ abstract class BasePresenter<V : BaseView, M : BaseEventsModel>(
         model.onDestroyView()
     }
 
-    open fun onBackPressed(): Boolean {
-        return false
-    }
+    open fun onBackPressed() = false
 
     open fun onConfigurationChanged(newConfig: Configuration?) {}
 
     open fun onSaveInstanceState(outState: Bundle) {}
 
-    open fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return false
-    }
+    open fun onOptionsItemSelected(item: MenuItem?) = false
 
     open fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {}
 

@@ -20,6 +20,9 @@ open class BaseEventsModel {
         this.bus = bus
     }
 
+    @JvmName("getBusValue")
+    fun getBus() = bus
+
     open fun onResume() {}
 
     open fun onPause() {}

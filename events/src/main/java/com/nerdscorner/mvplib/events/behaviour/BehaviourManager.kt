@@ -163,9 +163,9 @@ class BehaviourManager : ComponentsCallback, Attachable, BehaviourCollection {
      * @inheritDoc
      */
     @RestrictTo(RestrictTo.Scope.LIBRARY)
-    override fun onCreate(saveInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         for (behaviour in behaviours.values) {
-            behaviour.onCreate(saveInstanceState)
+            behaviour.onCreate(savedInstanceState)
         }
     }
 
@@ -257,6 +257,15 @@ class BehaviourManager : ComponentsCallback, Attachable, BehaviourCollection {
             behaviour.onPause()
         }
     }
+    /**
+     * @inheritDoc
+     */
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
+    override fun onCreateOptionsMenu(menu: Menu) {
+        for (behaviour in behaviours.values) {
+            behaviour.onCreateOptionsMenu(menu)
+        }
+    }
 
     /**
      * @inheritDoc
@@ -276,10 +285,10 @@ class BehaviourManager : ComponentsCallback, Attachable, BehaviourCollection {
      * @inheritDoc
      */
     @RestrictTo(RestrictTo.Scope.LIBRARY)
-    override fun onPrepareOptionsMenu(item: Menu): Boolean {
+    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
         var result = true
         for (behaviour in behaviours.values) {
-            result = result and behaviour.onPrepareOptionsMenu(item)
+            result = result and behaviour.onPrepareOptionsMenu(menu)
         }
         return result
     }
@@ -312,9 +321,9 @@ class BehaviourManager : ComponentsCallback, Attachable, BehaviourCollection {
      * @inheritDoc
      */
     @RestrictTo(RestrictTo.Scope.LIBRARY)
-    override fun onSaveInstanceState(outState: Bundle) {
+    override fun onSaveInstanceState(bundle: Bundle) {
         for (behaviour in behaviours.values) {
-            behaviour.onSaveInstanceState(outState)
+            behaviour.onSaveInstanceState(bundle)
         }
     }
 
