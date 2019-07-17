@@ -3,6 +3,8 @@ package com.nerdscorner.mvplib.events.behaviour
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import com.nerdscorner.mvplib.events.presenter.BasePresenter
 import kotlinx.android.parcel.Parcelize
@@ -46,6 +48,14 @@ class MvpEventsBehaviour(val presenter: @RawValue BasePresenter<*, *>) : Behavio
 
     override fun onBackPressed(): Boolean {
         return !presenter.onBackPressed() && super.onBackPressed()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        return presenter.onCreateOptionsMenu(menu)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        presenter.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

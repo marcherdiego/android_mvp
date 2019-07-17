@@ -3,6 +3,8 @@ package com.nerdscorner.mvplib.events.presenter
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import com.nerdscorner.mvplib.events.model.BaseEventsModel
 import com.nerdscorner.mvplib.events.view.BaseView
@@ -43,6 +45,10 @@ abstract class BasePresenter<V : BaseView, M : BaseEventsModel>(
     open fun onConfigurationChanged(newConfig: Configuration?) {}
 
     open fun onSaveInstanceState(outState: Bundle) {}
+
+    open fun onCreateOptionsMenu(menu: Menu) = true
+
+    open fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {}
 
     open fun onOptionsItemSelected(item: MenuItem?) = false
 

@@ -7,6 +7,7 @@ import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
@@ -257,13 +258,27 @@ class BehaviourManager : ComponentsCallback, Attachable, BehaviourCollection {
             behaviour.onPause()
         }
     }
+
     /**
      * @inheritDoc
      */
     @RestrictTo(RestrictTo.Scope.LIBRARY)
-    override fun onCreateOptionsMenu(menu: Menu) {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        var result = false
         for (behaviour in behaviours.values) {
-            behaviour.onCreateOptionsMenu(menu)
+            if (behaviour.onCreateOptionsMenu(menu)) {
+                result = true
+            }
+        }
+        return result
+    }
+
+    /**
+     * @inheritDoc
+     */
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        for (behaviour in behaviours.values) {
+            behaviour.onCreateOptionsMenu(menu, inflater)
         }
     }
 

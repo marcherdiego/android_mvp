@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
@@ -70,7 +71,16 @@ interface ComponentsCallback {
      * @param menu Check original documentation.
      * @return Check original documentation.
      */
-    fun onCreateOptionsMenu(menu: Menu)
+    fun onCreateOptionsMenu(menu: Menu): Boolean
+
+    /**
+     * Mirror method for [Fragment.onCreateOptionsMenu].
+     *
+     * @param menu Check original documentation.
+     * @param inflater Check original documentation.
+     * @return Check original documentation.
+     */
+    fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?)
 
     /**
      * Mirror method for both [AppCompatActivity.onPrepareOptionsMenu] as well as [Fragment.onPrepareOptionsMenu].

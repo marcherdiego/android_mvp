@@ -113,7 +113,7 @@ abstract class BaseActivity : AppCompatActivity() {
      * @inheritDoc
      */
     @CallSuper
-    override fun onSaveInstanceState(outState: Bundle) {
+    public override fun onSaveInstanceState(outState: Bundle) {
         behaviourManager?.onSaveInstanceState(outState)
         super.onSaveInstanceState(outState)
     }
@@ -121,7 +121,7 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      * @inheritDoc
      */
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+    public override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         behaviourManager?.onRestoreInstanceState(savedInstanceState)
     }
@@ -139,7 +139,7 @@ abstract class BaseActivity : AppCompatActivity() {
      * @inheritDoc
      */
     @CallSuper
-    override fun onStart() {
+    public override fun onStart() {
         super.onStart()
         behaviourManager?.onStart()
     }
@@ -148,7 +148,7 @@ abstract class BaseActivity : AppCompatActivity() {
      * @inheritDoc
      */
     @CallSuper
-    override fun onStop() {
+    public override fun onStop() {
         behaviourManager?.onStop()
         super.onStop()
     }
@@ -157,7 +157,7 @@ abstract class BaseActivity : AppCompatActivity() {
      * @inheritDoc
      */
     @CallSuper
-    override fun onResume() {
+    public override fun onResume() {
         super.onResume()
         behaviourManager?.onResume()
     }
@@ -166,7 +166,7 @@ abstract class BaseActivity : AppCompatActivity() {
      * @inheritDoc
      */
     @CallSuper
-    override fun onPause() {
+    public override fun onPause() {
         behaviourManager?.onPause()
         super.onPause()
     }
@@ -211,6 +211,13 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      * @inheritDoc
      */
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        return behaviourManager?.onCreateOptionsMenu(menu) == true || super.onCreateOptionsMenu(menu)
+    }
+
+    /**
+     * @inheritDoc
+     */
     @CallSuper
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return behaviourManager?.onOptionsItemSelected(item) == true || super.onOptionsItemSelected(item)
@@ -225,7 +232,7 @@ abstract class BaseActivity : AppCompatActivity() {
      * @inheritDoc
      */
     @CallSuper
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         behaviourManager?.onActivityResult(requestCode, resultCode, data)
     }

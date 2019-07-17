@@ -6,6 +6,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
@@ -159,7 +160,14 @@ open class Behaviour : ComponentsCallback, Attachable, Parcelable {
     /**
      * @inheritDoc
      */
-    override fun onCreateOptionsMenu(menu: Menu) {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        return true
+    }
+
+    /**
+     * @inheritDoc
+     */
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         // Do nothing
     }
 

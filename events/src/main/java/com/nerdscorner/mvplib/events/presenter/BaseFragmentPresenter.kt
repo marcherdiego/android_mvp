@@ -1,8 +1,6 @@
 package com.nerdscorner.mvplib.events.presenter
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
 import com.nerdscorner.mvplib.events.bus.Bus
 import com.nerdscorner.mvplib.events.model.BaseEventsModel
 import com.nerdscorner.mvplib.events.view.BaseFragmentView
@@ -14,8 +12,6 @@ open class BaseFragmentPresenter<V : BaseFragmentView, M : BaseEventsModel>
         view.setBus(bus)
         model.setBus(bus)
     }
-
-    fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {}
 
     fun onViewStateRestored(savedInstanceState: Bundle?) {}
 }
