@@ -7,27 +7,15 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.nerdscorner.mvplib.events.config.annotations.RegisterAt
-import com.nerdscorner.mvplib.events.config.annotations.RegistrationMode
 import com.nerdscorner.mvplib.events.config.annotations.UnregisterAt
 import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter
 
-open class BaseActivity<P : BaseActivityPresenter<*, *>> : AppCompatActivity() {
+open class BaseActivity<P : BaseActivityPresenter<*, *>>(
+        @RegisterAt private val registerAt: Int = RegisterAt.ON_RESUME,
+        @UnregisterAt private val unregisterAt: Int = UnregisterAt.ON_PAUSE
+) : AppCompatActivity() {
 
     lateinit var presenter: P
-
-    @RegisterAt
-    private var registerAt: Int = RegisterAt.ON_RESUME
-
-    @UnregisterAt
-    private var unregisterAt: Int = UnregisterAt.ON_PAUSE
-
-    init {
-        val registrationMode = javaClass.annotations.find { it is RegistrationMode }
-        (registrationMode as? RegistrationMode)?.let {
-            registerAt = it.registerAt
-            unregisterAt = it.unregisterAt
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

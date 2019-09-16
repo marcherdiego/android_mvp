@@ -10,27 +10,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.nerdscorner.mvplib.events.config.annotations.RegisterAt
-import com.nerdscorner.mvplib.events.config.annotations.RegistrationMode
 import com.nerdscorner.mvplib.events.config.annotations.UnregisterAt
 import com.nerdscorner.mvplib.events.presenter.BaseFragmentPresenter
 
-abstract class BaseFragment<P : BaseFragmentPresenter<*, *>> : Fragment() {
+abstract class BaseFragment<P : BaseFragmentPresenter<*, *>>(
+        @RegisterAt private val registerAt: Int = RegisterAt.ON_RESUME,
+        @UnregisterAt private val unregisterAt: Int = UnregisterAt.ON_PAUSE
+) : Fragment() {
 
     lateinit var presenter: P
-
-    @RegisterAt
-    private var registerAt: Int = RegisterAt.ON_RESUME
-
-    @UnregisterAt
-    private var unregisterAt: Int = UnregisterAt.ON_PAUSE
-
-    init {
-        val registrationMode = javaClass.annotations.find { it is RegistrationMode }
-        (registrationMode as? RegistrationMode)?.let {
-            registerAt = it.registerAt
-            unregisterAt = it.unregisterAt
-        }
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)

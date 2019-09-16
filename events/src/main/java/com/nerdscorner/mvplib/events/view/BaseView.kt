@@ -50,8 +50,10 @@ abstract class BaseView {
     }
 
     fun withActivity(block: (Activity) -> Unit) {
-        activity?.let {
-            block(it)
+        activity?.run {
+            if (!isFinishing) {
+                block(this)
+            }
         }
     }
 }

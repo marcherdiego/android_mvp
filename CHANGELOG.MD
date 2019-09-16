@@ -1,3 +1,16 @@
+# v5.0.0
+## New
+- Removed deprecated MvpConfig file and replaced it with annotations
+
+# v4.0.0
+## New
+- Android X migration
+
+# v3.0.0
+## New
+- Refactored and simplified package names
+- Removed Commons module to improve build time
+
 # v2.0.0
 ## New
 - Full Kotlin migration
