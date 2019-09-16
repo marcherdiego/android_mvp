@@ -1,3 +1,8 @@
+# v5.1.0
+## New
+- Removed annotations for performance purposes
+- Improved withActivity method in BaseView
+
 # v5.0.0
 ## New
 - Removed deprecated MvpConfig file and replaced it with annotations
