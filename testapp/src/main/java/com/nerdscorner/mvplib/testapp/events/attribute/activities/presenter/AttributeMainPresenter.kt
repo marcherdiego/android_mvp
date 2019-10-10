@@ -21,4 +21,10 @@ class AttributeMainPresenter(view: AttributeMainView, model: AttributeMainModel,
     fun onBackgroundTaskCompleted(event: BackgroundTaskCompletedEvent) {
         view.setTextValue("Background task completed")
     }
+
+    override fun onResume() {
+        super.onResume()
+        view.withActivity {
+        }
+    }
 }

@@ -49,7 +49,7 @@ abstract class BaseView {
         Toast.makeText(activity, activity.getString(textResId, *args), duration).show()
     }
 
-    fun withActivity(block: (Activity) -> Unit) {
+    fun withActivity(block: Activity.() -> Unit) {
         activity?.run {
             if (!isFinishing) {
                 block(this)
