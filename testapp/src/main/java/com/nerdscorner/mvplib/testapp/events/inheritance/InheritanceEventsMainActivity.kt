@@ -9,8 +9,10 @@ import com.nerdscorner.mvplib.testapp.events.inheritance.model.InheritanceMainMo
 import com.nerdscorner.mvplib.testapp.events.inheritance.presenter.InheritanceMainPresenter
 import com.nerdscorner.mvplib.testapp.events.inheritance.view.InheritanceMainView
 
-@RegistrationMode(registerAt = RegisterAt.ON_START, unregisterAt = UnregisterAt.ON_STOP)
-class InheritanceEventsMainActivity : BaseActivity<InheritanceMainPresenter>() {
+class InheritanceEventsMainActivity : BaseActivity<InheritanceMainPresenter>(
+        registerAt = RegisterAt.ON_START,
+        unregisterAt = UnregisterAt.ON_STOP
+) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

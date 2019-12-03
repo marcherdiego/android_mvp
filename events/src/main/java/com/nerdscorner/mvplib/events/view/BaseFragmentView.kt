@@ -18,10 +18,8 @@ abstract class BaseFragmentView @JvmOverloads constructor(
     override val activity: Activity?
         get() = fragmentRef.get()?.activity
 
-    val fragmentManager: FragmentManager?
-        get() {
-            return fragmentRef.get()?.activity?.supportFragmentManager
-        }
+    override val fragmentManager: FragmentManager?
+        get() = fragmentRef.get()?.activity?.supportFragmentManager
 
     val context: Context?
         get() = fragmentRef.get()?.context

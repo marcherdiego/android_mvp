@@ -1,5 +1,10 @@
 # v5.2.0
 ## New
+- Upgraded appcompat version to 1.1.0
+- Extension functions for fragment-manager -unning tasks
+
+# v5.2.0
+## New
 - Extension functions for fragment transaction handling and find fragments by tag utils
 
 # v5.1.0

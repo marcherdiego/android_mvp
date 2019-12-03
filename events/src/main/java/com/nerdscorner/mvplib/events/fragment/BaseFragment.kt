@@ -71,14 +71,14 @@ abstract class BaseFragment<P : BaseFragmentPresenter<*, *>>(
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         presenter.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?) = !presenter.onOptionsItemSelected(item) && super.onOptionsItemSelected(item)
+    override fun onOptionsItemSelected(item: MenuItem) = !presenter.onOptionsItemSelected(item) && super.onOptionsItemSelected(item)
 
-    override fun onConfigurationChanged(newConfig: Configuration?) {
+    override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         presenter.onConfigurationChanged(newConfig)
     }

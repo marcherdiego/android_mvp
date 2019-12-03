@@ -3,9 +3,11 @@ package com.nerdscorner.mvplib.events.view
 import android.app.Activity
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.fragment.app.FragmentManager
 
 abstract class BaseView {
     abstract val activity: Activity?
+    abstract val fragmentManager: FragmentManager?
 
     open fun unbind() {}
 
@@ -54,6 +56,12 @@ abstract class BaseView {
             if (!isFinishing) {
                 block(this)
             }
+        }
+    }
+
+    fun withFragmentManager(block: FragmentManager.() -> Unit) {
+        fragmentManager?.run {
+            block(this)
         }
     }
 }

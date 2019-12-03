@@ -15,10 +15,8 @@ abstract class BaseActivityView @JvmOverloads constructor(
 
     private val activityRef: WeakReference<AppCompatActivity> = WeakReference(activity)
 
-    val fragmentManager: FragmentManager?
-        get() {
-            return activityRef.get()?.supportFragmentManager
-        }
+    override val fragmentManager: FragmentManager?
+        get() = activityRef.get()?.supportFragmentManager
 
     @JvmName("busSetter")
     fun setBus(bus: Bus) {
