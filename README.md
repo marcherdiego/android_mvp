@@ -9,13 +9,6 @@ This is a small lib that will help you through your Android features development
 //Events oriented MVP Lib
 compile 'com.nerdscorner.mvp:events:LATEST_EVENTS_VERSION'
 ```
-## Interfaces (Deprecated)
-[ ![Download](https://api.bintray.com/packages/nerdscorrner/MVPLib/Interfaces_deprecated/images/download.svg) ](https://bintray.com/nerdscorrner/MVPLib/Interfaces_deprecated/_latestVersion)
-
-```groovy
-//Interfaces oriented MVP Lib
-compile 'com.nerdscorner.mvp:interfaces:LATEST_INTERFACES_VERSION'
-```
 
 ## Usage
 There are three different options to integrate this MVP library to your application, either having a reference to the presenter within your Activity/Fragment, using behaviours or extending a BaseActivity/BaseFragment that handles all the wiring and setup automagically.
