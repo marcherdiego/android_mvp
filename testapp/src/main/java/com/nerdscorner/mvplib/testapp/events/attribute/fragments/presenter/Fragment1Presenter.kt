@@ -14,6 +14,6 @@ class Fragment1Presenter(view: Fragment1View, model: Fragment1Model) :
     }
 
     @Subscribe
-    fun onNoSubscribers(event: NoSubscriberEvent) {
+    fun onNoSubscriber(event: NoSubscriberEvent) {
     }
 }

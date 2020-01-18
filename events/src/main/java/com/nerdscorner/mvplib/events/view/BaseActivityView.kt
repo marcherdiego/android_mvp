@@ -1,8 +1,11 @@
 package com.nerdscorner.mvplib.events.view
 
+import android.view.View
+import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.nerdscorner.mvplib.events.bus.Bus
+import org.greenrobot.eventbus.ThreadMode
 import java.lang.ref.WeakReference
 
 abstract class BaseActivityView @JvmOverloads constructor(
@@ -24,4 +27,10 @@ abstract class BaseActivityView @JvmOverloads constructor(
     }
 
     fun onDestroy() {}
+
+    fun onClick(@IdRes id: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING) {
+        activity?.findViewById<View>(id)?.setOnClickListener {
+            bus.post(event, threadMode)
+        }
+    }
 }

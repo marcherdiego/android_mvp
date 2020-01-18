@@ -5,7 +5,6 @@ import com.nerdscorner.mvplib.testapp.events.inheritance.model.InheritanceMainMo
 import com.nerdscorner.mvplib.testapp.events.inheritance.model.InheritanceMainModel.BackgroundTaskCompletedEvent
 import com.nerdscorner.mvplib.testapp.events.inheritance.view.InheritanceMainView
 import com.nerdscorner.mvplib.testapp.events.inheritance.view.InheritanceMainView.ActionClickedEvent
-
 import org.greenrobot.eventbus.Subscribe
 
 class InheritanceMainPresenter(view: InheritanceMainView, model: InheritanceMainModel) :

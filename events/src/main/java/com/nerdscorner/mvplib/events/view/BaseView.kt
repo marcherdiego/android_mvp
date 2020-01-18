@@ -3,7 +3,9 @@ package com.nerdscorner.mvplib.events.view
 import android.app.Activity
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 
 abstract class BaseView {
     abstract val activity: Activity?
@@ -51,7 +53,7 @@ abstract class BaseView {
         Toast.makeText(activity, activity.getString(textResId, *args), duration).show()
     }
 
-    fun withActivity(block: Activity.() -> Unit) {
+    inline fun withActivity(block: Activity.() -> Unit) {
         activity?.run {
             if (!isFinishing) {
                 block(this)
@@ -59,9 +61,23 @@ abstract class BaseView {
         }
     }
 
-    fun withFragmentManager(block: FragmentManager.() -> Unit) {
+    inline fun withFragmentManager(block: FragmentManager.() -> Unit) {
         fragmentManager?.run {
             block(this)
         }
+    }
+
+    fun <T : Fragment> findFragmentByTag(tag: String) = fragmentManager?.findFragmentByTag(tag) as? T
+
+    fun existsFragmentWithTag(tag: String) = findFragmentByTag<Fragment>(tag) != null
+
+    fun <T : Fragment> withFragmentByTag(tag: String, block: (fragment: T, fragmentManager: FragmentManager) -> Unit) {
+        findFragmentByTag<T>(tag)?.run {
+            block(this, fragmentManager ?: return)
+        }
+    }
+
+    fun withFragmentTransaction(block: (transaction: FragmentTransaction) -> Unit) {
+        block(fragmentManager?.beginTransaction() ?: return)
     }
 }

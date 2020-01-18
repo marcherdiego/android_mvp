@@ -158,5 +158,20 @@ class Bus private constructor(private val eventBus: EventBus) {
          * @return boolean if the object is already registered
          */
         fun isRegisteredDefault(subscriber: Any) = defaultBus.isRegistered(subscriber)
+
+        /**
+         * Posts the given event to the default event bus on the given thread.
+         */
+        fun postDefault(event: Any, threadMode: ThreadMode = ThreadMode.POSTING) {
+            defaultBus.post(event, threadMode)
+        }
+
+        /**
+         * Posts the given event to the default event bus and holds on to the event (because it is sticky). The most recent sticky
+         * event of an event's type is kept in memory for future access by subscribers using [Subscribe.sticky].
+         */
+        fun postStickyDefault(event: Any) {
+            defaultBus.postSticky(event)
+        }
     }
 }

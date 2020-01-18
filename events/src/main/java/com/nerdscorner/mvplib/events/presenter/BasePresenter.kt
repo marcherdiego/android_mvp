@@ -1,11 +1,14 @@
 package com.nerdscorner.mvplib.events.presenter
 
+import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.annotation.IdRes
+import androidx.fragment.app.Fragment
 import com.nerdscorner.mvplib.events.model.BaseEventsModel
 import com.nerdscorner.mvplib.events.view.BaseView
 
@@ -57,4 +60,28 @@ abstract class BasePresenter<V : BaseView, M : BaseEventsModel>(
     open fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {}
 
     open fun onRestoreInstanceState(savedInstanceState: Bundle?) {}
+
+    fun startActivity(clazz: Class<out Activity>, bundle: Bundle? = null, finishCurrent: Boolean = false) {
+        view.withActivity {
+            val intent = Intent(this, clazz)
+            if (bundle != null) {
+                intent.putExtras(bundle)
+            }
+            startActivity(intent)
+            if (finishCurrent) {
+                finish()
+            }
+        }
+    }
+
+    fun replaceFragment(@IdRes target: Int, fragment: Fragment, commitNow: Boolean = true) {
+        view.withFragmentTransaction {
+            it.replace(target, fragment)
+            if (commitNow) {
+                it.commitNow()
+            } else {
+                it.commit()
+            }
+        }
+    }
 }

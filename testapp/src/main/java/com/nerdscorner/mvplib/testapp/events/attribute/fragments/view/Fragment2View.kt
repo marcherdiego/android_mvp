@@ -2,22 +2,19 @@ package com.nerdscorner.mvplib.testapp.events.attribute.fragments.view
 
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.nerdscorner.mvplib.events.bus.Bus
 import com.nerdscorner.mvplib.events.view.BaseFragmentView
 import com.nerdscorner.mvplib.testapp.R
+import com.nerdscorner.mvplib.testapp.events.attribute.activities.view.AttributeMainView.ActionClickedEvent
 
 class Fragment2View(fragment: Fragment, bus: Bus) : BaseFragmentView(fragment, bus) {
-    @BindView(R.id.text)
-    @JvmField
-    var text: TextView? = null
+    var textView: TextView? = fragment.view?.findViewById(R.id.text)
 
     init {
-        ButterKnife.bind(this, fragment.view!!)
+        onClick(R.id.some_button, ActionClickedEvent())
     }
 
-    fun setText(text: String) {
-        this.text?.text = text
+    fun setText(value: String) {
+        textView?.text = value
     }
 }

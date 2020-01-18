@@ -2,29 +2,19 @@ package com.nerdscorner.mvplib.testapp.events.attribute.activities.view
 
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.OnClick
 import com.nerdscorner.mvplib.events.bus.Bus
 import com.nerdscorner.mvplib.events.view.BaseActivityView
 import com.nerdscorner.mvplib.testapp.R
 
 class AttributeMainView(activity: AppCompatActivity, bus: Bus) : BaseActivityView(activity, bus) {
-    @BindView(R.id.text)
-    @JvmField
-    var textView: TextView? = null
+    var textView: TextView = activity.findViewById(R.id.text)
 
     init {
-        ButterKnife.bind(this, activity)
-    }
-
-    @OnClick(R.id.some_button)
-    fun onActionClicked() {
-        bus.post(ActionClickedEvent())
+        onClick(R.id.some_button, ActionClickedEvent())
     }
 
     fun setTextValue(value: CharSequence) {
-        textView?.text = value
+        textView.text = value
     }
 
     class ActionClickedEvent

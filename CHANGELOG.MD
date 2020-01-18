@@ -1,7 +1,8 @@
-# v5.2.0
+# v6.0.0
 ## New
-- Upgraded appcompat version to 1.1.0
-- Extension functions for fragment-manager -unning tasks
+- Added postDefault and postStickyDefault methods to post in the default bus without asking for a reference to it
+- Added startActivity function helper
+- **`Breaking change` - Moved extension functions to BaseView class**
 
 # v5.2.0
 ## New
