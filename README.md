@@ -14,7 +14,8 @@ implementation "com.nerdscorner.mvp:events:LATEST_VERSION"
 
 ## Usage
 There are three different options to integrate this MVP library to your application, either having a reference to the presenter within your Activity/Fragment, using behaviours or extending a BaseActivity/BaseFragment that handles all the wiring and setup automagically.
-### Inheritance
+
+### Extending BaseActivity
 #### Activity
 ```kotlin
 import com.nerdscorner.mvplib.events.activity.BaseActivity
@@ -36,8 +37,32 @@ class FeatureActivity : BaseActivity<FeaturePresenter>() {
 #### Presenter
 ```kotlin
 import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter
-import com.nerdscorner.mvplib.testapp.events.model.FeatureModel
-import com.nerdscorner.mvplib.testapp.events.view.FeatureView
+
+class FeaturePresenter(view: FeatureView, model: FeatureModel) : BaseActivityPresenter<FeatureView, FeatureModel>(view, model) {
+    ...
+}
+```
+#### View
+```kotlin
+import com.nerdscorner.mvplib.events.view.BaseActivityView
+
+class FeatureView(activity: FeatureActivity) : BaseActivityView(activity) {
+    ...
+}
+```
+#### Model
+```kotlin
+import com.nerdscorner.mvplib.events.model.BaseEventsModel
+
+class FeatureModel : BaseEventsModel() {
+    ...
+}
+```
+
+### Basic wiring
+#### Presenter
+```kotlin
+import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter
 import org.greenrobot.eventbus.Subscribe
 
 class FeaturePresenter(view: FeatureView, model: FeatureModel) : BaseActivityPresenter<FeatureView, FeatureModel>(view, model) {
