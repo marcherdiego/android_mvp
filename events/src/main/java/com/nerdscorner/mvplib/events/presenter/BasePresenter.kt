@@ -74,13 +74,13 @@ abstract class BasePresenter<V : BaseView, M : BaseEventsModel>(
         }
     }
 
-    fun replaceFragment(@IdRes target: Int, fragment: Fragment, commitNow: Boolean = true) {
+    fun replaceFragment(@IdRes containerViewId: Int, fragment: Fragment, commitNow: Boolean = true) {
         view.withFragmentTransaction {
-            it.replace(target, fragment)
+            replace(containerViewId, fragment)
             if (commitNow) {
-                it.commitNow()
+                commitNow()
             } else {
-                it.commit()
+                commit()
             }
         }
     }
