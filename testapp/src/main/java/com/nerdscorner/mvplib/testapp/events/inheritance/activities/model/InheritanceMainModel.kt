@@ -1,4 +1,4 @@
-package com.nerdscorner.mvplib.testapp.events.inheritance.model
+package com.nerdscorner.mvplib.testapp.events.inheritance.activities.model
 
 import android.os.AsyncTask
 

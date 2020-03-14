@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".events.attribute.activities.AttributeEventsMainActivity">
         </activity>
-        <activity android:name=".events.inheritance.InheritanceEventsMainActivity"/>
+        <activity android:name=".events.inheritance.activities.InheritanceEventsMainActivity"/>
+        <activity android:name=".events.inheritance.fragments.AttributeEventsForFragmentsMainActivity"/>
         <activity android:name=".events.attribute.fragments.AttributeEventsForFragmentsMainActivity"/>
     </application>
 

@@ -12,13 +12,12 @@ import com.nerdscorner.mvplib.testapp.events.attribute.activities.view.Attribute
 class AttributeEventsMainActivity : AppCompatActivity() {
 
     private lateinit var presenter: AttributeMainPresenter
-    private lateinit var bus: Bus
+    private var bus = Bus.newInstance
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mvp)
 
-        bus = Bus.newInstance
         presenter = AttributeMainPresenter(
                 AttributeMainView(this, bus),
                 AttributeMainModel(bus),

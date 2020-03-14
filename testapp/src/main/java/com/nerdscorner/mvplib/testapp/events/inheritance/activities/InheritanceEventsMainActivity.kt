@@ -1,13 +1,13 @@
-package com.nerdscorner.mvplib.testapp.events.inheritance
+package com.nerdscorner.mvplib.testapp.events.inheritance.activities
 
 import android.os.Bundle
 import com.nerdscorner.mvplib.events.activity.BaseActivity
 import com.nerdscorner.mvplib.events.config.annotations.RegisterAt
 import com.nerdscorner.mvplib.events.config.annotations.UnregisterAt
 import com.nerdscorner.mvplib.testapp.R
-import com.nerdscorner.mvplib.testapp.events.inheritance.model.InheritanceMainModel
-import com.nerdscorner.mvplib.testapp.events.inheritance.presenter.InheritanceMainPresenter
-import com.nerdscorner.mvplib.testapp.events.inheritance.view.InheritanceMainView
+import com.nerdscorner.mvplib.testapp.events.inheritance.activities.model.InheritanceMainModel
+import com.nerdscorner.mvplib.testapp.events.inheritance.activities.presenter.InheritanceMainPresenter
+import com.nerdscorner.mvplib.testapp.events.inheritance.activities.view.InheritanceMainView
 
 class InheritanceEventsMainActivity : BaseActivity<InheritanceMainPresenter>(
         registerAt = RegisterAt.ON_START,

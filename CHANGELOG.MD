@@ -1,8 +1,13 @@
+# v6.2.0
+## New
+- Added helper `removeStickyEvent` in the BaseModel class
+- Improved README.MD file with more examples
+- More examples in testapp
+
 # v6.0.0
 ## New
 - Added postDefault and postStickyDefault methods to post in the default bus without asking for a reference to it
 - Added startActivity function helper
-- **`Breaking change` - Moved extension functions to BaseView class**
 
 # v5.2.0
 ## New

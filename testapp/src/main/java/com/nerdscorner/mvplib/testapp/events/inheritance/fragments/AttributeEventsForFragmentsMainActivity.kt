@@ -1,4 +1,4 @@
-package com.nerdscorner.mvplib.testapp.events.attribute.fragments
+package com.nerdscorner.mvplib.testapp.events.inheritance.fragments
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -12,12 +12,13 @@ import com.nerdscorner.mvplib.testapp.events.inheritance.fragments.view.Attribut
 class AttributeEventsForFragmentsMainActivity : AppCompatActivity() {
 
     private lateinit var presenter: AttributeForFragmentMainPresenter
-    private var bus = Bus.newInstance
+    private lateinit var bus: Bus
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mvp_for_fragments)
 
+        bus = Bus.newInstance
         presenter = AttributeForFragmentMainPresenter(
                 AttributeFragmentMainView(this, bus),
                 AttributeFragmentMainModel(bus),

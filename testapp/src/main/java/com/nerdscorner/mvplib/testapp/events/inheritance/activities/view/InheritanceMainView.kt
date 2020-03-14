@@ -1,4 +1,4 @@
-package com.nerdscorner.mvplib.testapp.events.inheritance.view
+package com.nerdscorner.mvplib.testapp.events.inheritance.activities.view
 
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity

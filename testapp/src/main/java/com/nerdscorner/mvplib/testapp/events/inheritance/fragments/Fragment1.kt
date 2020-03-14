@@ -1,19 +1,18 @@
-package com.nerdscorner.mvplib.testapp.events.attribute.fragments
+package com.nerdscorner.mvplib.testapp.events.inheritance.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.nerdscorner.mvplib.events.bus.Bus
+import com.nerdscorner.mvplib.events.fragment.BaseFragment
 import com.nerdscorner.mvplib.testapp.R.layout
 import com.nerdscorner.mvplib.testapp.events.inheritance.fragments.model.Fragment1Model
 import com.nerdscorner.mvplib.testapp.events.inheritance.fragments.presenter.Fragment1Presenter
 import com.nerdscorner.mvplib.testapp.events.inheritance.fragments.view.Fragment1View
 
-class Fragment1 : Fragment() {
+class Fragment1 : BaseFragment<Fragment1Presenter>() {
 
-    private lateinit var presenter: Fragment1Presenter
     private lateinit var bus: Bus
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -25,18 +24,9 @@ class Fragment1 : Fragment() {
 
         bus = Bus.newInstance
         presenter = Fragment1Presenter(
-                Fragment1View(this, bus),
-                Fragment1Model(bus)
+                Fragment1View(this),
+                Fragment1Model(),
+                bus
         )
-    }
-
-    override fun onResume() {
-        super.onResume()
-        bus.register(presenter)
-    }
-
-    override fun onPause() {
-        bus.unregister(presenter)
-        super.onPause()
     }
 }

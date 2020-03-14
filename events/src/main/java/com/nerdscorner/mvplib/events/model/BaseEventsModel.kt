@@ -23,6 +23,10 @@ open class BaseEventsModel {
     @JvmName("getBusValue")
     fun getBus() = bus
 
+    fun removeStickyEvent(event: Any) {
+        bus.removeStickyEvent(event)
+    }
+
     open fun onResume() {}
 
     open fun onPause() {}

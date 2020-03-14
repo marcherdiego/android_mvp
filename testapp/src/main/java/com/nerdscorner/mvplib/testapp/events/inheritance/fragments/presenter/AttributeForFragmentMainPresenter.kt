@@ -1,5 +1,4 @@
-package com.nerdscorner.mvplib.testapp.events.attribute.fragments.presenter
-
+package com.nerdscorner.mvplib.testapp.events.inheritance.fragments.presenter
 
 import androidx.fragment.app.Fragment
 import com.nerdscorner.mvplib.events.bus.Bus

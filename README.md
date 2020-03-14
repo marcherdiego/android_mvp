@@ -2,7 +2,7 @@
 
 This is a small lib that will help you through your Android features development in order to keep things simple, clear and tidy.
 
-Please refer to [this article](https://android.jlelse.eu/android-mvp-doing-it-right-dac9d5d72079) to get a more in-depth explanation about how this library and its components work. 
+Please refer to [this article](https://android.jlelse.eu/android-mvp-doing-it-right-dac9d5d72079) to get a more in-depth explanation about how this library and its components work.
 
 ## Setup
 [ ![Download](https://api.bintray.com/packages/nerdscorrner/MVPLib/Events/images/download.svg) ](https://bintray.com/nerdscorrner/MVPLib/Events/_latestVersion)
@@ -13,20 +13,21 @@ implementation "com.nerdscorner.mvp:events:LATEST_VERSION"
 ```
 
 ## Usage
-There are three different options to integrate this MVP library to your application, either having a reference to the presenter within your Activity/Fragment, using behaviours or extending a BaseActivity/BaseFragment that handles all the wiring and setup automagically.
+There are three different options to integrate this MVP library to your application, either extending a BaseActivity/BaseFragment that handles all the wiring and setup automagically **(recommended)**, having a reference to the presenter within your Activity/Fragment, or using behaviours.
+For the three of them, the model, view and presenter behave the same so the only difference is in the activity/fragment
 
-### Extending BaseActivity
+### Extending BaseActivity (recommended)
 #### Activity
 ```kotlin
 import com.nerdscorner.mvplib.events.activity.BaseActivity
-
+        
+// Extending BaseActivity will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
 class FeatureActivity : BaseActivity<FeaturePresenter>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.feature_activity)
 
-        // This will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
         presenter = FeaturePresenter(
                 FeatureView(this),
                 FeatureModel()
@@ -34,6 +35,119 @@ class FeatureActivity : BaseActivity<FeaturePresenter>() {
     }
 }
 ```
+
+#### Fragment
+```kotlin
+import com.nerdscorner.mvplib.events.fragment.BaseFragment
+
+// Extending BaseActivity will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
+class FeatureFragment : BaseFragment<FeaturePresenter>() {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_example, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        presenter = FeaturePresenter(
+                FeatureView(this),
+                FeatureModel()
+        )
+    }
+}
+```
+
+### Holding a presenter reference (without inheritance)
+#### Activity
+```kotlin
+// Extending BaseActivity will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
+class FeatureActivity : AppCompatActivity() {
+
+    private lateinit var presenter: FeaturePresenter
+    private var bus = Bus.newInstance
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.feature_activity)
+
+        presenter = FeaturePresenter(
+                FeatureView(this),
+                FeatureModel(),
+                bus
+        )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        bus.register(presenter)
+    }
+
+    override fun onPause() {
+        bus.unregister(presenter)
+        super.onPause()
+    }
+}
+```
+
+#### Fragment
+```kotlin
+// Extending BaseActivity will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
+class FeatureFragment : Fragment() {
+
+    private lateinit var presenter: FeaturePresenter
+    private var bus = Bus.newInstance
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_example, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        presenter = FeaturePresenter(
+                FeatureView(this, bus),
+                FeatureModel(bus)
+        )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        bus.register(presenter)
+    }
+
+    override fun onPause() {
+        bus.unregister(presenter)
+        super.onPause()
+    }
+}
+```
+
+### Using behaviours
+#### Activity
+```kotlin
+import com.nerdscorner.mvplib.events.behaviour.BaseActivity
+        
+// Extending BaseActivity will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
+class FeatureActivity : BaseActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.feature_activity)
+        
+        addBehaviour(
+                MvpEventsBehaviour(
+                        BehaviourMainPresenter(
+                                BehaviourMainView(this),
+                                BehaviourMainModel()
+                        )
+                )
+        )
+    }
+}
+```
+
+### MVP components
 #### Presenter
 ```kotlin
 import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter

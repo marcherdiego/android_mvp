@@ -6,9 +6,9 @@ import android.view.View
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import com.nerdscorner.mvplib.testapp.events.attribute.activities.AttributeEventsMainActivity
-import com.nerdscorner.mvplib.testapp.events.attribute.fragments.AttributeEventsForFragmentsMainActivity
+import com.nerdscorner.mvplib.testapp.events.inheritance.fragments.AttributeEventsForFragmentsMainActivity
 import com.nerdscorner.mvplib.testapp.events.behaviour.BehaviourEventsMainActivity
-import com.nerdscorner.mvplib.testapp.events.inheritance.InheritanceEventsMainActivity
+import com.nerdscorner.mvplib.testapp.events.inheritance.activities.InheritanceEventsMainActivity
 
 class MainActivity : AppCompatActivity() {
 

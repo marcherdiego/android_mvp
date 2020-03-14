@@ -1,10 +1,10 @@
-package com.nerdscorner.mvplib.testapp.events.inheritance.presenter
+package com.nerdscorner.mvplib.testapp.events.inheritance.activities.presenter
 
 import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter
-import com.nerdscorner.mvplib.testapp.events.inheritance.model.InheritanceMainModel
-import com.nerdscorner.mvplib.testapp.events.inheritance.model.InheritanceMainModel.BackgroundTaskCompletedEvent
-import com.nerdscorner.mvplib.testapp.events.inheritance.view.InheritanceMainView
-import com.nerdscorner.mvplib.testapp.events.inheritance.view.InheritanceMainView.ActionClickedEvent
+import com.nerdscorner.mvplib.testapp.events.inheritance.activities.model.InheritanceMainModel
+import com.nerdscorner.mvplib.testapp.events.inheritance.activities.model.InheritanceMainModel.BackgroundTaskCompletedEvent
+import com.nerdscorner.mvplib.testapp.events.inheritance.activities.view.InheritanceMainView
+import com.nerdscorner.mvplib.testapp.events.inheritance.activities.view.InheritanceMainView.ActionClickedEvent
 import org.greenrobot.eventbus.Subscribe
 
 class InheritanceMainPresenter(view: InheritanceMainView, model: InheritanceMainModel) :
