@@ -8,7 +8,6 @@ Please refer to [this article](https://android.jlelse.eu/android-mvp-doing-it-ri
 [ ![Download](https://api.bintray.com/packages/nerdscorrner/MVPLib/Events/images/download.svg) ](https://bintray.com/nerdscorrner/MVPLib/Events/_latestVersion)
 
 ```groovy
-//Events oriented MVP Lib
 implementation "com.nerdscorner.mvp:events:LATEST_VERSION" 
 ```
 
