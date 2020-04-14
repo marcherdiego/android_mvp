@@ -61,23 +61,13 @@ abstract class BaseView {
         }
     }
 
-    inline fun withFragmentManager(block: FragmentManager.() -> Unit) {
-        fragmentManager?.run {
-            block(this)
-        }
-    }
+    abstract fun withFragmentManager(block: FragmentManager.() -> Unit)
 
-    fun <T : Fragment> findFragmentByTag(tag: String) = fragmentManager?.findFragmentByTag(tag) as? T
+    abstract fun <T : Fragment> findFragmentByTag(tag: String): Fragment?
 
-    fun existsFragmentWithTag(tag: String) = findFragmentByTag<Fragment>(tag) != null
+    abstract fun existsFragmentWithTag(tag: String): Boolean
 
-    inline fun <T : Fragment> withFragmentByTag(tag: String, block: (fragment: T, fragmentManager: FragmentManager) -> Unit) {
-        findFragmentByTag<T>(tag)?.run {
-            block(this, fragmentManager ?: return)
-        }
-    }
+    abstract fun <T : Fragment> withFragmentByTag(tag: String, block: (fragment: T, fragmentManager: FragmentManager) -> Unit)
 
-    inline fun withFragmentTransaction(block: FragmentTransaction.() -> Unit) {
-        block(fragmentManager?.beginTransaction() ?: return)
-    }
+    abstract fun withFragmentTransaction(block: FragmentTransaction.() -> Unit)
 }
