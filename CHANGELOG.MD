@@ -1,3 +1,12 @@
+# v6.4.0
+## New
+- MVP for views!
+- Test app examples updated!
+
+# v6.3.0
+## New
+- Abstract functions to with with fragment manager, (supportFragmentManager for Activities and childFragmentManager for Fragments)
+
 # v6.2.0
 ## New
 - Added helper `removeStickyEvent` in the BaseModel class

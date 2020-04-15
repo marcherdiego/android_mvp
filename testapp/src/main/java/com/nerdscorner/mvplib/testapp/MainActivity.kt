@@ -9,6 +9,7 @@ import com.nerdscorner.mvplib.testapp.events.attribute.activities.AttributeEvent
 import com.nerdscorner.mvplib.testapp.events.inheritance.fragments.AttributeEventsForFragmentsMainActivity
 import com.nerdscorner.mvplib.testapp.events.behaviour.BehaviourEventsMainActivity
 import com.nerdscorner.mvplib.testapp.events.inheritance.activities.InheritanceEventsMainActivity
+import com.nerdscorner.mvplib.testapp.events.widgets.WidgetsExampleActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         addListenerToView(R.id.events_inheritance, InheritanceEventsMainActivity::class.java)
 
         addListenerToView(R.id.fragments_events_attribute, AttributeEventsForFragmentsMainActivity::class.java)
+
+        addListenerToView(R.id.widgets_example, WidgetsExampleActivity::class.java)
     }
 
     private fun addListenerToView(@IdRes viewId: Int, destination: Class<*>) {
