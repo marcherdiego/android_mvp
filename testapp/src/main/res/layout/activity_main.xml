@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/events_inheritance"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="Fragments"
         android:textSize="20sp"/>
 
@@ -51,4 +51,19 @@
         android:layout_below="@+id/fragments_title"
         android:text="Events Attribute"/>
 
+    <TextView
+        android:id="@+id/widgets_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragments_events_attribute"
+        android:layout_marginTop="16dp"
+        android:text="Widgets"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/widgets_example"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/widgets_title"
+        android:text="Widgets example"/>
 </RelativeLayout>
