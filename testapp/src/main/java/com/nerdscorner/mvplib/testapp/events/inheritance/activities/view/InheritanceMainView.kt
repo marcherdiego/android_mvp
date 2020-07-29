@@ -9,7 +9,7 @@ class InheritanceMainView(activity: AppCompatActivity) : BaseActivityView(activi
     var textView: TextView = activity.findViewById(R.id.text)
 
     init {
-        onClick(R.id.some_button, ActionClickedEvent())
+        onClick(R.id.some_button, R.id.some_button, event = ActionClickedEvent())
     }
 
     fun setTextValue(value: CharSequence) {

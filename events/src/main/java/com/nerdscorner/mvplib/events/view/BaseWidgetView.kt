@@ -54,9 +54,37 @@ abstract class BaseWidgetView constructor(view: View, @JvmField protected var bu
         Toast.makeText(context, context.getString(textResId, *args), duration).show()
     }
 
-    fun onClick(@IdRes id: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING) {
+    fun onClick(@IdRes id: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
         view?.findViewById<View>(id)?.setOnClickListener {
             bus.post(event, threadMode)
+            block(it)
+        }
+    }
+
+    fun onClick(@IdRes vararg ids: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
+        val onClickListener = View.OnClickListener {
+            bus.post(event, threadMode)
+            block(it)
+        }
+        ids.forEach {
+            view?.findViewById<View>(it)?.setOnClickListener(onClickListener)
+        }
+    }
+
+    fun onClick(view: View, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
+        view.setOnClickListener {
+            bus.post(event, threadMode)
+            block(it)
+        }
+    }
+
+    fun onClick(vararg view: View, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
+        val onClickListener = View.OnClickListener {
+            bus.post(event, threadMode)
+            block(it)
+        }
+        view.forEach {
+            it.setOnClickListener(onClickListener)
         }
     }
 }

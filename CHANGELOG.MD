@@ -1,3 +1,7 @@
+# v6.5.0
+## New
+- onClick with varargs to set the same click listener event to multiple views
+
 # v6.4.0
 ## New
 - MVP for views!

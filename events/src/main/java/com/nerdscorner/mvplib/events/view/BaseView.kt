@@ -1,13 +1,16 @@
 package com.nerdscorner.mvplib.events.view
 
 import android.app.Activity
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.nerdscorner.mvplib.events.bus.Bus
+import org.greenrobot.eventbus.ThreadMode
 
-abstract class BaseView {
+abstract class BaseView(@JvmField protected var bus: Bus = Bus.defaultBus) {
     abstract val activity: Activity?
     abstract val fragmentManager: FragmentManager?
 
@@ -58,6 +61,23 @@ abstract class BaseView {
             if (!isFinishing) {
                 block(this)
             }
+        }
+    }
+
+    fun onClick(view: View, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
+        view.setOnClickListener {
+            bus.post(event, threadMode)
+            block(it)
+        }
+    }
+
+    fun onClick(vararg view: View, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
+        val onClickListener = View.OnClickListener {
+            bus.post(event, threadMode)
+            block(it)
+        }
+        view.forEach {
+            it.setOnClickListener(onClickListener)
         }
     }
 

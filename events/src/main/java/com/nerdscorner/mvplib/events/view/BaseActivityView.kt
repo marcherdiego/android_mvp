@@ -10,10 +10,7 @@ import com.nerdscorner.mvplib.events.bus.Bus
 import org.greenrobot.eventbus.ThreadMode
 import java.lang.ref.WeakReference
 
-abstract class BaseActivityView @JvmOverloads constructor(
-        activity: AppCompatActivity,
-        @JvmField protected var bus: Bus = Bus.defaultBus
-) : BaseView() {
+abstract class BaseActivityView @JvmOverloads constructor(activity: AppCompatActivity, bus: Bus = Bus.defaultBus) : BaseView(bus) {
 
     override val activity: AppCompatActivity?
         get() = activityRef.get()
@@ -30,9 +27,20 @@ abstract class BaseActivityView @JvmOverloads constructor(
 
     fun onDestroy() {}
 
-    fun onClick(@IdRes id: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING) {
+    fun onClick(@IdRes id: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
         activity?.findViewById<View>(id)?.setOnClickListener {
             bus.post(event, threadMode)
+            block(it)
+        }
+    }
+
+    fun onClick(@IdRes vararg ids: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
+        val onClickListener = View.OnClickListener {
+            bus.post(event, threadMode)
+            block(it)
+        }
+        ids.forEach {
+            activity?.findViewById<View>(it)?.setOnClickListener(onClickListener)
         }
     }
 
