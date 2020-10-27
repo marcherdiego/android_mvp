@@ -1,3 +1,9 @@
+# v6.6.0
+## New
+- Added return value to `withFragmentManager`, `withFragmentByTag` and `withFragmentTransaction` functions to
+be able to react when no fragmentManager is available
+- Deprecated lifecycle functions on View and Model in favor of presenter's ones
+
 # v6.5.0
 ## New
 - onClick with varargs to set the same click listener event to multiple views

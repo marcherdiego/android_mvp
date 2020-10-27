@@ -44,8 +44,8 @@ abstract class BaseActivityView @JvmOverloads constructor(activity: AppCompatAct
         }
     }
 
-    override fun withFragmentManager(block: FragmentManager.() -> Unit) {
-        fragmentManager?.run {
+    override fun withFragmentManager(block: FragmentManager.() -> Unit): Unit? {
+        return fragmentManager?.run {
             block(this)
         }
     }
@@ -54,13 +54,13 @@ abstract class BaseActivityView @JvmOverloads constructor(activity: AppCompatAct
 
     override fun existsFragmentWithTag(tag: String) = findFragmentByTag<Fragment>(tag) != null
 
-    override fun <T : Fragment> withFragmentByTag(tag: String, block: (fragment: T, fragmentManager: FragmentManager) -> Unit) {
-        findFragmentByTag<T>(tag)?.run {
-            block(this, fragmentManager ?: return)
+    override fun <T : Fragment> withFragmentByTag(tag: String, block: (fragment: T, fragmentManager: FragmentManager) -> Unit): Unit? {
+        return findFragmentByTag<T>(tag)?.run {
+            block(this, fragmentManager ?: return null)
         }
     }
 
-    override fun withFragmentTransaction(block: FragmentTransaction.() -> Unit) {
-        block(fragmentManager?.beginTransaction() ?: return)
+    override fun withFragmentTransaction(block: FragmentTransaction.() -> Unit): Unit? {
+        return block(fragmentManager?.beginTransaction() ?: return null)
     }
 }

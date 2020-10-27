@@ -16,16 +16,6 @@ abstract class BaseView(@JvmField protected var bus: Bus = Bus.defaultBus) {
 
     open fun unbind() {}
 
-    open fun onResume() {}
-
-    open fun onPause() {}
-
-    open fun onDestroyView() {}
-
-    open fun onStop() {}
-
-    open fun onStart() {}
-
     fun showToast(@StringRes textResId: Int) {
         val activity = activity ?: return
         Toast.makeText(activity, textResId, Toast.LENGTH_SHORT).show()
@@ -81,13 +71,48 @@ abstract class BaseView(@JvmField protected var bus: Bus = Bus.defaultBus) {
         }
     }
 
-    abstract fun withFragmentManager(block: FragmentManager.() -> Unit)
+    abstract fun withFragmentManager(block: FragmentManager.() -> Unit): Unit?
 
     abstract fun <T : Fragment> findFragmentByTag(tag: String): Fragment?
 
     abstract fun existsFragmentWithTag(tag: String): Boolean
 
-    abstract fun <T : Fragment> withFragmentByTag(tag: String, block: (fragment: T, fragmentManager: FragmentManager) -> Unit)
+    abstract fun <T : Fragment> withFragmentByTag(tag: String, block: (fragment: T, fragmentManager: FragmentManager) -> Unit): Unit?
 
-    abstract fun withFragmentTransaction(block: FragmentTransaction.() -> Unit)
+    abstract fun withFragmentTransaction(block: FragmentTransaction.() -> Unit): Unit?
+
+    @Deprecated(
+            message = "Deprecated in favor of using Presenter's lifecycle functions",
+            replaceWith = ReplaceWith("presenter.onResume()")
+    )
+    open fun onResume() {
+    }
+
+    @Deprecated(
+            message = "Deprecated in favor of using Presenter's lifecycle functions",
+            replaceWith = ReplaceWith("presenter.onPause()")
+    )
+    open fun onPause() {
+    }
+
+    @Deprecated(
+            message = "Deprecated in favor of using Presenter's lifecycle functions",
+            replaceWith = ReplaceWith("presenter.onDestroyView()")
+    )
+    open fun onDestroyView() {
+    }
+
+    @Deprecated(
+            message = "Deprecated in favor of using Presenter's lifecycle functions",
+            replaceWith = ReplaceWith("presenter.onStop()")
+    )
+    open fun onStop() {
+    }
+
+    @Deprecated(
+            message = "Deprecated in favor of using Presenter's lifecycle functions",
+            replaceWith = ReplaceWith("presenter.onStart()")
+    )
+    open fun onStart() {
+    }
 }

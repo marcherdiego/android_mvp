@@ -57,8 +57,8 @@ abstract class BaseFragmentView @JvmOverloads constructor(fragment: Fragment, bu
         }
     }
 
-    override fun withFragmentManager(block: FragmentManager.() -> Unit) {
-        childFragmentManager?.run {
+    override fun withFragmentManager(block: FragmentManager.() -> Unit): Unit? {
+        return childFragmentManager?.run {
             block(this)
         }
     }
@@ -67,13 +67,13 @@ abstract class BaseFragmentView @JvmOverloads constructor(fragment: Fragment, bu
 
     override fun existsFragmentWithTag(tag: String) = findFragmentByTag<Fragment>(tag) != null
 
-    override fun <T : Fragment> withFragmentByTag(tag: String, block: (fragment: T, fragmentManager: FragmentManager) -> Unit) {
-        findFragmentByTag<T>(tag)?.run {
+    override fun <T : Fragment> withFragmentByTag(tag: String, block: (fragment: T, fragmentManager: FragmentManager) -> Unit): Unit? {
+        return findFragmentByTag<T>(tag)?.run {
             block(this, childFragmentManager)
         }
     }
 
-    override fun withFragmentTransaction(block: FragmentTransaction.() -> Unit) {
-        block(childFragmentManager?.beginTransaction() ?: return)
+    override fun withFragmentTransaction(block: FragmentTransaction.() -> Unit): Unit? {
+        return block(childFragmentManager?.beginTransaction() ?: return null)
     }
 }
