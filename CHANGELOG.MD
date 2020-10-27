@@ -1,3 +1,7 @@
+# v7.1.0
+## New
+- Converted `withFragmentByTag` block to Fragment extension function
+
 # v7.0.0
 ## New
 - Removed deprecated lifecycle functions on View and Model
