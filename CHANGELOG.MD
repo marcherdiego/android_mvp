@@ -1,3 +1,8 @@
+# v7.0.0
+## New
+- Removed deprecated lifecycle functions on View and Model
+- Removed deprecated extension functions for fragment transaction handling and find fragments by tag utils
+
 # v6.6.0
 ## New
 - Added return value to `withFragmentManager`, `withFragmentByTag` and `withFragmentTransaction` functions to

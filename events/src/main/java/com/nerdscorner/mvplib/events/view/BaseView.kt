@@ -80,39 +80,4 @@ abstract class BaseView(@JvmField protected var bus: Bus = Bus.defaultBus) {
     abstract fun <T : Fragment> withFragmentByTag(tag: String, block: (fragment: T, fragmentManager: FragmentManager) -> Unit): Unit?
 
     abstract fun withFragmentTransaction(block: FragmentTransaction.() -> Unit): Unit?
-
-    @Deprecated(
-            message = "Deprecated in favor of using Presenter's lifecycle functions",
-            replaceWith = ReplaceWith("presenter.onResume()")
-    )
-    open fun onResume() {
-    }
-
-    @Deprecated(
-            message = "Deprecated in favor of using Presenter's lifecycle functions",
-            replaceWith = ReplaceWith("presenter.onPause()")
-    )
-    open fun onPause() {
-    }
-
-    @Deprecated(
-            message = "Deprecated in favor of using Presenter's lifecycle functions",
-            replaceWith = ReplaceWith("presenter.onDestroyView()")
-    )
-    open fun onDestroyView() {
-    }
-
-    @Deprecated(
-            message = "Deprecated in favor of using Presenter's lifecycle functions",
-            replaceWith = ReplaceWith("presenter.onStop()")
-    )
-    open fun onStop() {
-    }
-
-    @Deprecated(
-            message = "Deprecated in favor of using Presenter's lifecycle functions",
-            replaceWith = ReplaceWith("presenter.onStart()")
-    )
-    open fun onStart() {
-    }
 }
