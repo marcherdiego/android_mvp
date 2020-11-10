@@ -20,7 +20,7 @@ allprojects {
         google()
         jcenter()
         maven {
-            url  "https://dl.bintray.com/nerdscorrner/MVPLib"
+            url "https://dl.bintray.com/nerdscorrner/MVPLib"
         }
         maven {
             url "https://oss.sonatype.org/content/repositories/snapshots"
