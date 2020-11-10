@@ -1,3 +1,7 @@
+# v6.6.1
+## Fixed
+- Added `open` modifier to BaseFragmentPresenter#onViewStateRestored function
+
 # v6.6.0
 ## New
 - Added return value to `withFragmentManager`, `withFragmentByTag` and `withFragmentTransaction` functions to
