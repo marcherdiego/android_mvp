@@ -1,3 +1,16 @@
+# v7.1.1
+## Fixed
+- Added `open` modifier to BaseFragmentPresenter#onViewStateRestored function
+
+# v7.1.0
+## New
+- Converted `withFragmentByTag` block to Fragment extension function
+
+# v7.0.0
+## New
+- Removed deprecated lifecycle functions on View and Model
+- Removed deprecated extension functions for fragment transaction handling and find fragments by tag utils
+
 # v6.6.1
 ## Fixed
 - Added `open` modifier to BaseFragmentPresenter#onViewStateRestored function

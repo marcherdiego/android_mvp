@@ -18,29 +18,19 @@ abstract class BasePresenter<V : BaseView, M : BaseEventsModel>(
 ) {
 
     open fun onStart() {
-        view.onStart()
-        model.onStart()
     }
 
     open fun onResume() {
-        view.onResume()
-        model.onResume()
     }
 
     open fun onPause() {
-        view.onPause()
-        model.onPause()
     }
 
     open fun onStop() {
-        view.onStop()
-        model.onStop()
     }
 
     open fun onDestroyView() {
-        view.onDestroyView()
         view.unbind()
-        model.onDestroyView()
     }
 
     open fun onBackPressed() = false
