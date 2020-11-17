@@ -50,11 +50,11 @@ abstract class BaseActivityView @JvmOverloads constructor(activity: AppCompatAct
         }
     }
 
-    override fun <T : Fragment> findFragmentByTag(tag: String) = fragmentManager?.findFragmentByTag(tag) as? T
+    override fun <T : Fragment> findFragmentByTag(tag: String?) = fragmentManager?.findFragmentByTag(tag) as? T
 
-    override fun existsFragmentWithTag(tag: String) = findFragmentByTag<Fragment>(tag) != null
+    override fun existsFragmentWithTag(tag: String?) = findFragmentByTag<Fragment>(tag) != null
 
-    override fun <T : Fragment> withFragmentByTag(tag: String, block: T.(fragmentManager: FragmentManager) -> Unit): Unit? {
+    override fun <T : Fragment> withFragmentByTag(tag: String?, block: T.(fragmentManager: FragmentManager) -> Unit): Unit? {
         return findFragmentByTag<T>(tag)?.run {
             block(this, fragmentManager ?: return null)
         }

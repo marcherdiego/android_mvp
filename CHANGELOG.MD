@@ -1,3 +1,12 @@
+# v7.2.1
+## New
+- Kotlin and gradle versions upgrade
+
+# v7.2.0
+## New
+- Upgrade event bus library to 3.2.0 ! [Release notes](https://greenrobot.org/release/eventbus-3-2/)
+- Added replace fragment with tag
+
 # v7.1.1
 ## Fixed
 - Added `open` modifier to BaseFragmentPresenter#onViewStateRestored function

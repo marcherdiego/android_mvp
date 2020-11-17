@@ -73,11 +73,11 @@ abstract class BaseView(@JvmField protected var bus: Bus = Bus.defaultBus) {
 
     abstract fun withFragmentManager(block: FragmentManager.() -> Unit): Unit?
 
-    abstract fun <T : Fragment> findFragmentByTag(tag: String): Fragment?
+    abstract fun <T : Fragment> findFragmentByTag(tag: String?): Fragment?
 
-    abstract fun existsFragmentWithTag(tag: String): Boolean
+    abstract fun existsFragmentWithTag(tag: String?): Boolean
 
-    abstract fun <T : Fragment> withFragmentByTag(tag: String, block: T.(fragmentManager: FragmentManager) -> Unit): Unit?
+    abstract fun <T : Fragment> withFragmentByTag(tag: String?, block: T.(fragmentManager: FragmentManager) -> Unit): Unit?
 
     abstract fun withFragmentTransaction(block: FragmentTransaction.() -> Unit): Unit?
 }

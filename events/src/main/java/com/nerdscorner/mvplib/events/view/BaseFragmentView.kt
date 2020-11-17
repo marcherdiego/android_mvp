@@ -63,11 +63,11 @@ abstract class BaseFragmentView @JvmOverloads constructor(fragment: Fragment, bu
         }
     }
 
-    override fun <T : Fragment> findFragmentByTag(tag: String) = childFragmentManager?.findFragmentByTag(tag) as? T
+    override fun <T : Fragment> findFragmentByTag(tag: String?) = childFragmentManager?.findFragmentByTag(tag) as? T
 
-    override fun existsFragmentWithTag(tag: String) = findFragmentByTag<Fragment>(tag) != null
+    override fun existsFragmentWithTag(tag: String?) = findFragmentByTag<Fragment>(tag) != null
 
-    override fun <T : Fragment> withFragmentByTag(tag: String, block: T.(fragmentManager: FragmentManager) -> Unit): Unit? {
+    override fun <T : Fragment> withFragmentByTag(tag: String?, block: T.(fragmentManager: FragmentManager) -> Unit): Unit? {
         return findFragmentByTag<T>(tag)?.run {
             block(this, childFragmentManager)
         }
