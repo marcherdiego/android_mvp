@@ -1,4 +1,4 @@
-# v7.2.1
+# v7.2.5
 ## New
 - Kotlin and gradle versions upgrade
 

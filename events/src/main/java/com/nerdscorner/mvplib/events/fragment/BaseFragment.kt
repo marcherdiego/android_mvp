@@ -20,13 +20,9 @@ abstract class BaseFragment<P : BaseFragmentPresenter<*, *>>(
 
     lateinit var presenter: P
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        presenter.onRestoreInstanceState(savedInstanceState)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
+        presenter.onRestoreInstanceState(savedInstanceState)
         if (registerAt == RegisterAt.ON_CREATE) {
             presenter.bus.register(presenter)
         }
