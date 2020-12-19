@@ -1,24 +1,30 @@
 package com.nerdscorner.mvplib.events.fragment;
 
-import android.content.res.Configuration;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-
-import com.nerdscorner.mvplib.events.model.BaseEventsModel;
-import com.nerdscorner.mvplib.events.presenter.BaseFragmentPresenter;
-import com.nerdscorner.mvplib.events.view.BaseFragmentView;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.jetbrains.annotations.NotNull;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.shadows.support.v4.SupportFragmentController;
+
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.testing.FragmentScenario;
+import androidx.fragment.app.testing.FragmentScenario.FragmentAction;
+import com.nerdscorner.mvplib.events.model.BaseEventsModel;
+import com.nerdscorner.mvplib.events.presenter.BaseFragmentPresenter;
+import com.nerdscorner.mvplib.events.view.BaseFragmentView;
+
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -27,61 +33,77 @@ import static org.mockito.Mockito.verify;
 
 @RunWith(RobolectricTestRunner.class)
 public class BaseFragmentTest {
-    private BaseFragmentPresenter presenter;
+    private static BaseFragmentPresenter presenter;
 
-    private MockBaseFragment baseFragment;
+    private FragmentScenario<MockBaseFragment> fragmentFragmentScenario;
     private EventBus bus = EventBus.getDefault();
+    private MockBaseFragment baseFragment;
 
     @Before
     public void setUp() {
         MockBaseFragment mockBaseFragment = new MockBaseFragment();
-        baseFragment = SupportFragmentController.of(mockBaseFragment).create().get();
+
         presenter = Mockito.spy(
                 new BaseFragmentPresenter<>(
                         new MockBaseFragmentView(mockBaseFragment),
                         new BaseEventsModel()
                 )
         );
+        fragmentFragmentScenario = FragmentScenario.launch(MockBaseFragment.class);
+        fragmentFragmentScenario.onFragment(new FragmentAction<MockBaseFragment>() {
+            @Override
+            public void perform(@NonNull MockBaseFragment fragment) {
+                baseFragment = fragment;
+            }
+        });
+    }
+
+    private void setPresenter(final BaseFragmentPresenter presenter) {
+        fragmentFragmentScenario.onFragment(new FragmentAction<MockBaseFragment>() {
+            @Override
+            public void perform(@NonNull MockBaseFragment fragment) {
+                fragment.setPresenter(presenter);
+            }
+        });
     }
 
     @Test
     public void itShouldCallPresenterOnStart() {
-        baseFragment.setPresenter(presenter);
-        baseFragment.onStart();
+        setPresenter(presenter);
         verify(presenter).onStart();
     }
 
     @Test
     public void itShouldCallPresenterOnResume() {
-        baseFragment.setPresenter(presenter);
+        setPresenter(presenter);
         baseFragment.onResume();
         verify(presenter).onResume();
     }
 
     @Test
     public void itShouldNotRegisterPresenterOnBusDueToLackOfSubscriptions() {
-        baseFragment.setPresenter(presenter);
+        setPresenter(presenter);
         baseFragment.onResume();
         assertFalse(bus.isRegistered(baseFragment.getPresenter()));
     }
 
     @Test
     public void itShouldRegisterPresenterOnBus() {
-        baseFragment.setPresenter(new PresenterWithSubscription(baseFragment));
+        setPresenter(new PresenterWithSubscription(baseFragment));
         baseFragment.onResume();
         assertTrue(bus.isRegistered(baseFragment.getPresenter()));
     }
 
     @Test
     public void itShouldCallPresenterOnPause() {
-        baseFragment.setPresenter(presenter);
+        setPresenter(presenter);
         baseFragment.onPause();
         verify(presenter).onPause();
     }
 
     @Test
     public void itShouldUnregisterPresenterFromBus() {
-        baseFragment.setPresenter(new PresenterWithSubscription(baseFragment));
+        setPresenter(new PresenterWithSubscription(baseFragment));
         baseFragment.onResume();
         baseFragment.onPause();
         assertFalse(bus.isRegistered(baseFragment.getPresenter()));
@@ -89,14 +111,14 @@ public class BaseFragmentTest {
 
     @Test
     public void itShouldCallPresenterOnStop() {
-        baseFragment.setPresenter(presenter);
+        setPresenter(presenter);
         baseFragment.onStop();
         verify(presenter).onStop();
     }
 
     @Test
     public void itShouldCallPresenterOnCreateOptionsMenu() {
-        baseFragment.setPresenter(presenter);
+        setPresenter(presenter);
         Menu mockMenu = mock(Menu.class);
         MenuInflater mockMenuInflater = mock(MenuInflater.class);
         baseFragment.onCreateOptionsMenu(mockMenu, mockMenuInflater);
@@ -105,7 +127,7 @@ public class BaseFragmentTest {
 
     @Test
     public void itShouldCallPresenterOnOptionsItemSelected() {
-        baseFragment.setPresenter(presenter);
+        setPresenter(presenter);
         MenuItem mockMenuItem = mock(MenuItem.class);
         baseFragment.onOptionsItemSelected(mockMenuItem);
         verify(presenter).onOptionsItemSelected(mockMenuItem);
@@ -113,7 +135,7 @@ public class BaseFragmentTest {
 
     @Test
     public void itShouldCallPresenterOnConfigurationChanged() {
-        baseFragment.setPresenter(presenter);
+        setPresenter(presenter);
         Configuration mockedConfiguration = mock(Configuration.class);
         baseFragment.onConfigurationChanged(mockedConfiguration);
         verify(presenter).onConfigurationChanged(mockedConfiguration);
@@ -121,7 +143,7 @@ public class BaseFragmentTest {
 
     @Test
     public void itShouldCallPresenterOnSaveInstanceState() {
-        baseFragment.setPresenter(presenter);
+        setPresenter(presenter);
         Bundle mockedBundle = mock(Bundle.class);
         baseFragment.onSaveInstanceState(mockedBundle);
         verify(presenter).onSaveInstanceState(mockedBundle);
@@ -144,5 +166,18 @@ public class BaseFragmentTest {
     }
 
     public static class MockBaseFragment extends BaseFragment {
+
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public View onCreateView(@NotNull LayoutInflater inflater, @org.jetbrains.annotations.Nullable ViewGroup container, @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+            presenter = BaseFragmentTest.presenter;
+            return super.onCreateView(inflater, container, savedInstanceState);
+        }
+
+        @Override
+        public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+
+        }
     }
 }

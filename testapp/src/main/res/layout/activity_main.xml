@@ -13,17 +13,10 @@
         android:textSize="20sp"/>
 
     <Button
-        android:id="@+id/events_behaviour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/activities_title"
-        android:text="events behaviour"/>
-
-    <Button
         android:id="@+id/events_attributes"
         android:layout_width="wrap_content"
+        android:layout_below="@+id/activities_title"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/events_behaviour"
         android:layout_marginTop="8dp"
         android:text="events attribute"/>
 

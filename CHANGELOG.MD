@@ -1,3 +1,8 @@
+# v8.0.0
+## New
+- Removed behaviour-based injection
+- Fixed fragment tests cases
+
 # v7.2.5
 ## New
 - Kotlin and gradle versions upgrade

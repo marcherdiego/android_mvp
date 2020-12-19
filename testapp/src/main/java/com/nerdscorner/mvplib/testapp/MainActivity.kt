@@ -7,7 +7,6 @@ import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import com.nerdscorner.mvplib.testapp.events.attribute.activities.AttributeEventsMainActivity
 import com.nerdscorner.mvplib.testapp.events.inheritance.fragments.AttributeEventsForFragmentsMainActivity
-import com.nerdscorner.mvplib.testapp.events.behaviour.BehaviourEventsMainActivity
 import com.nerdscorner.mvplib.testapp.events.inheritance.activities.InheritanceEventsMainActivity
 import com.nerdscorner.mvplib.testapp.events.widgets.WidgetsExampleActivity
 
@@ -17,7 +16,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        addListenerToView(R.id.events_behaviour, BehaviourEventsMainActivity::class.java)
         addListenerToView(R.id.events_attributes, AttributeEventsMainActivity::class.java)
         addListenerToView(R.id.events_inheritance, InheritanceEventsMainActivity::class.java)
 
