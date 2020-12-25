@@ -1,6 +1,6 @@
 # Android MVP
 
-This is a small lib that will help you through your Android features development in order to keep things simple, clear and tidy.
+This is a small lib (less than 70KB) that will help you through your Android features development in order to keep things simple, clear and tidy.
 
 Please refer to [this article](https://android.jlelse.eu/android-mvp-doing-it-right-dac9d5d72079) to get a more in-depth explanation about how this library and its components work.
 
