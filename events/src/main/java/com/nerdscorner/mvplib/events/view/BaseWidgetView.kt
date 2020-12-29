@@ -1,5 +1,6 @@
 package com.nerdscorner.mvplib.events.view
 
+import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.widget.Toast
@@ -19,39 +20,51 @@ abstract class BaseWidgetView constructor(view: View, @JvmField protected var bu
     val context: Context?
         get() = viewRef.get()?.context
 
-    @JvmName("busSetter")
+    @JvmName("setBusValue")
     fun setBus(bus: Bus) {
         this.bus = bus
     }
 
     fun showToast(@StringRes textResId: Int) {
-        val context = context ?: return
-        Toast.makeText(context, textResId, Toast.LENGTH_SHORT).show()
+        withContext {
+            Toast.makeText(this, textResId, Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun showToast(@StringRes textResId: Int, vararg args: Any) {
-        val context = context ?: return
-        Toast.makeText(context, context.getString(textResId, *args), Toast.LENGTH_SHORT).show()
+        withContext {
+            Toast.makeText(this, getString(textResId, *args), Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun showToast(text: String?) {
-        val context = context ?: return
-        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+        withContext {
+            Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun showToast(duration: Int, @StringRes textResId: Int) {
-        val context = context ?: return
-        Toast.makeText(context, context.getString(textResId), duration).show()
+        withContext {
+            Toast.makeText(this, getString(textResId), duration).show()
+        }
     }
 
     fun showToast(duration: Int, text: String?) {
-        val context = context ?: return
-        Toast.makeText(context, text, duration).show()
+        withContext {
+            Toast.makeText(this, text, duration).show()
+        }
     }
 
     fun showToast(duration: Int, @StringRes textResId: Int, vararg args: Any) {
-        val context = context ?: return
-        Toast.makeText(context, context.getString(textResId, *args), duration).show()
+        withContext {
+            Toast.makeText(this, getString(textResId, *args), duration).show()
+        }
+    }
+
+    inline fun withContext(block: Context.() -> Unit) {
+        context?.run {
+            block(this)
+        }
     }
 
     fun onClick(@IdRes id: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
@@ -71,20 +84,20 @@ abstract class BaseWidgetView constructor(view: View, @JvmField protected var bu
         }
     }
 
-    fun onClick(view: View, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
-        view.setOnClickListener {
+    fun onClick(view: View?, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
+        view?.setOnClickListener {
             bus.post(event, threadMode)
             block(it)
         }
     }
 
-    fun onClick(vararg view: View, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
+    fun onClick(vararg view: View?, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
         val onClickListener = View.OnClickListener {
             bus.post(event, threadMode)
             block(it)
         }
         view.forEach {
-            it.setOnClickListener(onClickListener)
+            it?.setOnClickListener(onClickListener)
         }
     }
 }

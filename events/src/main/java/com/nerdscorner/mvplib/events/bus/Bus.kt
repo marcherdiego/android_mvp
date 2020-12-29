@@ -124,11 +124,13 @@ class Bus private constructor(private val eventBus: EventBus) {
         /**
          * Returns the default event bus
          */
+        @JvmStatic
         fun getDefaultEventBus() = Bus(EventBus.getDefault())
 
         /**
          * Returns a new instance of the event bus
          */
+        @JvmStatic
         fun getNewEventBus() = Bus(EventBus())
 
         /**
@@ -136,6 +138,7 @@ class Bus private constructor(private val eventBus: EventBus) {
          *
          * @param subscriber the object to subscribe
          */
+        @JvmStatic
         fun registerDefault(subscriber: Any) {
             if (!isRegisteredDefault(subscriber)) {
                 defaultBus.register(subscriber)
@@ -147,6 +150,7 @@ class Bus private constructor(private val eventBus: EventBus) {
          *
          * @param subscriber the object to unsubscribe
          */
+        @JvmStatic
         fun unregisterDefault(subscriber: Any) {
             defaultBus.unregister(subscriber)
         }
@@ -157,11 +161,13 @@ class Bus private constructor(private val eventBus: EventBus) {
          * @param subscriber object to check
          * @return boolean if the object is already registered
          */
+        @JvmStatic
         fun isRegisteredDefault(subscriber: Any) = defaultBus.isRegistered(subscriber)
 
         /**
          * Posts the given event to the default event bus on the given thread.
          */
+        @JvmStatic
         fun postDefault(event: Any, threadMode: ThreadMode = ThreadMode.POSTING) {
             defaultBus.post(event, threadMode)
         }
@@ -170,6 +176,7 @@ class Bus private constructor(private val eventBus: EventBus) {
          * Posts the given event to the default event bus and holds on to the event (because it is sticky). The most recent sticky
          * event of an event's type is kept in memory for future access by subscribers using [Subscribe.sticky].
          */
+        @JvmStatic
         fun postStickyDefault(event: Any) {
             defaultBus.postSticky(event)
         }

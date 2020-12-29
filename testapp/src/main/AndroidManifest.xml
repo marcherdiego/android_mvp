@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+		<activity android:name="com.nerdscorner.mvplib.testapp.events.ui.activities.JavaExampleActivity">
+		</activity>
+        <activity android:name=".events.ui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW"/>
@@ -17,14 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".events.behaviour.BehaviourEventsMainActivity">
+        <activity android:name=".events.ui.activities.AttributeEventsMainActivity">
         </activity>
-        <activity android:name=".events.attribute.activities.AttributeEventsMainActivity">
-        </activity>
-        <activity android:name=".events.inheritance.activities.InheritanceEventsMainActivity"/>
-        <activity android:name=".events.inheritance.fragments.AttributeEventsForFragmentsMainActivity"/>
-        <activity android:name=".events.attribute.fragments.AttributeEventsForFragmentsMainActivity"/>
-        <activity android:name=".events.widgets.WidgetsExampleActivity"/>
+        <activity android:name=".ui.activities.InheritanceEventsMainActivity"/>
+        <activity android:name=".ui.fragments.AttributeEventsForFragmentsMainActivity"/>
+        <activity android:name=".ui.activities.WidgetsExampleActivity"/>
     </application>
 
 </manifest>

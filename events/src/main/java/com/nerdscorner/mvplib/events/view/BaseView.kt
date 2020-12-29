@@ -17,57 +17,63 @@ abstract class BaseView(@JvmField protected var bus: Bus = Bus.defaultBus) {
     open fun unbind() {}
 
     fun showToast(@StringRes textResId: Int) {
-        val activity = activity ?: return
-        Toast.makeText(activity, textResId, Toast.LENGTH_SHORT).show()
+        withActivity {
+            Toast.makeText(this, textResId, Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun showToast(@StringRes textResId: Int, vararg args: Any) {
-        val activity = activity ?: return
-        Toast.makeText(activity, activity.getString(textResId, *args), Toast.LENGTH_SHORT).show()
+        withActivity {
+            Toast.makeText(this, getString(textResId, *args), Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun showToast(text: String?) {
-        val activity = activity ?: return
-        Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
+        withActivity {
+            Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun showToast(duration: Int, @StringRes textResId: Int) {
-        val activity = activity ?: return
-        Toast.makeText(activity, activity.getString(textResId), duration).show()
+        withActivity {
+            Toast.makeText(this, getString(textResId), duration).show()
+        }
     }
 
     fun showToast(duration: Int, text: String?) {
-        val activity = activity ?: return
-        Toast.makeText(activity, text, duration).show()
+        withActivity {
+            Toast.makeText(this, text, duration).show()
+        }
     }
 
     fun showToast(duration: Int, @StringRes textResId: Int, vararg args: Any) {
-        val activity = activity ?: return
-        Toast.makeText(activity, activity.getString(textResId, *args), duration).show()
+        withActivity {
+            Toast.makeText(this, getString(textResId, *args), duration).show()
+        }
     }
 
     inline fun withActivity(block: Activity.() -> Unit) {
         activity?.run {
-            if (!isFinishing) {
+            if (isFinishing.not()) {
                 block(this)
             }
         }
     }
 
-    fun onClick(view: View, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
-        view.setOnClickListener {
+    fun onClick(view: View?, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
+        view?.setOnClickListener {
             bus.post(event, threadMode)
             block(it)
         }
     }
 
-    fun onClick(vararg view: View, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
+    fun onClick(vararg view: View?, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
         val onClickListener = View.OnClickListener {
             bus.post(event, threadMode)
             block(it)
         }
         view.forEach {
-            it.setOnClickListener(onClickListener)
+            it?.setOnClickListener(onClickListener)
         }
     }
 

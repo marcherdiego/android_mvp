@@ -25,8 +25,6 @@ abstract class BaseActivityView @JvmOverloads constructor(activity: AppCompatAct
         this.bus = bus
     }
 
-    fun onDestroy() {}
-
     fun onClick(@IdRes id: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
         activity?.findViewById<View>(id)?.setOnClickListener {
             bus.post(event, threadMode)
@@ -50,6 +48,7 @@ abstract class BaseActivityView @JvmOverloads constructor(activity: AppCompatAct
         }
     }
 
+    @Suppress("UNCHECKED_CAST")
     override fun <T : Fragment> findFragmentByTag(tag: String?) = fragmentManager?.findFragmentByTag(tag) as? T
 
     override fun existsFragmentWithTag(tag: String?) = findFragmentByTag<Fragment>(tag) != null

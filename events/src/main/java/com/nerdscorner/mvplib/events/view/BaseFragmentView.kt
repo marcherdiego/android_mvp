@@ -35,7 +35,7 @@ abstract class BaseFragmentView @JvmOverloads constructor(fragment: Fragment, bu
         return fragmentRef.get()?.activity
     }
 
-    @JvmName("busSetter")
+    @JvmName("setBusValue")
     fun setBus(bus: Bus) {
         this.bus = bus
     }
@@ -63,6 +63,7 @@ abstract class BaseFragmentView @JvmOverloads constructor(fragment: Fragment, bu
         }
     }
 
+    @Suppress("UNCHECKED_CAST")
     override fun <T : Fragment> findFragmentByTag(tag: String?) = childFragmentManager?.findFragmentByTag(tag) as? T
 
     override fun existsFragmentWithTag(tag: String?) = findFragmentByTag<Fragment>(tag) != null
