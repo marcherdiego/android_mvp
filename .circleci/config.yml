@@ -41,6 +41,14 @@ jobs:
     working_directory: ~/code
     steps:
       - checkout
+      - run:
+          command: cd
+
+  deploy:
+    executor: android/android
+    working_directory: ~/code
+    steps:
+      - checkout
       - restore_cache:
           <<: *cache_key
       - run:
@@ -62,3 +70,7 @@ workflows:
       - tests:
           requires:
             - setup
+      - deploy:
+          requires:
+            - build
+            - tests
