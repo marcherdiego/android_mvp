@@ -76,7 +76,6 @@ public class BaseFragmentTest {
     @Test
     public void itShouldCallPresenterOnResume() {
         setPresenter(presenter);
-        baseFragment.onResume();
         verify(presenter).onResume();
     }
 

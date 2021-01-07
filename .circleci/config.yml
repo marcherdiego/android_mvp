@@ -1,0 +1,75 @@
+version: 2.1
+
+cache_key: &cache_key
+  key: lib-cache-{{ .Environment.CACHE_VERSION }}-{{ checksum "build.gradle" }}-{{ checksum  "events/build.gradle" }}
+
+orbs:
+  android: circleci/android@0.2.1
+
+jobs:
+  setup:
+    executor: android/android
+    working_directory: ~/code
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *cache_key
+      - save_cache:
+          <<: *cache_key
+          paths:
+            - ~/.gradle
+
+  build:
+    executor: android/android
+    working_directory: ~/code
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *cache_key
+      - run:
+          command: ./gradlew assembleRelease
+      - store_artifacts:
+          path: events/build/outputs/
+          destination: outputs/
+      - persist_to_workspace:
+          root: ~/code
+          paths:
+            - events/build/outputs/
+            - .circleci/
+  tests:
+    executor: android/android
+    working_directory: ~/code
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *cache_key
+      - run:
+          command: ./gradlew test
+      - store_test_results:
+          path: app/build/test-results
+          destination: test-results
+      - store_artifacts:
+          path: app/build/reports/tests/testDevelDebugUnitTest
+          destination: test-reports
+  deploy:
+    executor: android/android
+    working_directory: ~/code
+    steps:
+      - checkout
+      - run:
+          command: cd
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - setup
+      - build:
+          requires:
+            - setup
+      - tests:
+          requires:
+            - setup
+      - deploy:
+          requires:
+            - build
+            - tests
