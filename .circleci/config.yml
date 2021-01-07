@@ -41,14 +41,6 @@ jobs:
     working_directory: ~/code
     steps:
       - checkout
-      - run:
-          command: cd
-
-  deploy:
-    executor: android/android
-    working_directory: ~/code
-    steps:
-      - checkout
       - restore_cache:
           <<: *cache_key
       - run:
@@ -59,6 +51,13 @@ jobs:
       - store_artifacts:
           path: app/build/reports/tests/testDevelDebugUnitTest
           destination: test-reports
+  deploy:
+    executor: android/android
+    working_directory: ~/code
+    steps:
+      - checkout
+      - run:
+          command: cd
 workflows:
   version: 2
   build-and-deploy:
