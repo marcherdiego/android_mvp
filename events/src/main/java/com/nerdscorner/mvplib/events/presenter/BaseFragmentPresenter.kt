@@ -13,5 +13,5 @@ open class BaseFragmentPresenter<V : BaseFragmentView, M : BaseEventsModel>
         model.setBus(bus)
     }
 
-    fun onViewStateRestored(savedInstanceState: Bundle?) {}
+    open fun onViewStateRestored(savedInstanceState: Bundle?) {}
 }

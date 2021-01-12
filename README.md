@@ -1,6 +1,6 @@
 # Android MVP
 
-This is a small lib that will help you through your Android features development in order to keep things simple, clear and tidy.
+This is a small library (less than 70KB) that will help you through your Android features development in order to keep things simple, clear and tidy.
 
 Please refer to [this article](https://android.jlelse.eu/android-mvp-doing-it-right-dac9d5d72079) to get a more in-depth explanation about how this library and its components work.
 
@@ -18,11 +18,8 @@ For the three of them, the model, view and presenter behave the same so the only
 ### Extending BaseActivity (recommended)
 #### Activity
 ```kotlin
-import com.nerdscorner.mvplib.events.activity.BaseActivity
-        
 // Extending BaseActivity will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
 class FeatureActivity : BaseActivity<FeaturePresenter>() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.feature_activity)
@@ -37,11 +34,8 @@ class FeatureActivity : BaseActivity<FeaturePresenter>() {
 
 #### Fragment
 ```kotlin
-import com.nerdscorner.mvplib.events.fragment.BaseFragment
-
 // Extending BaseActivity will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
 class FeatureFragment : BaseFragment<FeaturePresenter>() {
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_example, container, false)
     }
@@ -62,7 +56,6 @@ class FeatureFragment : BaseFragment<FeaturePresenter>() {
 ```kotlin
 // Extending BaseActivity will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
 class FeatureActivity : AppCompatActivity() {
-
     private lateinit var presenter: FeaturePresenter
     private var bus = Bus.newInstance
 
@@ -93,7 +86,6 @@ class FeatureActivity : AppCompatActivity() {
 ```kotlin
 // Extending BaseActivity will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
 class FeatureFragment : Fragment() {
-
     private lateinit var presenter: FeaturePresenter
     private var bus = Bus.newInstance
 
@@ -122,64 +114,30 @@ class FeatureFragment : Fragment() {
 }
 ```
 
-### Using behaviours
-#### Activity
-```kotlin
-import com.nerdscorner.mvplib.events.behaviour.BaseActivity
-        
-// Extending BaseActivity will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
-class FeatureActivity : BaseActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.feature_activity)
-        
-        addBehaviour(
-                MvpEventsBehaviour(
-                        BehaviourMainPresenter(
-                                BehaviourMainView(this),
-                                BehaviourMainModel()
-                        )
-                )
-        )
-    }
-}
-```
-
 ### MVP components
 #### Presenter
 ```kotlin
-import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter
-
 class FeaturePresenter(view: FeatureView, model: FeatureModel) : BaseActivityPresenter<FeatureView, FeatureModel>(view, model) {
-    ...
+    //...
 }
 ```
 #### View
 ```kotlin
-import com.nerdscorner.mvplib.events.view.BaseActivityView
-
 class FeatureView(activity: FeatureActivity) : BaseActivityView(activity) {
-    ...
+    //...
 }
 ```
 #### Model
 ```kotlin
-import com.nerdscorner.mvplib.events.model.BaseEventsModel
-
 class FeatureModel : BaseEventsModel() {
-    ...
+    //...
 }
 ```
 
 ### Basic wiring
 #### Presenter
 ```kotlin
-import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter
-import org.greenrobot.eventbus.Subscribe
-
 class FeaturePresenter(view: FeatureView, model: FeatureModel) : BaseActivityPresenter<FeatureView, FeatureModel>(view, model) {
-
     // Event posted by the view
     @Subscribe
     fun onActionClicked(event: FeatureView.ActionClickedEvent) {
@@ -196,11 +154,6 @@ class FeaturePresenter(view: FeatureView, model: FeatureModel) : BaseActivityPre
 ```
 #### View
 ```kotlin
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import com.nerdscorner.mvplib.events.view.BaseActivityView
-import com.nerdscorner.mvplib.testapp.R
-
 class FeatureView(activity: AppCompatActivity) : BaseActivityView(activity) {
     private var textView: TextView = activity.findViewById(R.id.text)
 
@@ -226,7 +179,6 @@ class FeatureView(activity: AppCompatActivity) : BaseActivityView(activity) {
 import com.nerdscorner.mvplib.events.model.BaseEventsModel
 
 class FeatureModel : BaseEventsModel() {
-
     fun doSomethingInBackground() {
         backendCall().execute {
             success = {

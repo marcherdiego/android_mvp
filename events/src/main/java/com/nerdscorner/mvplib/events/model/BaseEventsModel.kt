@@ -2,18 +2,7 @@ package com.nerdscorner.mvplib.events.model
 
 import com.nerdscorner.mvplib.events.bus.Bus
 
-open class BaseEventsModel {
-
-    @JvmField
-    protected var bus: Bus
-
-    constructor() {
-        bus = Bus.defaultBus
-    }
-
-    constructor(bus: Bus) {
-        this.bus = bus
-    }
+open class BaseEventsModel(@JvmField protected var bus: Bus = Bus.defaultBus) {
 
     @JvmName("setBusValue")
     fun setBus(bus: Bus) {
@@ -26,16 +15,4 @@ open class BaseEventsModel {
     fun removeStickyEvent(event: Any) {
         bus.removeStickyEvent(event)
     }
-
-    open fun onResume() {}
-
-    open fun onPause() {}
-
-    open fun onStart() {}
-
-    open fun onStop() {}
-
-    open fun onDestroy() {}
-
-    open fun onDestroyView() {}
 }

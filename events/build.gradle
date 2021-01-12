@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven-publish'
 
 ext {
@@ -30,12 +30,12 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    api 'org.greenrobot:eventbus:3.1.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    api 'org.greenrobot:eventbus:3.2.0'
     testImplementation 'junit:junit:4.12'
     testImplementation "org.mockito:mockito-core:2.18.3"
-    testImplementation "org.robolectric:robolectric:4.0"
-    testImplementation "org.robolectric:shadows-supportv4:3.8"
+    testImplementation "org.robolectric:robolectric:4.4"
+    testImplementation "androidx.fragment:fragment-testing:1.2.5"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 

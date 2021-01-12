@@ -1,18 +1,5 @@
 package com.nerdscorner.mvplib.events.activity;
 
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.view.Menu;
-import android.view.MenuItem;
-
-import com.nerdscorner.mvplib.events.TestApplication;
-import com.nerdscorner.mvplib.events.bus.Bus;
-import com.nerdscorner.mvplib.events.model.BaseEventsModel;
-import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter;
-import com.nerdscorner.mvplib.events.view.BaseActivityView;
-
 import org.greenrobot.eventbus.Subscribe;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,6 +8,19 @@ import org.mockito.Mockito;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
+
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import androidx.annotation.NonNull;
+import com.nerdscorner.mvplib.events.TestApplication;
+import com.nerdscorner.mvplib.events.bus.Bus;
+import com.nerdscorner.mvplib.events.model.BaseEventsModel;
+import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter;
+import com.nerdscorner.mvplib.events.view.BaseActivityView;
+
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

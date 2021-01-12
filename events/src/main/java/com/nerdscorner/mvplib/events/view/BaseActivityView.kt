@@ -10,10 +10,7 @@ import com.nerdscorner.mvplib.events.bus.Bus
 import org.greenrobot.eventbus.ThreadMode
 import java.lang.ref.WeakReference
 
-abstract class BaseActivityView @JvmOverloads constructor(
-        activity: AppCompatActivity,
-        @JvmField protected var bus: Bus = Bus.defaultBus
-) : BaseView() {
+abstract class BaseActivityView @JvmOverloads constructor(activity: AppCompatActivity, bus: Bus = Bus.defaultBus) : BaseView(bus) {
 
     override val activity: AppCompatActivity?
         get() = activityRef.get()
@@ -28,31 +25,41 @@ abstract class BaseActivityView @JvmOverloads constructor(
         this.bus = bus
     }
 
-    fun onDestroy() {}
-
-    fun onClick(@IdRes id: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING) {
+    fun onClick(@IdRes id: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
         activity?.findViewById<View>(id)?.setOnClickListener {
             bus.post(event, threadMode)
+            block(it)
         }
     }
 
-    override fun withFragmentManager(block: FragmentManager.() -> Unit) {
-        fragmentManager?.run {
+    fun onClick(@IdRes vararg ids: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
+        val onClickListener = View.OnClickListener {
+            bus.post(event, threadMode)
+            block(it)
+        }
+        ids.forEach {
+            activity?.findViewById<View>(it)?.setOnClickListener(onClickListener)
+        }
+    }
+
+    override fun withFragmentManager(block: FragmentManager.() -> Unit): Unit? {
+        return fragmentManager?.run {
             block(this)
         }
     }
 
-    override fun <T : Fragment> findFragmentByTag(tag: String) = fragmentManager?.findFragmentByTag(tag) as? T
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : Fragment> findFragmentByTag(tag: String?) = fragmentManager?.findFragmentByTag(tag) as? T
 
-    override fun existsFragmentWithTag(tag: String) = findFragmentByTag<Fragment>(tag) != null
+    override fun existsFragmentWithTag(tag: String?) = findFragmentByTag<Fragment>(tag) != null
 
-    override fun <T : Fragment> withFragmentByTag(tag: String, block: (fragment: T, fragmentManager: FragmentManager) -> Unit) {
-        findFragmentByTag<T>(tag)?.run {
-            block(this, fragmentManager ?: return)
+    override fun <T : Fragment> withFragmentByTag(tag: String?, block: T.(fragmentManager: FragmentManager) -> Unit): Unit? {
+        return findFragmentByTag<T>(tag)?.run {
+            block(this, fragmentManager ?: return null)
         }
     }
 
-    override fun withFragmentTransaction(block: FragmentTransaction.() -> Unit) {
-        block(fragmentManager?.beginTransaction() ?: return)
+    override fun withFragmentTransaction(block: FragmentTransaction.() -> Unit): Unit? {
+        return block(fragmentManager?.beginTransaction() ?: return null)
     }
 }
