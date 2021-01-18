@@ -24,17 +24,13 @@ abstract class BasePresenter<V : BaseView, M : BaseEventsModel>(
     private var currentRequestCode = 0x0100
     private val permissionRequestListeners = hashMapOf<Int, PermissionListener>()
 
-    open fun onStart() {
-    }
+    open fun onStart() {}
 
-    open fun onResume() {
-    }
+    open fun onResume() {}
 
-    open fun onPause() {
-    }
+    open fun onPause() {}
 
-    open fun onStop() {
-    }
+    open fun onStop() {}
 
     open fun onDestroyView() {
         view.unbind()

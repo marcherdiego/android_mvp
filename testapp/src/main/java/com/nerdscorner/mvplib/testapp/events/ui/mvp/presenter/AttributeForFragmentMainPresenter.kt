@@ -1,6 +1,5 @@
 package com.nerdscorner.mvplib.testapp.events.ui.mvp.presenter
 
-import androidx.fragment.app.Fragment
 import com.nerdscorner.mvplib.events.bus.Bus
 import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter
 import com.nerdscorner.mvplib.testapp.events.ui.fragments.Fragment1
