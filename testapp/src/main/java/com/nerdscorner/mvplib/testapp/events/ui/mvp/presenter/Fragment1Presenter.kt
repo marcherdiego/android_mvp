@@ -1,5 +1,7 @@
 package com.nerdscorner.mvplib.testapp.events.ui.mvp.presenter
 
+import android.Manifest
+import android.widget.Toast
 import com.nerdscorner.mvplib.events.bus.Bus
 import com.nerdscorner.mvplib.events.presenter.BaseFragmentPresenter
 import com.nerdscorner.mvplib.testapp.events.ui.mvp.model.Fragment1Model
@@ -12,6 +14,16 @@ class Fragment1Presenter(view: Fragment1View, model: Fragment1Model, bus: Bus) :
         BaseFragmentPresenter<Fragment1View, Fragment1Model>(view, model, bus) {
     init {
         view.setText("Fragment 1")
+
+        withPermission(
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                onGranted = {
+                    Toast.makeText(view.context, "READ_EXTERNAL_STORAGE Granted!", Toast.LENGTH_SHORT).show()
+                },
+                onDenied = {
+                    Toast.makeText(view.context, "READ_EXTERNAL_STORAGE Denied :(", Toast.LENGTH_SHORT).show()
+                }
+        )
     }
 
     @Subscribe

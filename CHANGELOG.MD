@@ -1,3 +1,7 @@
+# v8.1.0
+## New
+- Added permission checker/requester helpers (`withPermission` and `withPermissions`) in BasePresenter class
+
 # v8.0.0
 ## New
 - Removed behaviour-based injection
