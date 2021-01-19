@@ -28,6 +28,8 @@ allprojects {
     }
 }
 
+ext.libraryVersion="8.1.0"
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

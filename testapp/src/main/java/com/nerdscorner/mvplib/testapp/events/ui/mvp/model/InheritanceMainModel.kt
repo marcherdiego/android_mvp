@@ -10,7 +10,7 @@ class InheritanceMainModel : BaseEventsModel() {
         SomeBackgroundTask(this).execute()
     }
 
-    private class SomeBackgroundTask internal constructor(private val model: InheritanceMainModel) :
+    private class SomeBackgroundTask(private val model: InheritanceMainModel) :
             AsyncTask<Void, Void, Void>() {
 
         override fun doInBackground(vararg voids: Void): Void? {

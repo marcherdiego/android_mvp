@@ -1,11 +1,13 @@
 # Android MVP
+[![<ORG_NAME>](https://circleci.com/gh/marcherdiego/android_mvp.svg?style=svg)](https://circleci.com/gh/circleci/circleci-docs)
+[ ![Download](https://api.bintray.com/packages/nerdscorrner/MVPLib/Events/images/download.svg) ](https://bintray.com/nerdscorrner/MVPLib/Events/_latestVersion)
 
 This is a small library (less than 70KB) that will help you through your Android features development in order to keep things simple, clear and tidy.
 
 Please refer to [this article](https://android.jlelse.eu/android-mvp-doing-it-right-dac9d5d72079) to get a more in-depth explanation about how this library and its components work.
 
 ## Setup
-[ ![Download](https://api.bintray.com/packages/nerdscorrner/MVPLib/Events/images/download.svg) ](https://bintray.com/nerdscorrner/MVPLib/Events/_latestVersion)
+Add `implementation` or `api` (library projects) dependency
 
 ```groovy
 implementation "com.nerdscorner.mvp:events:LATEST_VERSION" 

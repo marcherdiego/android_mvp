@@ -6,7 +6,7 @@ apply plugin: 'maven-publish'
 ext {
     PUBLISH_GROUP_ID = 'com.nerdscorner.mvp'
     PUBLISH_ARTIFACT_ID = 'events'
-    PUBLISH_VERSION = "$eventsLibVersion"
+    PUBLISH_VERSION = "$libraryVersion"
 }
 
 android {
