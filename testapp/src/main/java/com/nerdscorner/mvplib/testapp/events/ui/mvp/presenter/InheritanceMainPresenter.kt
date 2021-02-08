@@ -5,6 +5,7 @@ import android.widget.Toast
 import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter
 import com.nerdscorner.mvplib.testapp.events.ui.mvp.model.InheritanceMainModel
 import com.nerdscorner.mvplib.testapp.events.ui.mvp.model.InheritanceMainModel.BackgroundTaskCompletedEvent
+import com.nerdscorner.mvplib.testapp.events.ui.mvp.model.InheritanceMainModel.BackgroundTaskFailedEvent
 import com.nerdscorner.mvplib.testapp.events.ui.mvp.view.InheritanceMainView
 import com.nerdscorner.mvplib.testapp.events.ui.mvp.view.InheritanceMainView.ActionClickedEvent
 import org.greenrobot.eventbus.Subscribe
@@ -32,6 +33,16 @@ class InheritanceMainPresenter(view: InheritanceMainView, model: InheritanceMain
 
     @Subscribe
     fun onBackgroundTaskCompleted(event: BackgroundTaskCompletedEvent) {
-        view.setTextValue("Background task completed")
+        view.setTextValue("Background task completed: ${event.data}")
+    }
+
+    @Subscribe
+    fun onBackgroundTaskFailed(event: BackgroundTaskFailedEvent) {
+        view.setTextValue("Background task failed with message: ${event.message}")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        model.cancelJob()
     }
 }

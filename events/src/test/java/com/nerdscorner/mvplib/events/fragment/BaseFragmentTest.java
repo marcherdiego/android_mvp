@@ -20,7 +20,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.testing.FragmentScenario;
-import androidx.fragment.app.testing.FragmentScenario.FragmentAction;
 import com.nerdscorner.mvplib.events.model.BaseEventsModel;
 import com.nerdscorner.mvplib.events.presenter.BaseFragmentPresenter;
 import com.nerdscorner.mvplib.events.view.BaseFragmentView;
@@ -36,7 +35,7 @@ public class BaseFragmentTest {
     private static BaseFragmentPresenter presenter;
 
     private FragmentScenario<MockBaseFragment> fragmentFragmentScenario;
-    private EventBus bus = EventBus.getDefault();
+    private final EventBus bus = EventBus.getDefault();
     private MockBaseFragment baseFragment;
 
     @Before
@@ -50,20 +49,12 @@ public class BaseFragmentTest {
                 )
         );
         fragmentFragmentScenario = FragmentScenario.launch(MockBaseFragment.class);
-        fragmentFragmentScenario.onFragment(new FragmentAction<MockBaseFragment>() {
-            @Override
-            public void perform(@NonNull MockBaseFragment fragment) {
-                baseFragment = fragment;
-            }
-        });
+        fragmentFragmentScenario.onFragment(fragment -> baseFragment = fragment);
     }
 
     private void setPresenter(final BaseFragmentPresenter presenter) {
-        fragmentFragmentScenario.onFragment(new FragmentAction<MockBaseFragment>() {
-            @Override
-            public void perform(@NonNull MockBaseFragment fragment) {
-                fragment.setPresenter(presenter);
-            }
+        fragmentFragmentScenario.onFragment(fragment -> {
+            fragment.setPresenter(presenter);
         });
     }
 

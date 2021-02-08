@@ -1,33 +1,31 @@
 package com.nerdscorner.mvplib.testapp.events.ui.mvp.model
 
-import android.os.AsyncTask
+import com.nerdscorner.events.coroutines.extensions.runAsync
 
 import com.nerdscorner.mvplib.events.bus.Bus
 import com.nerdscorner.mvplib.events.model.BaseEventsModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class AttributeMainModel(bus: Bus) : BaseEventsModel(bus) {
 
     fun doSomethingInBackground() {
-        SomeBackgroundTask(this).execute()
-    }
-
-    private class SomeBackgroundTask(private val model: AttributeMainModel) : AsyncTask<Void, Void, Void>() {
-
-        override fun doInBackground(vararg voids: Void): Void? {
-            try {
-                Thread.sleep(1000L)
-            } catch (e: InterruptedException) {
-                e.printStackTrace()
+        CoroutineScope(Dispatchers.Main).launch {
+            val deferredResult = runAsync {
+                fetchDataAsync()
             }
-
-            return null
-        }
-
-        override fun onPostExecute(aVoid: Void?) {
-            super.onPostExecute(aVoid)
-            model.bus.post(BackgroundTaskCompletedEvent())
+            val result = deferredResult.await()
+            bus.post(BackgroundTaskCompletedEvent(result))
         }
     }
 
-    class BackgroundTaskCompletedEvent
+    private suspend fun fetchDataAsync(): String {
+        //Fake heavy work
+        delay(1000L)
+        return "Some important data"
+    }
+
+    class BackgroundTaskCompletedEvent(val data: String)
 }
