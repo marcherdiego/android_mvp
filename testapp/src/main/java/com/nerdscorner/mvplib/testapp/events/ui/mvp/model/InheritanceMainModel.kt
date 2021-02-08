@@ -1,33 +1,46 @@
 package com.nerdscorner.mvplib.testapp.events.ui.mvp.model
 
-import android.os.AsyncTask
+import android.util.Log
+import com.nerdscorner.events.coroutines.extensions.withResult
 
 import com.nerdscorner.mvplib.events.model.BaseEventsModel
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlin.random.Random
 
 class InheritanceMainModel : BaseEventsModel() {
 
+    private var fetchJob: Job? = null
+
     fun doSomethingInBackground() {
-        SomeBackgroundTask(this).execute()
+        fetchJob?.cancel()
+        fetchJob = withResult(
+                resultFunc = this::fetchDataAsync,
+                success = {
+                    bus.post(BackgroundTaskCompletedEvent(this))
+                },
+                fail = {
+                    bus.post(BackgroundTaskFailedEvent(this.message))
+                },
+                cancelled = {
+                    Log.e("InheritanceMainModel", "CANCELLED")
+                }
+        )
     }
 
-    private class SomeBackgroundTask(private val model: InheritanceMainModel) :
-            AsyncTask<Void, Void, Void>() {
-
-        override fun doInBackground(vararg voids: Void): Void? {
-            try {
-                Thread.sleep(1000L)
-            } catch (e: InterruptedException) {
-                e.printStackTrace()
-            }
-
-            return null
+    private suspend fun fetchDataAsync(): String {
+        //Fake heavy work
+        delay(3000L)
+        if (Random(System.currentTimeMillis()).nextBoolean()) {
+            throw IllegalStateException("Random exception")
         }
-
-        override fun onPostExecute(aVoid: Void?) {
-            super.onPostExecute(aVoid)
-            model.bus.post(BackgroundTaskCompletedEvent())
-        }
+        return "Some data"
     }
 
-    class BackgroundTaskCompletedEvent
+    fun cancelJob() {
+        fetchJob?.cancel()
+    }
+
+    class BackgroundTaskCompletedEvent(val data: String?)
+    class BackgroundTaskFailedEvent(val message: String?)
 }

@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.4.10'
+    ext.kotlin_version = '1.4.30'
 
     repositories {
         mavenLocal()
@@ -28,7 +28,26 @@ allprojects {
     }
 }
 
-ext.libraryVersion="8.1.0"
+ext {
+    mvpLibraryVersion="8.1.0"
+    coroutinesLibraryVersion="1.0.0"
+
+    //Dependencies
+    eventBusVersion = "3.2.0"
+    androidxAppcompatVersion = "1.2.0"
+    androidxLifecycleExtensionsVersion = "2.2.0"
+    jetbrainsCoroutinesVersion = "1.4.2"
+
+    //Testing dependencies
+    junitVersion = "4.12"
+    androidxTestJunitVersion = "1.1.2"
+    mockitoVersion = "2.18.3"
+    robolectricVersion = "4.4"
+    androidxFragmentTestingVersion = "1.2.5"
+
+    //Test App dependencies
+    androidxConstraintLayoutVersion = "2.0.4"
+}
 
 task clean(type: Delete) {
     delete rootProject.buildDir

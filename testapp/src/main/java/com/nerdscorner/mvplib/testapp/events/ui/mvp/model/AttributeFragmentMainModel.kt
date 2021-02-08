@@ -5,19 +5,19 @@ import com.nerdscorner.mvplib.events.model.BaseEventsModel
 
 class AttributeFragmentMainModel(bus: Bus) : BaseEventsModel(bus) {
 
-    private var currentFragment = FRAGMENT_2
+    private var currentState = STATE_2
 
-    val nextFragment: Int
+    val nextState: Int
         get() {
-            when (currentFragment) {
-                FRAGMENT_1 -> currentFragment = FRAGMENT_2
-                FRAGMENT_2 -> currentFragment = FRAGMENT_1
+            when (currentState) {
+                STATE_1 -> currentState = STATE_2
+                STATE_2 -> currentState = STATE_1
             }
-            return currentFragment
+            return currentState
         }
 
     companion object {
-        const val FRAGMENT_1 = 1
-        const val FRAGMENT_2 = 2
+        const val STATE_1 = 1
+        const val STATE_2 = 2
     }
 }

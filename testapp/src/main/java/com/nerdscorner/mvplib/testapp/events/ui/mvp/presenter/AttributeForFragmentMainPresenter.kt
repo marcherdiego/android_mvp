@@ -22,9 +22,9 @@ class AttributeForFragmentMainPresenter(
 
     @Subscribe
     fun onNextFragmentClicked(event: NextFragmentClickedEvent?) {
-        val fragment = when (val nextFragment = model.nextFragment) {
-            AttributeFragmentMainModel.FRAGMENT_1 -> Fragment1()
-            AttributeFragmentMainModel.FRAGMENT_2 -> Fragment2()
+        val fragment = when (val nextFragment = model.nextState) {
+            AttributeFragmentMainModel.STATE_1 -> Fragment1()
+            AttributeFragmentMainModel.STATE_2 -> Fragment2()
             else -> throw IllegalArgumentException("Invalid fragment code: $nextFragment")
         }
         view.setCurrentFragment(fragment)
