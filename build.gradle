@@ -39,9 +39,9 @@ ext {
     jetbrainsCoroutinesVersion = "1.4.2"
 
     //Testing dependencies
-    junitVersion = "4.12"
+    junitVersion = "4.13.1"
     androidxTestJunitVersion = "1.1.2"
-    mockitoVersion = "2.18.3"
+    mockitoVersion = "3.3.3"
     robolectricVersion = "4.4"
     androidxFragmentTestingVersion = "1.2.5"
 
