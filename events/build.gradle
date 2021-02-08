@@ -10,13 +10,13 @@ ext {
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
     testOptions.unitTests.includeAndroidResources = true
     testOptions.unitTests.returnDefaultValues = true
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 28
+        targetSdkVersion 30
     }
 
     buildTypes {

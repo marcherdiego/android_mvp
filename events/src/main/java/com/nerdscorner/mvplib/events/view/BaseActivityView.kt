@@ -55,7 +55,7 @@ abstract class BaseActivityView @JvmOverloads constructor(activity: AppCompatAct
 
     override fun <T : Fragment> withFragmentByTag(tag: String?, block: T.(fragmentManager: FragmentManager) -> Unit): Unit? {
         return findFragmentByTag<T>(tag)?.run {
-            block(this, fragmentManager ?: return null)
+            block(this, parentFragmentManager)
         }
     }
 
