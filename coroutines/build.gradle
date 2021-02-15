@@ -33,10 +33,10 @@ android {
 }
 
 dependencies {
-    implementation (project(":events"))
+    implementation(project(":events"))
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$jetbrainsCoroutinesVersion"
     testImplementation "junit:junit:$junitVersion"
 }
 
-apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
+apply from: '../android-release-aar.gradle'

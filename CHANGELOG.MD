@@ -1,3 +1,14 @@
+# Events - v8.2.2
+## New
+- Added `runOnUiThread` function in BaseView class to reduce boilerplate
+- Exposed bus on base classes for further extensions
+
+# Coroutines - v1.0.2
+## New
+- `launchMain` to run suspend functions on the main thread
+- `runAsync` to run suspend functions on any scope/dispatcher (Main and IO by default)
+- `withResult` to run suspend a functions on any scope/dispatcher (Main and IO by default) and listen for results
+
 # v8.1.0
 ## New
 - Added permission checker/requester helpers (`withPermission` and `withPermissions`) in BasePresenter class

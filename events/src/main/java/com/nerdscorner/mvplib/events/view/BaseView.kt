@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.nerdscorner.mvplib.events.bus.Bus
 import org.greenrobot.eventbus.ThreadMode
 
-abstract class BaseView(@JvmField protected var bus: Bus = Bus.defaultBus) {
+abstract class BaseView(@JvmField var bus: Bus = Bus.defaultBus) {
     abstract val activity: Activity?
     abstract val fragmentManager: FragmentManager?
 
@@ -86,4 +86,12 @@ abstract class BaseView(@JvmField protected var bus: Bus = Bus.defaultBus) {
     abstract fun <T : Fragment> withFragmentByTag(tag: String?, block: T.(fragmentManager: FragmentManager) -> Unit): Unit?
 
     abstract fun withFragmentTransaction(block: FragmentTransaction.() -> Unit): Unit?
+
+    fun runOnUiThread(block: Activity.() -> Unit) {
+        withActivity {
+            runOnUiThread {
+                block(this)
+            }
+        }
+    }
 }

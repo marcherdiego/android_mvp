@@ -12,10 +12,24 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/**
+ * Runs suspend a function on the main thread
+ *
+ * @param block suspend function to be executed on the main thread
+ */
 fun <T> BaseEventsModel.launchMain(block: suspend () -> T) = CoroutineScope(Dispatchers.Main).launch {
     block()
 }
 
+/**
+ * Runs suspend a function on any scope/dispatcher (Main and IO by default)
+ *
+ * @param scope where the block will be executed in the async block
+ * @param dispatcher to be used by the scope
+ * @param block suspend function to be executed
+ *
+ * @return the [Deferred] task created
+ */
 fun <T> BaseEventsModel.runAsync(
         scope: CoroutineScope = CoroutineScope(Dispatchers.Main),
         dispatcher: CoroutineDispatcher = Dispatchers.IO,
@@ -26,6 +40,18 @@ fun <T> BaseEventsModel.runAsync(
     }
 }
 
+/**
+ * Runs suspend a function on any scope/dispatcher (Main and IO by default)
+ *
+ * @param scope where the resultFunc will be launched
+ * @param dispatcher to be used by the scope
+ * @param resultFunc suspend function to be executed
+ * @param success function to be executed if `resultFunc` was executed successfully
+ * @param fail function to be executed if `resultFunc` failed to execute
+ * @param cancelled function to be executed if the job was cancelled
+ *
+ * @return the newly created [Job]
+ */
 fun <T> BaseEventsModel.withResult(
         scope: CoroutineScope = CoroutineScope(Dispatchers.Main),
         dispatcher: CoroutineDispatcher = Dispatchers.IO,

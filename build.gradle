@@ -29,8 +29,8 @@ allprojects {
 }
 
 ext {
-    mvpLibraryVersion="8.2.0"
-    coroutinesLibraryVersion="1.0.0"
+    mvpLibraryVersion="8.2.2"
+    coroutinesLibraryVersion="1.0.2"
 
     //Dependencies
     eventBusVersion = "3.2.0"

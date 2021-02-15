@@ -1,6 +1,5 @@
 package com.nerdscorner.mvplib.events.view
 
-import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.widget.Toast
@@ -10,7 +9,7 @@ import com.nerdscorner.mvplib.events.bus.Bus
 import org.greenrobot.eventbus.ThreadMode
 import java.lang.ref.WeakReference
 
-abstract class BaseWidgetView constructor(view: View, @JvmField protected var bus: Bus = Bus.defaultBus) {
+abstract class BaseWidgetView constructor(view: View, @JvmField var bus: Bus = Bus.defaultBus) {
 
     private val viewRef: WeakReference<View> = WeakReference(view)
 

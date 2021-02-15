@@ -17,8 +17,8 @@ import com.nerdscorner.mvplib.events.utils.permissions.PermissionListener
 import com.nerdscorner.mvplib.events.view.BaseView
 
 abstract class BasePresenter<V : BaseView, M : BaseEventsModel>(
-        @JvmField protected var view: V,
-        @JvmField protected var model: M
+        @JvmField var view: V,
+        @JvmField var model: M
 ) {
 
     private var currentRequestCode = 0x0100
