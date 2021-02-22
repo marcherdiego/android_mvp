@@ -1,6 +1,7 @@
 # Android MVP
 [![<ORG_NAME>](https://circleci.com/gh/marcherdiego/android_mvp.svg?style=svg)](https://circleci.com/gh/circleci/circleci-docs)
-[ ![Download](https://api.bintray.com/packages/nerdscorrner/MVPLib/Events/images/download.svg) ](https://bintray.com/nerdscorrner/MVPLib/Events/_latestVersion)
+[ ![Download](https://img.shields.io/maven-central/v/com.github.marcherdiego.mvp/events) ](https://search.maven.org/artifact/com.github.marcherdiego.mvp/events)
+[ ![Download](https://img.shields.io/maven-central/v/com.github.marcherdiego.mvp/coroutines) ](https://search.maven.org/artifact/com.github.marcherdiego.mvp/events)
 
 This is a small library (less than 70KB) that will help you through your Android features development in order to keep things simple, clear and tidy.
 
@@ -10,7 +11,10 @@ Please refer to [this article](https://android.jlelse.eu/android-mvp-doing-it-ri
 Add `implementation` or `api` (library projects) dependency
 
 ```groovy
-implementation "com.nerdscorner.mvp:events:LATEST_VERSION" 
+implementation "com.github.marcherdiego.mvp:events:LATEST_VERSION" 
+
+// Optional if you want to use coroutines for model operations
+implementation "com.github.marcherdiego.mvp:coroutines:LATEST_VERSION" 
 ```
 
 ## Usage

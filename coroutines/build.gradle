@@ -5,9 +5,9 @@ plugins {
 }
 
 ext {
-    PUBLISH_GROUP_ID = 'com.nerdscorner.mvp'
-    PUBLISH_ARTIFACT_ID = 'coroutines'
-    PUBLISH_VERSION = "$coroutinesLibraryVersion"
+    PUBLISH_GROUP_ID = groupId
+    PUBLISH_ARTIFACT_ID = coroutinesArtifactName
+    PUBLISH_VERSION = coroutinesLibraryVersion
 }
 
 android {

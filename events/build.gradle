@@ -1,12 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven-publish'
 
 ext {
-    PUBLISH_GROUP_ID = 'com.nerdscorner.mvp'
-    PUBLISH_ARTIFACT_ID = 'events'
-    PUBLISH_VERSION = "$mvpLibraryVersion"
+    PUBLISH_GROUP_ID = groupId
+    PUBLISH_ARTIFACT_ID = mvpLibraryArtifactName
+    PUBLISH_VERSION = mvpLibraryVersion
 }
 
 android {
@@ -42,10 +41,6 @@ dependencies {
     testImplementation "org.robolectric:robolectric:$robolectricVersion"
     testImplementation "androidx.fragment:fragment-testing:$androidxFragmentTestingVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-}
-
-androidExtensions {
-    experimental = true
 }
 
 apply from: '../android-release-aar.gradle'

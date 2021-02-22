@@ -1,3 +1,13 @@
+# Events - v1.0.0
+## New
+- Migration to Sonatype servers (reset version numbers)
+
+# Coroutines - v1.0.0
+## New
+- Migration to Sonatype servers (reset version numbers)
+
+--------------------------------------------------------------------------------------------------------------
+
 # Events - v8.2.2
 ## New
 - Added `runOnUiThread` function in BaseView class to reduce boilerplate
