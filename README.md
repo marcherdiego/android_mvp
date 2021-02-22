@@ -2,10 +2,12 @@
 [![<ORG_NAME>](https://circleci.com/gh/marcherdiego/android_mvp.svg?style=svg)](https://circleci.com/gh/circleci/circleci-docs)
 
 **Events module**
+
 [ ![Download](https://img.shields.io/maven-central/v/com.github.marcherdiego.mvp/events) ](https://search.maven.org/artifact/com.github.marcherdiego.mvp/events)
 
 **Coroutines module**
-[ ![Download](https://img.shields.io/maven-central/v/com.github.marcherdiego.mvp/coroutines) ](https://search.maven.org/artifact/com.github.marcherdiego.mvp/events)
+
+[ ![Download](https://img.shields.io/maven-central/v/com.github.marcherdiego.mvp/coroutines) ](https://search.maven.org/artifact/com.github.marcherdiego.mvp/coroutines)
 
 This is a small library (less than 70KB) that will help you through your Android features development in order to keep things simple, clear and tidy.
 
