@@ -58,6 +58,7 @@ open class BaseActivity<P : BaseActivityPresenter<*, *>>(
 
     override fun onDestroy() {
         super.onDestroy()
+        presenter.onDestroy()
         if (unregisterAt == UnregisterAt.ON_DESTROY) {
             presenter.bus.unregister(presenter)
         }

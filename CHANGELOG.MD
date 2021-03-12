@@ -1,3 +1,13 @@
+# Events - v1.0.1
+## New
+- Added missing onDestroy() call in BaseActivityPresenter
+- Added missing presenter.onDestroy() call in BaseActivity
+
+# Coroutines - v1.1.0
+## New
+- Added postDelayed in base presenter to run delayed code in the main thread
+
+
 # Events - v1.0.0
 ## New
 - Migration to Sonatype servers (reset version numbers)
