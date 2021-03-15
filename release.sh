@@ -1,5 +1,5 @@
 #!/bin/bash
-./gradlew signJars
+./gradlew clean && ./gradlew signJars
 
 # Events
 rm events/build/outputs/aar/events-debug.aar

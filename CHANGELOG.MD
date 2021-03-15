@@ -1,9 +1,9 @@
-# Events - v1.0.1
+# Events - v1.1.2
 ## New
 - Added missing onDestroy() call in BaseActivityPresenter
 - Added missing presenter.onDestroy() call in BaseActivity
 
-# Coroutines - v1.1.0
+# Coroutines - v1.1.2
 ## New
 - Added postDelayed in base presenter to run delayed code in the main thread
 

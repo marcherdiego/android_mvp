@@ -24,10 +24,10 @@ ext {
     groupId = "com.github.marcherdiego.mvp"
 
     mvpLibraryArtifactName = "events"
-    mvpLibraryVersion = "1.0.1"
+    mvpLibraryVersion = "1.1.2"
 
     coroutinesArtifactName = "coroutines"
-    coroutinesLibraryVersion = "1.1.0"
+    coroutinesLibraryVersion = "1.1.2"
 
     //Dependencies
     eventBusVersion = "3.2.0"
