@@ -42,7 +42,7 @@ class FeatureActivity : BaseActivity<FeaturePresenter>() {
 
 #### Fragment
 ```kotlin
-// Extending BaseActivity will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
+// Extending BaseFragment will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
 class FeatureFragment : BaseFragment<FeaturePresenter>() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_example, container, false)
@@ -62,7 +62,6 @@ class FeatureFragment : BaseFragment<FeaturePresenter>() {
 ### Holding a presenter reference (without inheritance)
 #### Activity
 ```kotlin
-// Extending BaseActivity will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
 class FeatureActivity : AppCompatActivity() {
     private lateinit var presenter: FeaturePresenter
     private var bus = Bus.newInstance
@@ -92,7 +91,6 @@ class FeatureActivity : AppCompatActivity() {
 
 #### Fragment
 ```kotlin
-// Extending BaseActivity will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
 class FeatureFragment : Fragment() {
     private lateinit var presenter: FeaturePresenter
     private var bus = Bus.newInstance
