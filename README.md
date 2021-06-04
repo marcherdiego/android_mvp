@@ -1,4 +1,4 @@
-[![Nerd's Corner](https://circleci.com/gh/marcherdiego/android_mvp.svg?style=svg)](https://circleci.com/gh/circleci/circleci-docs)
+[![Nerd's Corner](https://circleci.com/gh/marcherdiego/android_mvp.svg?style=svg)](https://app.circleci.com/pipelines/github/marcherdiego/android_mvp)
 
 # Android MVP
 
