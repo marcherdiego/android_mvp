@@ -35,6 +35,10 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$androidxAppcompatVersion"
     implementation "androidx.constraintlayout:constraintlayout:$androidxConstraintLayoutVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$httpLoggingInterceptorVersion"
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
 }
 repositories {
     mavenCentral()

@@ -60,20 +60,33 @@ abstract class BaseView(@JvmField var bus: Bus = Bus.defaultBus) {
         }
     }
 
-    fun onClick(view: View?, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
+    fun onClick(view: View?, block: (View) -> Unit = {}) {
         view?.setOnClickListener {
+            block(it)
+        }
+    }
+
+    fun onClick(view: View?, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
+        onClick(view) {
             bus.post(event, threadMode)
             block(it)
         }
     }
 
-    fun onClick(vararg view: View?, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
-        val onClickListener = View.OnClickListener {
-            bus.post(event, threadMode)
-            block(it)
-        }
+    fun onClick(vararg view: View, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
         view.forEach {
-            it?.setOnClickListener(onClickListener)
+            onClick(it) { v ->
+                bus.post(event, threadMode)
+                block(v)
+            }
+        }
+    }
+
+    fun <T : View> onClickView(vararg view: T, block: (T) -> Unit) {
+        view.forEach {
+            onClick(it) { v ->
+                block(v as T)
+            }
         }
     }
 
