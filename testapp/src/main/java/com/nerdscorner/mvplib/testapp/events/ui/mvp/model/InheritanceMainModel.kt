@@ -15,7 +15,7 @@ class InheritanceMainModel : BaseEventsModel() {
     fun doSomethingInBackground() {
         fetchJob?.cancel()
         fetchJob = withResult(
-                resultFunc = this::fetchDataAsync,
+                resultFunc = ::fetchDataAsync,
                 success = {
                     bus.post(BackgroundTaskCompletedEvent(this))
                 },
