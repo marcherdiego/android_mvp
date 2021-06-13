@@ -8,6 +8,8 @@ import kotlinx.coroutines.launch
 fun BasePresenter<*, *>.postDelayed(delayTime: Long, block: () -> Unit) {
     GlobalScope.launch {
         delay(delayTime)
-        block()
+        model.launchMain {
+            block()
+        }
     }
 }

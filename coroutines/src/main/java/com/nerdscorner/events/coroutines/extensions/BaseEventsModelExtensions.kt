@@ -53,21 +53,21 @@ fun <T> BaseEventsModel.runAsync(
  * @return the newly created [Job]
  */
 fun <T> BaseEventsModel.withResult(
-        scope: CoroutineScope = CoroutineScope(Dispatchers.Main),
-        dispatcher: CoroutineDispatcher = Dispatchers.IO,
-        resultFunc: suspend () -> T?,
-        success: T?.() -> Unit,
-        fail: Exception.() -> Unit = {},
-        cancelled: () -> Unit = {}
+    scope: CoroutineScope = CoroutineScope(Dispatchers.Main),
+    dispatcher: CoroutineDispatcher = Dispatchers.IO,
+    resultFunc: suspend () -> T?,
+    success: T?.() -> Unit = {},
+    fail: Exception.() -> Unit = {},
+    cancelled: () -> Unit = {}
 ): Job {
     return scope.launch {
         try {
             val result = withContext(scope.coroutineContext + dispatcher) {
                 resultFunc()
             }
-            ensureActive()
             success(result)
         } catch (e: Exception) {
+            e.printStackTrace()
             if (isActive) {
                 fail(e)
             } else {

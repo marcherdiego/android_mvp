@@ -2,6 +2,7 @@ package com.nerdscorner.mvplib.testapp.events.ui.mvp.presenter
 
 import android.Manifest
 import android.widget.Toast
+import com.nerdscorner.events.coroutines.extensions.postDelayed
 import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter
 import com.nerdscorner.mvplib.testapp.events.ui.mvp.model.InheritanceMainModel
 import com.nerdscorner.mvplib.testapp.events.ui.mvp.model.InheritanceMainModel.BackgroundTaskCompletedEvent
@@ -11,10 +12,11 @@ import com.nerdscorner.mvplib.testapp.events.ui.mvp.view.InheritanceMainView.Act
 import org.greenrobot.eventbus.Subscribe
 
 class InheritanceMainPresenter(view: InheritanceMainView, model: InheritanceMainModel) :
-        BaseActivityPresenter<InheritanceMainView, InheritanceMainModel>(view, model) {
+    BaseActivityPresenter<InheritanceMainView, InheritanceMainModel>(view, model) {
 
     init {
-        withPermissions(
+        postDelayed(100L) {
+            withPermissions(
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_EXTERNAL_STORAGE),
                 onGranted = {
                     Toast.makeText(view.activity, "ACCESS_FINE_LOCATION and READ_EXTERNAL_STORAGE Granted!", Toast.LENGTH_SHORT).show()
@@ -22,7 +24,8 @@ class InheritanceMainPresenter(view: InheritanceMainView, model: InheritanceMain
                 onDenied = { list ->
                     Toast.makeText(view.activity, "Permissions ${list.joinToString()} Denied :(", Toast.LENGTH_SHORT).show()
                 }
-        )
+            )
+        }
     }
 
     @Subscribe
@@ -33,7 +36,10 @@ class InheritanceMainPresenter(view: InheritanceMainView, model: InheritanceMain
 
     @Subscribe
     fun onBackgroundTaskCompleted(event: BackgroundTaskCompletedEvent) {
-        view.setTextValue("Background task completed: ${event.data}")
+        val pageHtml = event.pageHtml ?: return
+        val bodyBegin = pageHtml.indexOf("<body")
+        val pageHtmlBody = pageHtml.substring(bodyBegin)
+        view.loadPageHtml(pageHtmlBody)
     }
 
     @Subscribe

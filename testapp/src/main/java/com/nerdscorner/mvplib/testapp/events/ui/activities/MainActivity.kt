@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         addListenerToView(id.events_attributes, AttributeEventsMainActivity::class.java)
         addListenerToView(id.events_inheritance, InheritanceEventsMainActivity::class.java)
+        addListenerToView(id.multiple_on_click_showcase, MultipleWidgetsOnClickListenerActivity::class.java)
 
         addListenerToView(id.fragments_events_attribute, AttributeEventsForFragmentsMainActivity::class.java)
 
