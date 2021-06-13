@@ -66,37 +66,71 @@ abstract class BaseWidgetView constructor(view: View, @JvmField var bus: Bus = B
         }
     }
 
-    fun onClick(@IdRes id: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
-        view?.findViewById<View>(id)?.setOnClickListener {
+    fun onClick(@IdRes viewId: Int, block: (View) -> Unit = {}) {
+        view?.findViewById<View>(viewId)?.setOnClickListener {
+            block(it)
+        }
+    }
+
+    fun onClick(@IdRes viewId: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
+        onClick(viewId) {
             bus.post(event, threadMode)
             block(it)
+        }
+    }
+
+    fun onClick(@IdRes vararg ids: Int, block: (View) -> Unit = {}) {
+        ids.forEach {
+            onClick(it) { v ->
+                block(v)
+            }
+        }
+    }
+
+    fun <T: View> onClickView(@IdRes vararg ids: Int, block: (T) -> Unit) {
+        ids.forEach {
+            onClick(it) { v ->
+                block(v as T)
+            }
         }
     }
 
     fun onClick(@IdRes vararg ids: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
-        val onClickListener = View.OnClickListener {
-            bus.post(event, threadMode)
-            block(it)
-        }
         ids.forEach {
-            view?.findViewById<View>(it)?.setOnClickListener(onClickListener)
+            onClick(it) { v ->
+                bus.post(event, threadMode)
+                block(v)
+            }
+        }
+    }
+
+    fun onClick(view: View?, block: (View) -> Unit = {}) {
+        view?.setOnClickListener {
+            block(it)
         }
     }
 
     fun onClick(view: View?, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
-        view?.setOnClickListener {
+        onClick(view) {
             bus.post(event, threadMode)
             block(it)
         }
     }
 
-    fun onClick(vararg view: View?, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
-        val onClickListener = View.OnClickListener {
-            bus.post(event, threadMode)
-            block(it)
-        }
+    fun onClick(vararg view: View, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
         view.forEach {
-            it?.setOnClickListener(onClickListener)
+            onClick(it) { v ->
+                bus.post(event, threadMode)
+                block(v)
+            }
+        }
+    }
+
+    fun <T : View> onClickView(vararg view: T, block: (T) -> Unit) {
+        view.forEach {
+            onClick(it) { v ->
+                block(v as T)
+            }
         }
     }
 }
