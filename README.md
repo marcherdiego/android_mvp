@@ -198,6 +198,35 @@ class FeatureModel : BaseEventsModel() {
 }
 ```
 
+## Coroutines example
+```kotlin
+class FeatureModel : BaseEventsModel() {
+    private var fetchJob: Job? = null
+
+    fun doSomethingInBackground() {
+        fetchJob = withResult(
+            resultFunc = someSuspendFunctionHere(),
+            success = { // this: SuspendFunctionReturnType
+                bus.post(BackgroundTaskCompletedEvent(this))
+            },
+            fail = { // this: Exception
+                bus.post(BackgroundTaskFailedEvent(this.message))
+            },
+            cancelled = { // Called when executing fetchJob?.cancel()
+                Log.e("InheritanceMainModel", "Job cancelled :(")
+            }
+        )
+    }
+
+    fun cancelJob() {
+        fetchJob?.cancel()
+    }
+
+    class BackgroundTaskCompletedEvent(val pageHtml: String?)
+    class BackgroundTaskFailedEvent(val message: String?)
+}
+```
+
 ## Contributing
 
 Please fork this repository and contribute back using [pull requests](https://github.com/marcherdiego/android_mvp/pulls).
