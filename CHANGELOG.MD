@@ -1,3 +1,15 @@
+# Events - v1.2.0
+## New
+- Added a bunch of `onClick` functions on all base Views 
+- Upgraded kotlin and libraries versions to their latest
+
+# Coroutines - v1.2.0
+## New
+- Improved `withResult` function to execute suspend functions from the model and cancelling them as requested
+## Fixed
+- Fixed postDelayed in base presenter to run delayed code in the main thread causing wrong handler exceptions
+
+
 # Events - v1.1.2
 ## New
 - Added missing onDestroy() call in BaseActivityPresenter
