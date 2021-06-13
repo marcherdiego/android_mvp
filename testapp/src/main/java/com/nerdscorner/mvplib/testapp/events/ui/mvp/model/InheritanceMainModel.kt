@@ -11,21 +11,21 @@ import kotlinx.coroutines.Job
 class InheritanceMainModel : BaseEventsModel() {
 
     private var fetchJob: Job? = null
-    private val wikiService = ServiceGenerator.createService(ExampleService::class.java)
+    private val exampleService = ServiceGenerator.createService(ExampleService::class.java)
 
     fun doSomethingInBackground() {
         fetchJob?.cancel()
         fetchJob = withResult(
-                resultFunc = wikiService::getWikipedia,
-                success = {
-                    bus.post(BackgroundTaskCompletedEvent(this))
-                },
-                fail = {
-                    bus.post(BackgroundTaskFailedEvent(this.message))
-                },
-                cancelled = {
-                    Log.e("InheritanceMainModel", "CANCELLED")
-                }
+            resultFunc = exampleService::getExamplePage,
+            success = {
+                bus.post(BackgroundTaskCompletedEvent(this))
+            },
+            fail = {
+                bus.post(BackgroundTaskFailedEvent(this.message))
+            },
+            cancelled = {
+                Log.e("InheritanceMainModel", "CANCELLED")
+            }
         )
     }
 
@@ -33,6 +33,6 @@ class InheritanceMainModel : BaseEventsModel() {
         fetchJob?.cancel()
     }
 
-    class BackgroundTaskCompletedEvent(val data: String?)
+    class BackgroundTaskCompletedEvent(val pageHtml: String?)
     class BackgroundTaskFailedEvent(val message: String?)
 }
