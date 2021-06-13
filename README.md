@@ -200,6 +200,8 @@ class FeatureModel : BaseEventsModel() {
 
 ## Coroutines example
 ```kotlin
+import com.nerdscorner.events.coroutines.extensions.withResult
+
 class FeatureModel : BaseEventsModel() {
     private var fetchJob: Job? = null
 
