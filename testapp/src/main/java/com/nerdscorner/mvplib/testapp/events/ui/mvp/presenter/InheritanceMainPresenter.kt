@@ -37,9 +37,7 @@ class InheritanceMainPresenter(view: InheritanceMainView, model: InheritanceMain
     @Subscribe
     fun onBackgroundTaskCompleted(event: BackgroundTaskCompletedEvent) {
         val pageHtml = event.pageHtml ?: return
-        val bodyBegin = pageHtml.indexOf("<body")
-        val pageHtmlBody = pageHtml.substring(bodyBegin)
-        view.loadPageHtml(pageHtmlBody)
+        view.loadPageHtml(pageHtml)
     }
 
     @Subscribe
