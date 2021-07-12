@@ -1,2 +1,3 @@
 include ':coroutines'
 include ':events', ':testapp'
+include ':transitions'

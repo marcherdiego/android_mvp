@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         addListenerToView(id.fragments_events_attribute, AttributeEventsForFragmentsMainActivity::class.java)
 
         addListenerToView(id.widgets_example, WidgetsExampleActivity::class.java)
+        
+        addListenerToView(id.transitions_example, TransitionsState1Activity::class.java)
     }
 
     private fun addListenerToView(@IdRes viewId: Int, destination: Class<*>) {

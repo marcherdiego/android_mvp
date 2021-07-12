@@ -67,4 +67,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/widgets_title"
         android:text="Widgets example"/>
+
+    <TextView
+        android:id="@+id/transitions_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/widgets_example"
+        android:layout_marginTop="16dp"
+        android:text="Transitions"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/transitions_example"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/transitions_title"
+        android:text="Transitions example"/>
 </RelativeLayout>
