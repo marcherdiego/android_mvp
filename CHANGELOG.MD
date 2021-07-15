@@ -1,3 +1,50 @@
+# Events - v1.2.0
+## New
+- Added a bunch of `onClick` functions on all base Views 
+- Upgraded kotlin and libraries versions to their latest
+
+# Coroutines - v1.2.0
+## New
+- Improved `withResult` function to execute suspend functions from the model and cancelling them as requested
+## Fixed
+- Fixed postDelayed in base presenter to run delayed code in the main thread causing wrong handler exceptions
+
+
+# Events - v1.1.2
+## New
+- Added missing onDestroy() call in BaseActivityPresenter
+- Added missing presenter.onDestroy() call in BaseActivity
+
+# Coroutines - v1.1.2
+## New
+- Added postDelayed in base presenter to run delayed code in the main thread
+
+
+# Events - v1.0.0
+## New
+- Migration to Sonatype servers (reset version numbers)
+
+# Coroutines - v1.0.0
+## New
+- Migration to Sonatype servers (reset version numbers)
+
+--------------------------------------------------------------------------------------------------------------
+
+# Events - v8.2.2
+## New
+- Added `runOnUiThread` function in BaseView class to reduce boilerplate
+- Exposed bus on base classes for further extensions
+
+# Coroutines - v1.0.2
+## New
+- `launchMain` to run suspend functions on the main thread
+- `runAsync` to run suspend functions on any scope/dispatcher (Main and IO by default)
+- `withResult` to run suspend a functions on any scope/dispatcher (Main and IO by default) and listen for results
+
+# v8.1.0
+## New
+- Added permission checker/requester helpers (`withPermission` and `withPermissions`) in BasePresenter class
+
 # v8.0.0
 ## New
 - Removed behaviour-based injection

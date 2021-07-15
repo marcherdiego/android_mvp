@@ -1,14 +1,23 @@
+[![Nerd's Corner](https://circleci.com/gh/marcherdiego/android_mvp.svg?style=svg)](https://app.circleci.com/pipelines/github/marcherdiego/android_mvp)
+
 # Android MVP
+
+**Events** [ ![Download](https://img.shields.io/maven-central/v/com.github.marcherdiego.mvp/events) ](https://search.maven.org/artifact/com.github.marcherdiego.mvp/events)
+
+**Coroutines** [ ![Download](https://img.shields.io/maven-central/v/com.github.marcherdiego.mvp/coroutines) ](https://search.maven.org/artifact/com.github.marcherdiego.mvp/coroutines)
 
 This is a small library (less than 70KB) that will help you through your Android features development in order to keep things simple, clear and tidy.
 
 Please refer to [this article](https://android.jlelse.eu/android-mvp-doing-it-right-dac9d5d72079) to get a more in-depth explanation about how this library and its components work.
 
 ## Setup
-[ ![Download](https://api.bintray.com/packages/nerdscorrner/MVPLib/Events/images/download.svg) ](https://bintray.com/nerdscorrner/MVPLib/Events/_latestVersion)
+Add `implementation` or `api` (library projects) dependency
 
 ```groovy
-implementation "com.nerdscorner.mvp:events:LATEST_VERSION" 
+implementation "com.github.marcherdiego.mvp:events:LATEST_VERSION" 
+
+// Optional if you want to use coroutines for model operations
+implementation "com.github.marcherdiego.mvp:coroutines:LATEST_VERSION" 
 ```
 
 ## Usage
@@ -34,7 +43,7 @@ class FeatureActivity : BaseActivity<FeaturePresenter>() {
 
 #### Fragment
 ```kotlin
-// Extending BaseActivity will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
+// Extending BaseFragment will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
 class FeatureFragment : BaseFragment<FeaturePresenter>() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_example, container, false)
@@ -54,7 +63,6 @@ class FeatureFragment : BaseFragment<FeaturePresenter>() {
 ### Holding a presenter reference (without inheritance)
 #### Activity
 ```kotlin
-// Extending BaseActivity will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
 class FeatureActivity : AppCompatActivity() {
     private lateinit var presenter: FeaturePresenter
     private var bus = Bus.newInstance
@@ -84,7 +92,6 @@ class FeatureActivity : AppCompatActivity() {
 
 #### Fragment
 ```kotlin
-// Extending BaseActivity will automatically register and unregister the presenter to the bus whenever your activity get resumed or paused
 class FeatureFragment : Fragment() {
     private lateinit var presenter: FeaturePresenter
     private var bus = Bus.newInstance
@@ -188,6 +195,37 @@ class FeatureModel : BaseEventsModel() {
     }
 
     class BackgroundTaskCompletedEvent
+}
+```
+
+## Coroutines example
+```kotlin
+import com.nerdscorner.events.coroutines.extensions.withResult
+
+class FeatureModel : BaseEventsModel() {
+    private var fetchJob: Job? = null
+
+    fun doSomethingInBackground() {
+        fetchJob = withResult(
+            resultFunc = someSuspendFunctionHere(),
+            success = { // this: SuspendFunctionReturnType
+                bus.post(BackgroundTaskCompletedEvent(this))
+            },
+            fail = { // this: Exception
+                bus.post(BackgroundTaskFailedEvent(this.message))
+            },
+            cancelled = { // Called when executing fetchJob?.cancel()
+                Log.e("InheritanceMainModel", "Job cancelled :(")
+            }
+        )
+    }
+
+    fun cancelJob() {
+        fetchJob?.cancel()
+    }
+
+    class BackgroundTaskCompletedEvent(val pageHtml: String?)
+    class BackgroundTaskFailedEvent(val message: String?)
 }
 ```
 

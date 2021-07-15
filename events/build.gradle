@@ -1,12 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven-publish'
 
 ext {
-    PUBLISH_GROUP_ID = 'com.nerdscorner.mvp'
-    PUBLISH_ARTIFACT_ID = 'events'
-    PUBLISH_VERSION = "$eventsLibVersion"
+    PUBLISH_GROUP_ID = groupId
+    PUBLISH_ARTIFACT_ID = mvpLibraryArtifactName
+    PUBLISH_VERSION = mvpLibraryVersion
 }
 
 android {
@@ -16,35 +15,31 @@ android {
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    api 'org.greenrobot:eventbus:3.2.0'
-    testImplementation 'junit:junit:4.12'
-    testImplementation "org.mockito:mockito-core:2.18.3"
-    testImplementation "org.robolectric:robolectric:4.4"
-    testImplementation "androidx.fragment:fragment-testing:1.2.5"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$androidxAppcompatVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$androidxLifecycleExtensionsVersion"
+    api "org.greenrobot:eventbus:$eventBusVersion"
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "org.robolectric:robolectric:$robolectricVersion"
+    testImplementation "androidx.fragment:fragment-testing:$androidxFragmentTestingVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
-androidExtensions {
-    experimental = true
-}
-
-apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
-repositories {
-    mavenLocal()
-    mavenCentral()
-}
+apply from: '../android-release-aar.gradle'

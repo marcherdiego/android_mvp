@@ -2,7 +2,7 @@ package com.nerdscorner.mvplib.events.model
 
 import com.nerdscorner.mvplib.events.bus.Bus
 
-open class BaseEventsModel(@JvmField protected var bus: Bus = Bus.defaultBus) {
+open class BaseEventsModel(@JvmField var bus: Bus = Bus.defaultBus) {
 
     @JvmName("setBusValue")
     fun setBus(bus: Bus) {

@@ -25,7 +25,7 @@ class Bus private constructor(private val eventBus: EventBus) {
             }
         } catch (exception: Exception) {
             //No @Subscribe annotations detected
-            Log.e(TAG, exception.message)
+            Log.e(TAG, exception.message ?: "")
         }
     }
 
@@ -45,7 +45,7 @@ class Bus private constructor(private val eventBus: EventBus) {
             }
         } catch (exception: Exception) {
             //No @Subscribe annotations detected
-            Log.e(TAG, exception.message)
+            Log.e(TAG, exception.message ?: "")
         }
     }
 

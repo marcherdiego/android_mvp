@@ -7,8 +7,8 @@ import com.nerdscorner.mvplib.events.view.BaseWidgetView
 
 open class BaseWidgetPresenter<V : BaseWidgetView, M : BaseWidgetModel>
 @JvmOverloads constructor(
-        @JvmField protected var view: V,
-        @JvmField protected var model: M,
+        @JvmField var view: V,
+        @JvmField var model: M,
         internal var bus: Bus = Bus.defaultBus
 ) {
 

@@ -1,33 +1,38 @@
 package com.nerdscorner.mvplib.testapp.events.ui.mvp.model
 
-import android.os.AsyncTask
+import android.util.Log
+import com.nerdscorner.events.coroutines.extensions.withResult
 
 import com.nerdscorner.mvplib.events.model.BaseEventsModel
+import com.nerdscorner.mvplib.testapp.events.networking.ExampleService
+import com.nerdscorner.mvplib.testapp.events.networking.ServiceGenerator
+import kotlinx.coroutines.Job
 
 class InheritanceMainModel : BaseEventsModel() {
 
+    private var fetchJob: Job? = null
+    private val exampleService = ServiceGenerator.createService(ExampleService::class.java)
+
     fun doSomethingInBackground() {
-        SomeBackgroundTask(this).execute()
-    }
-
-    private class SomeBackgroundTask internal constructor(private val model: InheritanceMainModel) :
-            AsyncTask<Void, Void, Void>() {
-
-        override fun doInBackground(vararg voids: Void): Void? {
-            try {
-                Thread.sleep(1000L)
-            } catch (e: InterruptedException) {
-                e.printStackTrace()
+        fetchJob?.cancel()
+        fetchJob = withResult(
+            resultFunc = exampleService::getExamplePage,
+            success = {
+                bus.post(BackgroundTaskCompletedEvent(this))
+            },
+            fail = {
+                bus.post(BackgroundTaskFailedEvent(this.message))
+            },
+            cancelled = {
+                Log.e("InheritanceMainModel", "CANCELLED")
             }
-
-            return null
-        }
-
-        override fun onPostExecute(aVoid: Void?) {
-            super.onPostExecute(aVoid)
-            model.bus.post(BackgroundTaskCompletedEvent())
-        }
+        )
     }
 
-    class BackgroundTaskCompletedEvent
+    fun cancelJob() {
+        fetchJob?.cancel()
+    }
+
+    class BackgroundTaskCompletedEvent(val pageHtml: String?)
+    class BackgroundTaskFailedEvent(val message: String?)
 }

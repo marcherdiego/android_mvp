@@ -1,1 +1,2 @@
+include ':coroutines'
 include ':events', ':testapp'

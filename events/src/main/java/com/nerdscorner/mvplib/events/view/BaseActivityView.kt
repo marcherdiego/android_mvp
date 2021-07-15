@@ -25,20 +25,41 @@ abstract class BaseActivityView @JvmOverloads constructor(activity: AppCompatAct
         this.bus = bus
     }
 
-    fun onClick(@IdRes id: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
-        activity?.findViewById<View>(id)?.setOnClickListener {
+    fun onClick(@IdRes viewId: Int, block: (View) -> Unit = {}) {
+        activity?.findViewById<View>(viewId)?.setOnClickListener {
+            block(it)
+        }
+    }
+
+    fun onClick(@IdRes viewId: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
+        onClick(viewId) {
             bus.post(event, threadMode)
             block(it)
         }
     }
 
-    fun onClick(@IdRes vararg ids: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
-        val onClickListener = View.OnClickListener {
-            bus.post(event, threadMode)
-            block(it)
-        }
+    fun onClick(@IdRes vararg ids: Int, block: (View) -> Unit = {}) {
         ids.forEach {
-            activity?.findViewById<View>(it)?.setOnClickListener(onClickListener)
+            onClick(it) { v ->
+                block(v)
+            }
+        }
+    }
+
+    fun <T: View> onClickView(@IdRes vararg ids: Int, block: (T) -> Unit) {
+        ids.forEach {
+            onClick(it) { v ->
+                block(v as T)
+            }
+        }
+    }
+
+    fun onClick(@IdRes vararg ids: Int, event: Any, threadMode: ThreadMode = ThreadMode.POSTING, block: (View) -> Unit = {}) {
+        ids.forEach {
+            onClick(it) { v ->
+                bus.post(event, threadMode)
+                block(v)
+            }
         }
     }
 
@@ -55,7 +76,7 @@ abstract class BaseActivityView @JvmOverloads constructor(activity: AppCompatAct
 
     override fun <T : Fragment> withFragmentByTag(tag: String?, block: T.(fragmentManager: FragmentManager) -> Unit): Unit? {
         return findFragmentByTag<T>(tag)?.run {
-            block(this, fragmentManager ?: return null)
+            block(this, parentFragmentManager)
         }
     }
 

@@ -1,5 +1,7 @@
 package com.nerdscorner.mvplib.testapp.events.ui.mvp.view
 
+import android.os.Build
+import android.text.Html
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.nerdscorner.mvplib.events.view.BaseActivityView
@@ -14,6 +16,14 @@ class InheritanceMainView(activity: AppCompatActivity) : BaseActivityView(activi
 
     fun setTextValue(value: CharSequence) {
         textView.text = value
+    }
+
+    fun loadPageHtml(pageHtml: String?) {
+        textView.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(pageHtml, Html.FROM_HTML_MODE_COMPACT)
+        } else {
+            Html.fromHtml(pageHtml)
+        }
     }
 
     class ActionClickedEvent

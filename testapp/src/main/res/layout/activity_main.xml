@@ -2,37 +2,45 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/activities_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="Activities"
         android:textSize="20sp"/>
 
     <Button
         android:id="@+id/events_attributes"
         android:layout_width="wrap_content"
-        android:layout_below="@+id/activities_title"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="events attribute"/>
+        android:layout_below="@+id/activities_title"
+        android:layout_marginTop="4dp"
+        android:text="Presenter as attribute"/>
 
     <Button
         android:id="@+id/events_inheritance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/events_attributes"
-        android:layout_marginTop="8dp"
-        android:text="events inheritance"/>
+        android:layout_marginTop="4dp"
+        android:text="Presenter with inheritance"/>
+
+    <Button
+        android:id="@+id/multiple_on_click_showcase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/events_inheritance"
+        android:layout_marginTop="4dp"
+        android:text="Multiple widgets onclick listener"/>
 
     <TextView
         android:id="@+id/fragments_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/events_inheritance"
+        android:layout_below="@id/multiple_on_click_showcase"
         android:layout_marginTop="16dp"
         android:text="Fragments"
         android:textSize="20sp"/>
@@ -42,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fragments_title"
-        android:text="Events Attribute"/>
+        android:text="Presenter as Attribute"/>
 
     <TextView
         android:id="@+id/widgets_title"

@@ -10,8 +10,8 @@ import com.nerdscorner.mvplib.testapp.events.ui.mvp.presenter.InheritanceMainPre
 import com.nerdscorner.mvplib.testapp.events.ui.mvp.view.InheritanceMainView
 
 class InheritanceEventsMainActivity : BaseActivity<InheritanceMainPresenter>(
-        registerAt = RegisterAt.ON_START,
-        unregisterAt = UnregisterAt.ON_STOP
+    registerAt = RegisterAt.ON_START,
+    unregisterAt = UnregisterAt.ON_STOP
 ) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,8 +19,8 @@ class InheritanceEventsMainActivity : BaseActivity<InheritanceMainPresenter>(
         setContentView(R.layout.activity_mvp)
 
         presenter = InheritanceMainPresenter(
-                InheritanceMainView(this),
-                InheritanceMainModel()
+            InheritanceMainView(this),
+            InheritanceMainModel()
         )
     }
 }

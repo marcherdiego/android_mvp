@@ -1,0 +1,120 @@
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+def groupId = project.PUBLISH_GROUP_ID
+def artifactId = project.PUBLISH_ARTIFACT_ID
+def version = project.PUBLISH_VERSION
+
+def localReleaseDest = "${buildDir}/release/${version}"
+
+task androidJavadocs(type: Javadoc) {
+    failOnError = false
+    source = android.sourceSets.main.java.srcDirs
+    ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
+    classpath += files(ext.androidJar)
+}
+
+task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+// helper function to replace dependency version in maven pom.xml
+static def replaceDependencyVersion(root, groupId, finalGroupId, artifactId, version) {
+    // replace version
+    root.dependencies.dependency.findAll() { node ->
+        node.groupId.text() == groupId && node.artifactId.text() == artifactId
+    }.each() { node ->
+        node.groupId*.value = finalGroupId
+        node.version*.value = version
+    }
+}
+
+task zipRelease(type: Zip) {
+    from localReleaseDest
+    destinationDir buildDir
+    archiveName "release-${version}.zip"
+}
+
+task generateRelease {
+    doLast {
+        println "Release ${version} can be found at ${localReleaseDest}/"
+        println "Release ${version} zipped can be found ${buildDir}/release-${version}.zip"
+    }
+}
+
+zipRelease.dependsOn(uploadArchives)
+generateRelease.dependsOn(zipRelease)
+
+// sign all artifacts
+task signJars (type : Sign, dependsOn: [generateRelease, androidJavadocs, androidJavadocsJar, androidSourcesJar]) {
+    sign configurations.archives
+}
+
+artifacts {
+    archives androidSourcesJar
+    archives androidJavadocsJar
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            Properties properties = new Properties()
+            def propertiesFile = project.rootProject.file('local.properties')
+            if (propertiesFile.exists()) {
+                properties.load(propertiesFile.newDataInputStream())
+            }
+            def ossrhUsername = properties.getProperty('ossrhUsername')
+            def ossrhPassword = properties.getProperty('ossrhPassword')
+            beforeDeployment { MavenDeployment deployment ->
+                signing.signPom(deployment)
+                signing.sign configurations.archives
+            }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'MVP Library'
+                packaging 'aar'
+                description 'This is a small library (less than 70KB) that will help you through your Android features development in order to keep things simple, clear and tidy.'
+                url 'https://github.com/marcherdiego/android_mvp'
+                scm {
+                    connection 'scm:git:git://github.com/marcherdiego/android_mvp'
+                    developerConnection 'scm:git:git://github.com/marcherdiego/android_mvp'
+                    url 'https://github.com/marcherdiego/android_mvp'
+                }
+                licenses {
+                    license {
+                        name 'The Apache License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'marcherdiego'
+                        name 'Diego Marcher'
+                        email 'diego@marcher.com.uy'
+                    }
+                }
+            }
+            pom.groupId = groupId
+            pom.artifactId = artifactId
+            pom.version = version
+            pom.withXml {
+                replaceDependencyVersion(asNode(), 'android_mvp', groupId, 'events', mvpLibraryVersion)
+            }
+            repository(url: "file://${localReleaseDest}")
+        }
+    }
+}
