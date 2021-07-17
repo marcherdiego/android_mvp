@@ -8,10 +8,7 @@ import com.github.marcherdiego.mvp.transitions.domain.State
 import com.github.marcherdiego.mvp.transitions.domain.Transition
 import com.github.marcherdiego.mvp.transitions.extensions.addIfNotPresent
 
-open class StatesMachine @JvmOverloads constructor(
-    val states: MutableList<State?> = mutableListOf(),
-    var currentState: State? = null
-) {
+open class StatesMachine @JvmOverloads constructor(val states: MutableList<State?> = mutableListOf(), var currentState: State? = null) {
 
     private var onEndListener: (() -> Unit) = {}
 
@@ -47,7 +44,7 @@ open class StatesMachine @JvmOverloads constructor(
         states.addIfNotPresent(fromState)
         states.addIfNotPresent(toState)
     }
-    
+
     fun applyTransition(context: Context?, transition: Transition): State? {
         transition.runSideEffect(context)
         currentState = transition.target
