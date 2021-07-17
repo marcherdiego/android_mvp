@@ -1,8 +1,6 @@
-package com.github.marcherdiego.mvp.transitions
+package com.github.marcherdiego.mvp.transitions.domain
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
 
 open class Transition(
     val target: State?,

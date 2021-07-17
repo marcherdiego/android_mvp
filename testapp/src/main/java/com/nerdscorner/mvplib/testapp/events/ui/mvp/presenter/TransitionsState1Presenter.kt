@@ -1,6 +1,6 @@
 package com.nerdscorner.mvplib.testapp.events.ui.mvp.presenter
 
-import com.github.marcherdiego.mvp.transitions.TransitionsActivityPresenter
+import com.github.marcherdiego.mvp.transitions.presenter.TransitionsActivityPresenter
 import com.nerdscorner.mvplib.testapp.events.statesmachine.AppStatesMachine
 
 import com.nerdscorner.mvplib.testapp.events.ui.mvp.model.TransitionsState1Model

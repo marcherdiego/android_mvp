@@ -2,8 +2,8 @@ package com.nerdscorner.mvplib.testapp.events.statesmachine
 
 import android.content.Intent
 import android.util.Log
-import com.github.marcherdiego.mvp.transitions.Event
-import com.github.marcherdiego.mvp.transitions.State
+import com.github.marcherdiego.mvp.transitions.domain.Event
+import com.github.marcherdiego.mvp.transitions.domain.State
 import com.github.marcherdiego.mvp.transitions.StatesMachine
 import com.nerdscorner.mvplib.testapp.events.ui.activities.MainActivity
 import com.nerdscorner.mvplib.testapp.events.ui.activities.TransitionsState2Activity

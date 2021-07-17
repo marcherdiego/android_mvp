@@ -1,4 +1,4 @@
-package com.github.marcherdiego.mvp.transitions
+package com.github.marcherdiego.mvp.transitions.domain
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity

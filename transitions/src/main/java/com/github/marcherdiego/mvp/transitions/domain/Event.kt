@@ -1,4 +1,4 @@
-package com.github.marcherdiego.mvp.transitions
+package com.github.marcherdiego.mvp.transitions.domain
 
 data class Event(val id: Int = autoIncrement++) {
     companion object {

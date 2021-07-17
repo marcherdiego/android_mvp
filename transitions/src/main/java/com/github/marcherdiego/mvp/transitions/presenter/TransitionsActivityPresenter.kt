@@ -1,5 +1,8 @@
-package com.github.marcherdiego.mvp.transitions
+package com.github.marcherdiego.mvp.transitions.presenter
 
+import com.github.marcherdiego.mvp.transitions.domain.Event
+import com.github.marcherdiego.mvp.transitions.domain.State
+import com.github.marcherdiego.mvp.transitions.StatesMachine
 import com.nerdscorner.mvplib.events.bus.Bus
 import com.nerdscorner.mvplib.events.model.BaseEventsModel
 import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter

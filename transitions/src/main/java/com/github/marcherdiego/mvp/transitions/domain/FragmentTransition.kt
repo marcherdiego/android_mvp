@@ -1,7 +1,6 @@
-package com.github.marcherdiego.mvp.transitions
+package com.github.marcherdiego.mvp.transitions.domain
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 
 class FragmentTransition(target: State?, val fragmentSideEffect: ((fragmentManager: FragmentManager) -> Unit) = {}) : Transition(target) {

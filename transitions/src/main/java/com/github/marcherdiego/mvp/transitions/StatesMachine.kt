@@ -3,6 +3,9 @@ package com.github.marcherdiego.mvp.transitions
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
+import com.github.marcherdiego.mvp.transitions.domain.Event
+import com.github.marcherdiego.mvp.transitions.domain.State
+import com.github.marcherdiego.mvp.transitions.domain.Transition
 import com.github.marcherdiego.mvp.transitions.extensions.addIfNotPresent
 
 open class StatesMachine @JvmOverloads constructor(
