@@ -1,10 +1,11 @@
 package com.nerdscorner.mvplib.testapp.events.statesmachine
 
 import android.content.Intent
+import android.util.Log
 import com.github.marcherdiego.mvp.transitions.Event
 import com.github.marcherdiego.mvp.transitions.State
 import com.github.marcherdiego.mvp.transitions.StatesMachine
-import com.nerdscorner.mvplib.testapp.events.ui.activities.TransitionsState1Activity
+import com.nerdscorner.mvplib.testapp.events.ui.activities.MainActivity
 import com.nerdscorner.mvplib.testapp.events.ui.activities.TransitionsState2Activity
 import com.nerdscorner.mvplib.testapp.events.ui.activities.TransitionsState3Activity
 
@@ -19,26 +20,30 @@ object AppStatesMachine : StatesMachine() {
     val event2 = Event()
     val event3 = Event()
     val event4 = Event()
-    val event5 = Event()
 
     init {
         // Transitions
-        addTransition(state1, state2, event1) {
+        addActivityTransition(state1, state2, event1) {
             startActivity(Intent(this, TransitionsState2Activity::class.java))
         }
-        addTransition(state1, state3, event2) {
+        addActivityTransition(state1, state3, event2) {
             startActivity(Intent(this, TransitionsState3Activity::class.java))
+            finish()
         }
-        addTransition(state2, state3, event3) {
+        addActivityTransition(state2, state3, event3) {
             startActivity(Intent(this, TransitionsState3Activity::class.java))
+            finish()
         }
-        addTransition(state3, state1, event4) {
+        addTransition(state3, null, event4) {
             startActivity(
-                Intent(this, TransitionsState1Activity::class.java)
+                Intent(this, MainActivity::class.java)
                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             )
         }
-        addTransition(state3, null, event5)
+
+        setOnEndListener {
+            Log.v("AppStatesMachine", "End state reached")
+        }
 
         // Initialization
         currentState = state1

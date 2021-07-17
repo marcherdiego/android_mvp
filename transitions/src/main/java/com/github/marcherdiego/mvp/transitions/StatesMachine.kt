@@ -1,6 +1,8 @@
 package com.github.marcherdiego.mvp.transitions
 
 import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import com.github.marcherdiego.mvp.transitions.extensions.addIfNotPresent
 
 open class StatesMachine @JvmOverloads constructor(
@@ -30,11 +32,21 @@ open class StatesMachine @JvmOverloads constructor(
         states.addIfNotPresent(fromState)
         states.addIfNotPresent(toState)
     }
+
+    fun addActivityTransition(fromState: State, toState: State?, onEvent: Event, sideEffect: AppCompatActivity.() -> Unit = {}) {
+        fromState.addActivityTransition(toState, onEvent, sideEffect)
+        states.addIfNotPresent(fromState)
+        states.addIfNotPresent(toState)
+    }
+
+    fun addFragmentTransition(fromState: State, toState: State?, onEvent: Event, sideEffect: FragmentManager.() -> Unit = {}) {
+        fromState.addFragmentTransition(toState, onEvent, sideEffect)
+        states.addIfNotPresent(fromState)
+        states.addIfNotPresent(toState)
+    }
     
     fun applyTransition(context: Context?, transition: Transition): State? {
-        context?.let {
-            transition.sideEffect(it)
-        }
+        transition.runSideEffect(context)
         currentState = transition.target
         return currentState
     }
