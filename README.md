@@ -10,7 +10,8 @@ This is a small library (less than 70KB) that will help you through your Android
 
 Please refer to [this article](https://android.jlelse.eu/android-mvp-doing-it-right-dac9d5d72079) to get a more in-depth explanation about how this library and its components work.
 
-## Setup
+Setup
+=======
 Add `implementation` or `api` (library projects) dependency
 
 ```groovy
@@ -20,7 +21,8 @@ implementation "com.github.marcherdiego.mvp:events:LATEST_VERSION"
 implementation "com.github.marcherdiego.mvp:coroutines:LATEST_VERSION" 
 ```
 
-## Usage
+Usage
+=======
 There are three different options to integrate this MVP library to your application, either extending a BaseActivity/BaseFragment that handles all the wiring and setup automagically **(recommended)**, having a reference to the presenter within your Activity/Fragment, or using behaviours.
 For the three of them, the model, view and presenter behave the same so the only difference is in the activity/fragment
 
@@ -229,13 +231,40 @@ class FeatureModel : BaseEventsModel() {
 }
 ```
 
-## Contributing
+Contributing
+=======
 
 Please fork this repository and contribute back using [pull requests](https://github.com/marcherdiego/android_mvp/pulls).
 
 Any contributions, large or small, major features, bug fixes, unit tests are welcomed and appreciated but will be thoroughly reviewed and discussed.
 
+License
+=======
 
-## Author
+    Copyright 2013 Square, Inc.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+
+ [1]: https://square.github.io/retrofit/
+ [2]: https://search.maven.org/remote_content?g=com.squareup.retrofit2&a=retrofit&v=LATEST
+ [snap]: https://oss.sonatype.org/content/repositories/snapshots/
+ [proguard file]: https://github.com/square/retrofit/blob/master/retrofit/src/main/resources/META-INF/proguard/retrofit2.pro
+ [okhttp proguard]: https://square.github.io/okhttp/r8_proguard/
+ [okio proguard]: https://square.github.io/okio/#r8-proguard
+
+
+Author
+=======
 
 Diego Marcher | diego@marcher.com.uy
