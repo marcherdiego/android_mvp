@@ -241,7 +241,7 @@ Any contributions, large or small, major features, bug fixes, unit tests are wel
 License
 =======
 
-    Copyright 2013 Square, Inc.
+    Copyright 2021 Diego Marcher.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
