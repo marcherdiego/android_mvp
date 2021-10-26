@@ -11,15 +11,11 @@ ext {
 }
 
 android {
-    compileSdkVersion 28
-
-    defaultConfig {
-        minSdkVersion 15
-    }
+    compileSdkVersion(31)
 
     buildTypes {
-        release {
-            minifyEnabled false
+        debug {
+            minifyEnabled true
         }
     }
     compileOptions {

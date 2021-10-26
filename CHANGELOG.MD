@@ -1,3 +1,16 @@
+# Events - v1.3.0
+## New
+- Updated compile SDK to 31
+- Updated AndroidX dependencies
+## Fixed
+- Added proguard consumer config file
+
+# Coroutines - v1.3.0
+## New
+- Improved `withResult` function to execute suspend functions from the model and cancelling them as requested
+## Fixed
+- Fixed postDelayed in base presenter to run delayed code in the main thread causing wrong handler exceptions
+
 # Events - v1.2.0
 ## New
 - Added a bunch of `onClick` functions on all base Views 
