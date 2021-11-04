@@ -7,9 +7,7 @@
 
 # Coroutines - v1.3.0
 ## New
-- Improved `withResult` function to execute suspend functions from the model and cancelling them as requested
-## Fixed
-- Fixed postDelayed in base presenter to run delayed code in the main thread causing wrong handler exceptions
+- Added new `withResult` and deprecated the previous one
 
 # Events - v1.2.0
 ## New
