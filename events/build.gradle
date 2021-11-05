@@ -9,17 +9,18 @@ ext {
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion(31)
     testOptions.unitTests.includeAndroidResources = true
     testOptions.unitTests.returnDefaultValues = true
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion(15)
+        consumerProguardFiles 'mvp-consumer.pro'
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
         }
     }
     compileOptions {

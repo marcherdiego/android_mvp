@@ -1,3 +1,14 @@
+# Events - v1.3.0
+## New
+- Updated compile SDK to 31
+- Updated AndroidX dependencies
+## Fixed
+- Added proguard consumer config file
+
+# Coroutines - v1.3.0
+## New
+- Added new `withResult` and deprecated the previous one
+
 # Events - v1.2.0
 ## New
 - Added a bunch of `onClick` functions on all base Views 

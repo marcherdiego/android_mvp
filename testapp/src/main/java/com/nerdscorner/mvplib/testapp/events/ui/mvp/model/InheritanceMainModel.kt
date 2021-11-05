@@ -1,8 +1,7 @@
 package com.nerdscorner.mvplib.testapp.events.ui.mvp.model
 
 import android.util.Log
-import com.nerdscorner.events.coroutines.extensions.withResult
-
+import com.nerdscorner.events.coroutines.extensions.launch
 import com.nerdscorner.mvplib.events.model.BaseEventsModel
 import com.nerdscorner.mvplib.testapp.events.networking.ExampleService
 import com.nerdscorner.mvplib.testapp.events.networking.ServiceGenerator
@@ -15,13 +14,15 @@ class InheritanceMainModel : BaseEventsModel() {
 
     fun doSomethingInBackground() {
         fetchJob?.cancel()
-        fetchJob = withResult(
-            resultFunc = exampleService::getExamplePage,
+        fetchJob = launch(
+            resultFunc = {
+                exampleService.getExamplePageWithParams("someParam")
+            },
             success = {
                 bus.post(BackgroundTaskCompletedEvent(this))
             },
             fail = {
-                bus.post(BackgroundTaskFailedEvent(this.message))
+                bus.post(BackgroundTaskFailedEvent(message))
             },
             cancelled = {
                 Log.e("InheritanceMainModel", "CANCELLED")

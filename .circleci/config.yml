@@ -31,10 +31,14 @@ jobs:
       - store_artifacts:
           path: events/build/outputs/
           destination: outputs/
+      - store_artifacts:
+          path: coroutines/build/outputs/
+          destination: outputs/
       - persist_to_workspace:
           root: ~/code
           paths:
             - events/build/outputs/
+            - coroutines/build/outputs/
             - .circleci/
   tests:
     executor: android/android
