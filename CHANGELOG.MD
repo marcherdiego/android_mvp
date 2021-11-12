@@ -1,11 +1,11 @@
-# Events - v1.3.0
+# Events - v1.3.1
 ## New
 - Updated compile SDK to 31
 - Updated AndroidX dependencies
 ## Fixed
 - Added proguard consumer config file
 
-# Coroutines - v1.3.0
+# Coroutines - v1.3.1
 ## New
 - Added new `withResult` and deprecated the previous one
 
