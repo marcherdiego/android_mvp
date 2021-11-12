@@ -7,7 +7,7 @@ import com.nerdscorner.mvplib.testapp.R
 import com.nerdscorner.mvplib.testapp.events.ui.mvp.view.AttributeMainView.ActionClickedEvent
 
 class Fragment1View(fragment: Fragment) : BaseFragmentView(fragment) {
-    var textView: TextView? = fragment.view?.findViewById(R.id.text)
+    private var textView: TextView? = fragment.view?.findViewById(R.id.text)
 
     init {
         onClick(R.id.some_button, ActionClickedEvent())

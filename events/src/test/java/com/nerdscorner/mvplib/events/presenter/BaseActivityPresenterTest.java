@@ -20,7 +20,7 @@ public class BaseActivityPresenterTest {
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         baseActivityPresenter = new BaseActivityPresenter<>(view, model);
     }
 

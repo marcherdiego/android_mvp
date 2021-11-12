@@ -33,7 +33,7 @@ public class BaseActivityTest {
     private BaseActivityPresenter presenter;
 
     private BaseActivity baseActivity;
-    private Bus bus = Bus.Companion.getDefaultBus();
+    private final Bus bus = Bus.Companion.getDefaultBus();
 
     @Before
     public void setUp() {

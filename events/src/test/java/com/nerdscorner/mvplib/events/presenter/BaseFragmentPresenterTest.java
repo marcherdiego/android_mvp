@@ -21,7 +21,7 @@ public class BaseFragmentPresenterTest {
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         baseFragmentPresenter = new BaseFragmentPresenter<>(view, model);
     }
 
