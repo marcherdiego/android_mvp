@@ -24,14 +24,14 @@ ext {
     groupId = "com.github.marcherdiego.mvp"
 
     mvpLibraryArtifactName = "events"
-    mvpLibraryVersion = "1.3.1"
+    mvpLibraryVersion = "1.3.2"
 
     coroutinesArtifactName = "coroutines"
-    coroutinesLibraryVersion = "1.3.1"
+    coroutinesLibraryVersion = "1.3.2"
 
     //Dependencies
-    eventBusVersion = "3.2.0"
-    androidxAppcompatVersion = "1.3.1"
+    eventBusVersion = "3.3.1"
+    androidxAppcompatVersion = "1.4.0"
     androidxLifecycleExtensionsVersion = "2.2.0"
     jetbrainsCoroutinesVersion = '1.5.2-native-mt'
 
