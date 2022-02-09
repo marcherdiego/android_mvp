@@ -1,3 +1,7 @@
+# Events - v2.0.0
+## New
+- [BREAKING CHANGE] Presenter is now nullable on BaseFragment because some reported issues using BottomNavigationView
+
 # Events - v1.3.1
 ## New
 - Updated compile SDK to 31
@@ -11,7 +15,7 @@
 
 # Events - v1.2.0
 ## New
-- Added a bunch of `onClick` functions on all base Views 
+- Added a bunch of `onClick` functions on all base Views
 - Upgraded kotlin and libraries versions to their latest
 
 # Coroutines - v1.2.0
