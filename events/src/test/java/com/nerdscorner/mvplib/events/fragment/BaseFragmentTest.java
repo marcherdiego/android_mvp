@@ -53,7 +53,7 @@ public class BaseFragmentTest {
 
     private void setPresenter(final BaseFragmentPresenter presenter) {
         fragmentFragmentScenario.onFragment(fragment -> {
-            fragment.setPresenter(presenter);
+            fragment.presenter = presenter;
         });
     }
 
@@ -73,14 +73,14 @@ public class BaseFragmentTest {
     public void itShouldNotRegisterPresenterOnBusDueToLackOfSubscriptions() {
         setPresenter(presenter);
         baseFragment.onResume();
-        assertFalse(bus.isRegistered(baseFragment.getPresenter()));
+        assertFalse(bus.isRegistered(baseFragment.presenter));
     }
 
     @Test
     public void itShouldRegisterPresenterOnBus() {
         setPresenter(new PresenterWithSubscription(baseFragment));
         baseFragment.onResume();
-        assertTrue(bus.isRegistered(baseFragment.getPresenter()));
+        assertTrue(bus.isRegistered(baseFragment.presenter));
     }
 
     @Test
@@ -95,7 +95,7 @@ public class BaseFragmentTest {
         setPresenter(new PresenterWithSubscription(baseFragment));
         baseFragment.onResume();
         baseFragment.onPause();
-        assertFalse(bus.isRegistered(baseFragment.getPresenter()));
+        assertFalse(bus.isRegistered(baseFragment.presenter));
     }
 
     @Test
