@@ -61,6 +61,22 @@ artifacts {
     archives androidJavadocsJar
 }
 
+static def getPublishUser(properties) {
+    def ossrhUsername = properties.getProperty('ossrhUsername')
+    if (!ossrhUsername?.trim()) {
+        ossrhUsername = System.getenv('ossrhUsername')
+    }
+    return ossrhUsername
+}
+
+static def getPublishPassword(properties) {
+    def ossrhPassword = properties.getProperty('ossrhPassword')
+    if (!ossrhPassword?.trim()) {
+        ossrhPassword = System.getenv('ossrhPassword')
+    }
+    return ossrhPassword
+}
+
 uploadArchives {
     repositories {
         mavenDeployer {
@@ -69,8 +85,8 @@ uploadArchives {
             if (propertiesFile.exists()) {
                 properties.load(propertiesFile.newDataInputStream())
             }
-            def ossrhUsername = properties.getProperty('ossrhUsername')
-            def ossrhPassword = properties.getProperty('ossrhPassword')
+            def ossrhUsername = getPublishUser(properties)
+            def ossrhPassword = getPublishPassword(properties)
             beforeDeployment { MavenDeployment deployment ->
                 signing.signPom(deployment)
                 signing.sign configurations.archives

@@ -11,91 +11,93 @@ import com.nerdscorner.mvplib.events.config.annotations.UnregisterAt
 import com.nerdscorner.mvplib.events.presenter.BaseActivityPresenter
 
 open class BaseActivity<P : BaseActivityPresenter<*, *>>(
-        @RegisterAt private val registerAt: Int = RegisterAt.ON_RESUME,
-        @UnregisterAt private val unregisterAt: Int = UnregisterAt.ON_PAUSE
+    @RegisterAt private val registerAt: Int = RegisterAt.ON_RESUME,
+    @UnregisterAt private val unregisterAt: Int = UnregisterAt.ON_PAUSE
 ) : AppCompatActivity() {
 
-    lateinit var presenter: P
+    @JvmField
+    var presenter: P? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (registerAt == RegisterAt.ON_CREATE) {
-            presenter.bus.register(presenter)
+            presenter?.bus?.register(presenter)
         }
     }
 
     public override fun onStart() {
         super.onStart()
         if (registerAt == RegisterAt.ON_START) {
-            presenter.bus.register(presenter)
+            presenter?.bus?.register(presenter)
         }
-        presenter.onStart()
+        presenter?.onStart()
     }
 
     public override fun onResume() {
         super.onResume()
         if (registerAt == RegisterAt.ON_RESUME) {
-            presenter.bus.register(presenter)
+            presenter?.bus?.register(presenter)
         }
-        presenter.onResume()
+        presenter?.onResume()
     }
 
     public override fun onPause() {
         super.onPause()
-        presenter.onPause()
+        presenter?.onPause()
         if (unregisterAt == UnregisterAt.ON_PAUSE) {
-            presenter.bus.unregister(presenter)
+            presenter?.bus?.unregister(presenter)
         }
     }
 
     public override fun onStop() {
         super.onStop()
-        presenter.onStop()
+        presenter?.onStop()
         if (unregisterAt == UnregisterAt.ON_STOP) {
-            presenter.bus.unregister(presenter)
+            presenter?.bus?.unregister(presenter)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.onDestroy()
+        presenter?.onDestroy()
         if (unregisterAt == UnregisterAt.ON_DESTROY) {
-            presenter.bus.unregister(presenter)
+            presenter?.bus?.unregister(presenter)
         }
     }
 
     override fun onBackPressed() {
-        if (!presenter.onBackPressed()) {
+        if (presenter?.onBackPressed() == false) {
             super.onBackPressed()
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu) = presenter.onCreateOptionsMenu(menu)
+    override fun onCreateOptionsMenu(menu: Menu) = presenter?.onCreateOptionsMenu(menu) == true
 
-    override fun onOptionsItemSelected(item: MenuItem) = !presenter.onOptionsItemSelected(item) && super.onOptionsItemSelected(item)
+    override fun onOptionsItemSelected(item: MenuItem) =
+        presenter?.onOptionsItemSelected(item) == false && super.onOptionsItemSelected(item)
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        presenter.onActivityResult(requestCode, resultCode, data)
+        presenter?.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        presenter.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        presenter?.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        presenter.onConfigurationChanged(newConfig)
+        presenter?.onConfigurationChanged(newConfig)
     }
 
     public override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        presenter.onSaveInstanceState(outState)
+        presenter?.onSaveInstanceState(outState)
     }
 
     public override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        presenter.onRestoreInstanceState(savedInstanceState)
+        presenter?.onRestoreInstanceState(savedInstanceState)
     }
 }

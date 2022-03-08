@@ -7,7 +7,7 @@ import com.nerdscorner.mvplib.events.view.BaseActivityView
 import com.nerdscorner.mvplib.testapp.R
 
 class AttributeMainView(activity: AppCompatActivity, bus: Bus) : BaseActivityView(activity, bus) {
-    var textView: TextView = activity.findViewById(R.id.text)
+    private var textView: TextView = activity.findViewById(R.id.text)
 
     init {
         onClick(R.id.some_button, ActionClickedEvent())

@@ -17,6 +17,6 @@ open class BaseActivityPresenter<V : BaseActivityView, M : BaseEventsModel>
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {}
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {}
-    
+
     open fun onDestroy() {}
 }

@@ -69,7 +69,7 @@ class Bus private constructor(private val eventBus: EventBus) {
                 Handler(Looper.getMainLooper()).post { eventBus.post(event) }
             }
             ThreadMode.POSTING -> eventBus.post(event)
-            else -> Thread(Runnable { eventBus.post(event) }).start()
+            else -> Thread { eventBus.post(event) }.start()
         }
     }
 
@@ -86,14 +86,14 @@ class Bus private constructor(private val eventBus: EventBus) {
      *
      * @see .postSticky
      */
-    fun <T> getStickyEvent(eventType: Class<T>) = eventBus.getStickyEvent(eventType)
+    fun <T> getStickyEvent(eventType: Class<T>): T? = eventBus.getStickyEvent(eventType)
 
     /**
      * Remove and gets the recent sticky event for the given event type.
      *
      * @see .postSticky
      */
-    fun <T> removeStickyEvent(eventType: Class<T>) = eventBus.removeStickyEvent(eventType)
+    fun <T> removeStickyEvent(eventType: Class<T>): T? = eventBus.removeStickyEvent(eventType)
 
     /**
      * Removes the sticky event if it equals to the given event.

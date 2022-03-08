@@ -19,8 +19,8 @@ class Fragment1 : BaseFragment<Fragment1Presenter>() {
         return inflater.inflate(layout.fragment_example, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         bus = Bus.newInstance
         presenter = Fragment1Presenter(

@@ -18,7 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.testing.FragmentScenario;
 import com.nerdscorner.mvplib.events.model.BaseEventsModel;
 import com.nerdscorner.mvplib.events.presenter.BaseFragmentPresenter;
@@ -54,7 +53,7 @@ public class BaseFragmentTest {
 
     private void setPresenter(final BaseFragmentPresenter presenter) {
         fragmentFragmentScenario.onFragment(fragment -> {
-            fragment.setPresenter(presenter);
+            fragment.presenter = presenter;
         });
     }
 
@@ -74,14 +73,14 @@ public class BaseFragmentTest {
     public void itShouldNotRegisterPresenterOnBusDueToLackOfSubscriptions() {
         setPresenter(presenter);
         baseFragment.onResume();
-        assertFalse(bus.isRegistered(baseFragment.getPresenter()));
+        assertFalse(bus.isRegistered(baseFragment.presenter));
     }
 
     @Test
     public void itShouldRegisterPresenterOnBus() {
         setPresenter(new PresenterWithSubscription(baseFragment));
         baseFragment.onResume();
-        assertTrue(bus.isRegistered(baseFragment.getPresenter()));
+        assertTrue(bus.isRegistered(baseFragment.presenter));
     }
 
     @Test
@@ -96,7 +95,7 @@ public class BaseFragmentTest {
         setPresenter(new PresenterWithSubscription(baseFragment));
         baseFragment.onResume();
         baseFragment.onPause();
-        assertFalse(bus.isRegistered(baseFragment.getPresenter()));
+        assertFalse(bus.isRegistered(baseFragment.presenter));
     }
 
     @Test
@@ -139,7 +138,7 @@ public class BaseFragmentTest {
         verify(presenter).onSaveInstanceState(mockedBundle);
     }
 
-    class PresenterWithSubscription extends BaseFragmentPresenter<BaseFragmentView, BaseEventsModel> {
+    static class PresenterWithSubscription extends BaseFragmentPresenter<BaseFragmentView, BaseEventsModel> {
         PresenterWithSubscription(@NonNull BaseFragment fragment) {
             super(new MockBaseFragmentView(fragment), new BaseEventsModel());
         }
@@ -149,25 +148,18 @@ public class BaseFragmentTest {
         }
     }
 
-    class MockBaseFragmentView extends BaseFragmentView {
+    static class MockBaseFragmentView extends BaseFragmentView {
         MockBaseFragmentView(@NonNull BaseFragment fragment) {
             super(fragment);
         }
     }
 
     public static class MockBaseFragment extends BaseFragment {
-
         @org.jetbrains.annotations.Nullable
         @Override
         public View onCreateView(@NotNull LayoutInflater inflater, @org.jetbrains.annotations.Nullable ViewGroup container, @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
             presenter = BaseFragmentTest.presenter;
             return super.onCreateView(inflater, container, savedInstanceState);
-        }
-
-        @Override
-        public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-            super.onActivityCreated(savedInstanceState);
-
         }
     }
 }
