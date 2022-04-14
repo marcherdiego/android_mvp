@@ -43,42 +43,6 @@ fun <T> BaseEventsModel.runAsync(
  *
  * @return the newly created [Job]
  */
-@Deprecated(
-    "Deprecated in favor of BaseEventsModel.launch()",
-    ReplaceWith(
-        "launch(\n" +
-                "scope,\n" +
-                "dispatcher,\n" +
-                "resultFunc,\n" +
-                "success,\n" +
-                "fail,\n" +
-                "cancelled\n" +
-                ")"
-    )
-)
-fun <T> BaseEventsModel.withResult(
-    scope: CoroutineScope = CoroutineScope(Dispatchers.Main),
-    dispatcher: CoroutineDispatcher = Dispatchers.IO,
-    resultFunc: suspend () -> T?,
-    success: T?.() -> Unit = {},
-    fail: Exception.() -> Unit = {},
-    cancelled: () -> Unit = {}
-): Job {
-    return launch(scope, dispatcher, resultFunc, success, fail, cancelled)
-}
-
-/**
- * Runs suspend a function on any scope/dispatcher (Main and IO by default)
- *
- * @param scope where the resultFunc will be launched
- * @param dispatcher to be used by the scope
- * @param resultFunc suspend function to be executed
- * @param success function to be executed if `resultFunc` was executed successfully
- * @param fail function to be executed if `resultFunc` failed to execute
- * @param cancelled function to be executed if the job was cancelled
- *
- * @return the newly created [Job]
- */
 fun <T> BaseEventsModel.launch(
     scope: CoroutineScope = CoroutineScope(Dispatchers.Main),
     dispatcher: CoroutineDispatcher = Dispatchers.IO,

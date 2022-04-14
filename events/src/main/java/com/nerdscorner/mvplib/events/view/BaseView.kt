@@ -107,4 +107,8 @@ abstract class BaseView(@JvmField var bus: Bus = Bus.defaultBus) {
             }
         }
     }
+
+    fun post(event: Any) {
+        bus.post(event)
+    }
 }

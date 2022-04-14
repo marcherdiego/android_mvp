@@ -133,4 +133,8 @@ abstract class BaseWidgetView constructor(view: View, @JvmField var bus: Bus = B
             }
         }
     }
+
+    fun post(event: Any) {
+        bus.post(event)
+    }
 }

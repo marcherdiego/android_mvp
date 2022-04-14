@@ -15,4 +15,8 @@ open class BaseEventsModel(@JvmField var bus: Bus = Bus.defaultBus) {
     fun removeStickyEvent(event: Any) {
         bus.removeStickyEvent(event)
     }
+
+    fun post(event: Any) {
+        bus.post(event)
+    }
 }

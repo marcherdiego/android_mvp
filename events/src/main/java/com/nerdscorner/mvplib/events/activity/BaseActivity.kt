@@ -20,48 +20,54 @@ open class BaseActivity<P : BaseActivityPresenter<*, *>>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val presenter = presenter ?: return
         if (registerAt == RegisterAt.ON_CREATE) {
-            presenter?.bus?.register(presenter)
+            presenter.bus.register(presenter)
         }
     }
 
     public override fun onStart() {
         super.onStart()
+        val presenter = presenter ?: return
         if (registerAt == RegisterAt.ON_START) {
-            presenter?.bus?.register(presenter)
+            presenter.bus.register(presenter)
         }
-        presenter?.onStart()
+        presenter.onStart()
     }
 
     public override fun onResume() {
         super.onResume()
+        val presenter = presenter ?: return
         if (registerAt == RegisterAt.ON_RESUME) {
-            presenter?.bus?.register(presenter)
+            presenter.bus.register(presenter)
         }
-        presenter?.onResume()
+        presenter.onResume()
     }
 
     public override fun onPause() {
         super.onPause()
-        presenter?.onPause()
+        val presenter = presenter ?: return
+        presenter.onPause()
         if (unregisterAt == UnregisterAt.ON_PAUSE) {
-            presenter?.bus?.unregister(presenter)
+            presenter.bus.unregister(presenter)
         }
     }
 
     public override fun onStop() {
         super.onStop()
-        presenter?.onStop()
+        val presenter = presenter ?: return
+        presenter.onStop()
         if (unregisterAt == UnregisterAt.ON_STOP) {
-            presenter?.bus?.unregister(presenter)
+            presenter.bus.unregister(presenter)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter?.onDestroy()
+        val presenter = presenter ?: return
+        presenter.onDestroy()
         if (unregisterAt == UnregisterAt.ON_DESTROY) {
-            presenter?.bus?.unregister(presenter)
+            presenter.bus.unregister(presenter)
         }
     }
 
@@ -76,6 +82,7 @@ open class BaseActivity<P : BaseActivityPresenter<*, *>>(
     override fun onOptionsItemSelected(item: MenuItem) =
         presenter?.onOptionsItemSelected(item) == false && super.onOptionsItemSelected(item)
 
+    @Deprecated("Deprecated in Java")
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         presenter?.onActivityResult(requestCode, resultCode, data)

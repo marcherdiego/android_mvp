@@ -1,3 +1,12 @@
+# Events - v2.1.0
+## New
+- Added `post()` methods on both View and Model as a shorthand of `bus.post()`
+- Upgraded dependencies versions
+
+# Coroutines - v1.4.0
+## New
+- Removed deprecated code
+
 # Events - v2.0.0
 ## New
 - [BREAKING CHANGE] Presenter is now nullable on BaseFragment because some reported issues using BottomNavigationView

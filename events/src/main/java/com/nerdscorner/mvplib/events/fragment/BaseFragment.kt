@@ -23,51 +23,57 @@ abstract class BaseFragment<P : BaseFragmentPresenter<*, *>>(
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        presenter?.onRestoreInstanceState(savedInstanceState)
+        val presenter = presenter ?: return view
+        presenter.onRestoreInstanceState(savedInstanceState)
         if (registerAt == RegisterAt.ON_CREATE) {
-            presenter?.bus?.register(presenter)
+            presenter.bus.register(presenter)
         }
         return view
     }
 
     override fun onStart() {
         super.onStart()
+        val presenter = presenter ?: return
         if (registerAt == RegisterAt.ON_START) {
-            presenter?.bus?.register(presenter)
+            presenter.bus.register(presenter)
         }
-        presenter?.onStart()
+        presenter.onStart()
     }
 
     override fun onResume() {
         super.onResume()
+        val presenter = presenter ?: return
         if (registerAt == RegisterAt.ON_RESUME) {
-            presenter?.bus?.register(presenter)
+            presenter.bus.register(presenter)
         }
-        presenter?.onResume()
+        presenter.onResume()
     }
 
     override fun onPause() {
         super.onPause()
-        presenter?.onPause()
+        val presenter = presenter ?: return
+        presenter.onPause()
         if (unregisterAt == UnregisterAt.ON_PAUSE) {
-            presenter?.bus?.unregister(presenter)
+            presenter.bus.unregister(presenter)
         }
     }
 
     override fun onStop() {
         super.onStop()
-        presenter?.onStop()
+        val presenter = presenter ?: return
+        presenter.onStop()
         if (unregisterAt == UnregisterAt.ON_STOP) {
-            presenter?.bus?.unregister(presenter)
+            presenter.bus.unregister(presenter)
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        val presenter = presenter ?: return
         try {
-            presenter?.onDestroyView()
+            presenter.onDestroyView()
             if (unregisterAt == UnregisterAt.ON_DESTROY) {
-                presenter?.bus?.unregister(presenter)
+                presenter.bus.unregister(presenter)
             }
         } catch (_: Exception) {
         }
@@ -96,6 +102,7 @@ abstract class BaseFragment<P : BaseFragmentPresenter<*, *>>(
         presenter?.onViewStateRestored(savedInstanceState)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         presenter?.onRequestPermissionsResult(requestCode, permissions, grantResults)
