@@ -6,7 +6,7 @@
 
 **Coroutines** [ ![Download](https://img.shields.io/maven-central/v/com.github.marcherdiego.mvp/coroutines) ](https://search.maven.org/artifact/com.github.marcherdiego.mvp/coroutines)
 
-This is a small library (less than 70KB) that will help you through your Android features development in order to keep things simple, clear and tidy.
+This is a small library (less than 96KB) that will help you through your Android features development in order to keep things simple, clear and tidy.
 
 Please refer to [this article](https://android.jlelse.eu/android-mvp-doing-it-right-dac9d5d72079) to get a more in-depth explanation about how this library and its components work.
 
