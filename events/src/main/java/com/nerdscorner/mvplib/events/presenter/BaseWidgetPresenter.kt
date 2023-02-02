@@ -11,7 +11,6 @@ open class BaseWidgetPresenter<V : BaseWidgetView, M : BaseWidgetModel>
         @JvmField var model: M,
         internal var bus: Bus = Bus.defaultBus
 ) {
-
     init {
         view.setBus(bus)
         model.setBus(bus)
@@ -25,5 +24,13 @@ open class BaseWidgetPresenter<V : BaseWidgetView, M : BaseWidgetModel>
     @CallSuper
     open fun onDetached() {
         bus.unregister(this)
+    }
+
+    fun removeStickyEvent(event: Any) {
+        bus.removeStickyEvent(event)
+    }
+
+    fun removeStickyDefaultEvent(event: Any) {
+        Bus.defaultBus.removeStickyEvent(event)
     }
 }

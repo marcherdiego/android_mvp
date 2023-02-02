@@ -12,6 +12,7 @@ import androidx.annotation.IdRes
 import androidx.core.app.ActivityCompat
 import androidx.core.content.PermissionChecker
 import androidx.fragment.app.Fragment
+import com.nerdscorner.mvplib.events.bus.Bus
 import com.nerdscorner.mvplib.events.model.BaseEventsModel
 import com.nerdscorner.mvplib.events.utils.permissions.PermissionListener
 import com.nerdscorner.mvplib.events.view.BaseView
@@ -138,5 +139,13 @@ abstract class BasePresenter<V : BaseView, M : BaseEventsModel>(@JvmField var vi
                 PermissionChecker.checkSelfPermission(activity, permission) != PermissionChecker.PERMISSION_GRANTED
             }
         } ?: emptyList()
+    }
+
+    fun removeStickyEvent(event: Any) {
+        model.bus.removeStickyEvent(event)
+    }
+
+    fun removeStickyDefaultEvent(event: Any) {
+        Bus.defaultBus.removeStickyEvent(event)
     }
 }
