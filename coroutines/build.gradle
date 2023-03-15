@@ -11,7 +11,7 @@ ext {
 }
 
 android {
-    compileSdkVersion(31)
+    compileSdkVersion rootProject.ext.compileSdkVersion
 
     buildTypes {
         release {

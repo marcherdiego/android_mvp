@@ -1,3 +1,14 @@
+# Events - v3.0.0
+## New
+- [BREAKING CHANGE] Package name updated to match GitHub project
+- Added threadMode optional argument to `post()` methods on both View and Model.
+- Upgraded dependencies versions
+
+# Coroutines - v2.0.0
+## New
+- [BREAKING CHANGE] Package name updated to match GitHub project
+- Upgraded dependencies versions
+
 # Events - v2.1.0
 ## New
 - Added `post()` methods on both View and Model as a shorthand of `bus.post()`

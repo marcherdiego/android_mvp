@@ -30,6 +30,12 @@ ext {
     coroutinesLibraryVersion = "1.5.0"
 
     //Dependencies
+    compileSdkVersion = 33
+    buildToolsVersion = "33.0.0"
+
+    minSdkVersion = 15
+    targetSdkVersion = 33
+
     eventBusVersion = "3.3.1"
     androidxAppcompatVersion = "1.6.1"
     androidxLifecycleExtensionsVersion = "2.2.0"
@@ -45,7 +51,7 @@ ext {
     //Test App dependencies
     retrofitVersion = "2.9.0"
     httpLoggingInterceptorVersion = "4.9.0"
-    androidxConstraintLayoutVersion = "2.1.1"
+    androidxConstraintLayoutVersion = "2.1.4"
 }
 
 task clean(type: Delete) {

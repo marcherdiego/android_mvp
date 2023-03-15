@@ -185,7 +185,7 @@ class FeatureView(activity: AppCompatActivity) : BaseActivityView(activity) {
 ```
 #### Model
 ```kotlin
-import com.nerdscorner.mvplib.events.model.BaseEventsModel
+import com.github.marcherdiego.mvp.events.model.BaseEventsModel
 
 class FeatureModel : BaseEventsModel() {
     fun doSomethingInBackground() {
@@ -202,13 +202,13 @@ class FeatureModel : BaseEventsModel() {
 
 ## Coroutines example
 ```kotlin
-import com.nerdscorner.events.coroutines.extensions.withResult
+import com.github.marcherdiego.mvp.coroutines.extensions.launch
 
 class FeatureModel : BaseEventsModel() {
     private var fetchJob: Job? = null
 
     fun doSomethingInBackground() {
-        fetchJob = withResult(
+        fetchJob = launch(
             resultFunc = someSuspendFunctionHere(),
             success = { // this: SuspendFunctionReturnType
                 bus.post(BackgroundTaskCompletedEvent(this))
@@ -241,7 +241,7 @@ Any contributions, large or small, major features, bug fixes, unit tests are wel
 License
 =======
 
-    Copyright 2021 Diego Marcher.
+    Copyright 2023 Diego Marcher.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
