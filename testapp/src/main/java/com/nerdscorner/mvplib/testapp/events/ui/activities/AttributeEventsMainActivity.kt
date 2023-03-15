@@ -19,9 +19,9 @@ class AttributeEventsMainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_mvp)
 
         presenter = AttributeMainPresenter(
-                AttributeMainView(this, bus),
-                AttributeMainModel(bus),
-                bus
+            AttributeMainView(this, bus),
+            AttributeMainModel(bus),
+            bus
         )
     }
 

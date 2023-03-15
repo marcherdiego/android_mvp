@@ -17,7 +17,7 @@ class AttributeMainModel(bus: Bus) : BaseEventsModel(bus) {
                 fetchDataAsync()
             }
             val result = deferredResult.await()
-            bus.post(BackgroundTaskCompletedEvent(result))
+            post(BackgroundTaskCompletedEvent(result))
         }
     }
 

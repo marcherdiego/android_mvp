@@ -24,9 +24,9 @@ class Fragment1 : BaseFragment<Fragment1Presenter>() {
 
         bus = Bus.newInstance
         presenter = Fragment1Presenter(
-                Fragment1View(this),
-                Fragment1Model(),
-                bus
+            Fragment1View(this),
+            Fragment1Model(),
+            bus
         )
     }
 }

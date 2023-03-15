@@ -10,18 +10,18 @@ import com.nerdscorner.mvplib.testapp.events.ui.mvp.presenter.SampleWidgetPresen
 import com.nerdscorner.mvplib.testapp.events.ui.mvp.view.SampleWidgetView
 
 class SampleWidget @JvmOverloads constructor(
-        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
     private var presenter = SampleWidgetPresenter(
-            SampleWidgetView(this),
-            SampleWidgetModel()
+        SampleWidgetView(this),
+        SampleWidgetModel()
     )
 
     init {
         LayoutInflater
-                .from(context)
-                .inflate(R.layout.sample_widget_layout, this, true)
+            .from(context)
+            .inflate(R.layout.sample_widget_layout, this, true)
     }
 
     override fun onAttachedToWindow() {

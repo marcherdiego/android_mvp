@@ -16,7 +16,7 @@ object ServiceGenerator {
         .client(
             OkHttpClient
                 .Builder()
-                .addInterceptor(HttpLoggingInterceptor().apply { 
+                .addInterceptor(HttpLoggingInterceptor().apply {
                     setLevel(HttpLoggingInterceptor.Level.BODY)
                 })
                 .build()

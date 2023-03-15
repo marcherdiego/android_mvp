@@ -20,9 +20,9 @@ class AttributeEventsForFragmentsMainActivity : AppCompatActivity() {
 
         bus = Bus.newInstance
         presenter = AttributeForFragmentMainPresenter(
-                AttributeFragmentMainView(this, bus),
-                AttributeFragmentMainModel(bus),
-                bus
+            AttributeFragmentMainView(this, bus),
+            AttributeFragmentMainModel(bus),
+            bus
         )
     }
 

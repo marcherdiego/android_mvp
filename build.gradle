@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.6.20'
+    ext.kotlin_version = '1.7.20'
 
     repositories {
         mavenCentral()
@@ -24,23 +24,23 @@ ext {
     groupId = "com.github.marcherdiego.mvp"
 
     mvpLibraryArtifactName = "events"
-    mvpLibraryVersion = "2.1.0"
+    mvpLibraryVersion = "2.2.0"
 
     coroutinesArtifactName = "coroutines"
-    coroutinesLibraryVersion = "1.4.0"
+    coroutinesLibraryVersion = "1.5.0"
 
     //Dependencies
     eventBusVersion = "3.3.1"
-    androidxAppcompatVersion = "1.4.1"
+    androidxAppcompatVersion = "1.6.1"
     androidxLifecycleExtensionsVersion = "2.2.0"
-    jetbrainsCoroutinesVersion = '1.5.2-native-mt'
+    jetbrainsCoroutinesVersion = '1.6.4'
 
     //Testing dependencies
     junitVersion = "4.13.2"
     androidxTestJunitVersion = "1.1.2"
     mockitoVersion = "3.11.2"
     robolectricVersion = "4.5.1"
-    androidxFragmentTestingVersion = "1.4.1"
+    androidxFragmentTestingVersion = "1.5.5"
 
     //Test App dependencies
     retrofitVersion = "2.9.0"

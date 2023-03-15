@@ -134,16 +134,16 @@ abstract class BaseWidgetView constructor(view: View, @JvmField var bus: Bus = B
         }
     }
 
-    fun post(event: Any) {
-        bus.post(event)
+    fun post(event: Any, threadMode: ThreadMode = ThreadMode.POSTING) {
+        bus.post(event, threadMode)
     }
 
     fun postSticky(event: Any) {
         bus.postSticky(event)
     }
 
-    fun postDefault(event: Any) {
-        Bus.postDefault(event)
+    fun postDefault(event: Any, threadMode: ThreadMode = ThreadMode.POSTING) {
+        Bus.postDefault(event, threadMode)
     }
 
     fun postStickyDefault(event: Any) {
