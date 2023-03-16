@@ -1,4 +1,4 @@
-package com.github.mvp.events.activity;
+package com.github.marcherdiego.mvp.events.activity;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.junit.Before;
@@ -15,8 +15,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
-import com.github.marcherdiego.mvp.events.activity.BaseActivity;
-import com.github.mvp.events.TestApplication;
+import com.github.marcherdiego.mvp.events.TestApplication;
 import com.github.marcherdiego.mvp.events.bus.Bus;
 import com.github.marcherdiego.mvp.events.model.BaseEventsModel;
 import com.github.marcherdiego.mvp.events.presenter.BaseActivityPresenter;

@@ -1,4 +1,4 @@
-package com.github.mvp.events;
+package com.github.marcherdiego.mvp.events;
 
 import android.app.Application;
 

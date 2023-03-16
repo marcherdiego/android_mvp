@@ -1,4 +1,4 @@
-package com.github.mvp.events.presenter;
+package com.github.marcherdiego.mvp.events.presenter;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -7,7 +7,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.github.marcherdiego.mvp.events.model.BaseEventsModel;
-import com.github.marcherdiego.mvp.events.presenter.BaseFragmentPresenter;
 import com.github.marcherdiego.mvp.events.view.BaseFragmentView;
 
 

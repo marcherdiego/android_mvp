@@ -1,4 +1,4 @@
-package com.github.mvp.events.presenter;
+package com.github.marcherdiego.mvp.events.presenter;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -6,7 +6,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.github.marcherdiego.mvp.events.model.BaseEventsModel;
-import com.github.marcherdiego.mvp.events.presenter.BaseActivityPresenter;
 import com.github.marcherdiego.mvp.events.view.BaseActivityView;
 
 

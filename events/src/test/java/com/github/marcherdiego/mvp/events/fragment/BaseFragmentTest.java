@@ -1,4 +1,4 @@
-package com.github.mvp.events.fragment;
+package com.github.marcherdiego.mvp.events.fragment;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -19,7 +19,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.testing.FragmentScenario;
-import com.github.marcherdiego.mvp.events.fragment.BaseFragment;
 import com.github.marcherdiego.mvp.events.model.BaseEventsModel;
 import com.github.marcherdiego.mvp.events.presenter.BaseFragmentPresenter;
 import com.github.marcherdiego.mvp.events.view.BaseFragmentView;
